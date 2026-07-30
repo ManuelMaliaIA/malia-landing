@@ -285,20 +285,20 @@
     box-shadow: 0 14px 32px rgba(19,20,31,0.2);
     transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.45s ease;
   }
-  .carousel-card h3 {
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 1.25;
+  .carousel-card .quote {
+    font-size: 16px;
+    line-height: 1.45;
     color: #F2EFE3;
-    margin: 0 0 10px 0;
+    margin: 0 0 16px 0;
   }
-  .carousel-card p {
-    font-size: 14px;
-    line-height: 1.5;
+  .carousel-card .author {
+    display: block;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.02em;
     color: #E4DFCC;
-    opacity: 0.85;
-    margin: 0;
+    opacity: 0.7;
   }
   .carousel-card.pos-0 { transform: translate(0, 0) scale(1); z-index: 3; opacity: 1; }
   .carousel-card.pos-1 { transform: translate(28px, 14px) scale(0.94); z-index: 2; opacity: 0.85; }
@@ -469,19 +469,19 @@
 
     <div class="problema-cell">
       <div class="carousel" id="servicesCarousel">
-        <span class="kicker">Servicios</span>
+        <span class="kicker">Testimonios</span>
         <div class="carousel-stack">
           <div class="carousel-card">
-            <h3>Respuestas automáticas 24/7</h3>
-            <p>Tu negocio nunca deja a un cliente sin respuesta, ni de noche ni en fin de semana.</p>
+            <p class="quote">"Desde que trabajamos con Malia, dejamos de perder horas respondiendo lo mismo cada día."</p>
+            <span class="author">Nombre del cliente — Negocio</span>
           </div>
           <div class="carousel-card">
-            <h3>Agenda y citas sin fricción</h3>
-            <p>Tus clientes reservan y confirman solos. Tú solo ves la agenda llena.</p>
+            <p class="quote">"En una semana teníamos la agenda automatizada. Ya no se nos escapa ni una cita."</p>
+            <span class="author">Nombre del cliente — Negocio</span>
           </div>
           <div class="carousel-card">
-            <h3>Flujos a medida</h3>
-            <p>Nada de plantillas genéricas. Diseñamos el flujo que encaja con tu negocio.</p>
+            <p class="quote">"Se nota que entienden cómo trabaja una pyme de verdad, no una plantilla genérica."</p>
+            <span class="author">Nombre del cliente — Negocio</span>
           </div>
         </div>
         <div class="carousel-controls">
