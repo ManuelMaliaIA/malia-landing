@@ -242,7 +242,20 @@
     color: #6B6D7A;
   }
   .stack-list { display: flex; flex-direction: column; gap: 18px; }
-  .stack-list span {
+  .stack-list .tool { display: flex; align-items: center; gap: 14px; }
+  .stack-list .tool .chip {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    background: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(19,20,31,0.08);
+  }
+  .stack-list .tool .chip img { width: 24px; height: 24px; object-fit: contain; }
+  .stack-list .tool span {
     font-family: 'Space Grotesk', sans-serif;
     font-weight: 600;
     font-size: 22px;
@@ -393,7 +406,23 @@
       <a class="btn-outline" href="#contacto">Cuéntanos tu caso →</a>
     </div>
 
-    <div class="problema-cell"></div>
+    <div class="problema-cell bottom">
+      <span class="kicker">Con qué trabajamos</span>
+      <div class="stack-list">
+        <div class="tool">
+          <span class="chip"><img src="uploads/tool-n8n.png" alt=""></span>
+          <span>n8n</span>
+        </div>
+        <div class="tool">
+          <span class="chip"><img src="uploads/tool-easypanel.png" alt=""></span>
+          <span>Easypanel</span>
+        </div>
+        <div class="tool">
+          <span class="chip"><img src="uploads/tool-hostinger.png" alt=""></span>
+          <span>Hostinger</span>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
