@@ -163,11 +163,6 @@
     grid-template-columns: 1fr;
     height: 100%;
   }
-  @media (min-width: 760px) {
-    .problema-grid { grid-template-columns: 1fr 1fr; }
-    .problema .divider-h { display: block; }
-    .problema .divider-v { display: block; }
-  }
   .problema .divider-h {
     display: none;
     position: absolute; left: 0; right: 0; top: 50%; height: 1px;
@@ -177,6 +172,11 @@
     display: none;
     position: absolute; top: 0; bottom: 0; left: 50%; width: 1px;
     background: rgba(19,20,31,0.12);
+  }
+  @media (min-width: 760px) {
+    .problema-grid { grid-template-columns: 1fr 1fr; }
+    .problema .divider-h { display: block; }
+    .problema .divider-v { display: block; }
   }
   .problema-cell {
     padding: 60px 6% 20px;
@@ -250,11 +250,6 @@
     display: grid;
     grid-template-columns: 1fr;
   }
-  @media (min-width: 760px) {
-    .tools-grid { grid-template-columns: 1fr 1fr; }
-    .tools .divider-h { display: block; }
-    .tools .divider-v { display: block; }
-  }
   .tools .divider-h {
     display: none;
     position: absolute; left: 0; right: 0; top: 50%; height: 1px;
@@ -264,6 +259,11 @@
     display: none;
     position: absolute; top: 0; bottom: 0; left: 50%; width: 1px;
     background: rgba(242,239,227,0.14);
+  }
+  @media (min-width: 760px) {
+    .tools-grid { grid-template-columns: 1fr 1fr; }
+    .tools .divider-h { display: block; }
+    .tools .divider-v { display: block; }
   }
   .tools-cell {
     padding: 60px 6% 20px;
