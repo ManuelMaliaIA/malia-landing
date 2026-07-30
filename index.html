@@ -262,6 +262,59 @@
     color: #13141F;
   }
 
+  /* Services carousel (draft) */
+  .carousel { width: 100%; max-width: 460px; margin-top: 4px; }
+  .carousel-head {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-top: 14px;
+  }
+  .carousel-arrow {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid rgba(19,20,31,0.25);
+    background: transparent;
+    color: #13141F;
+    font-size: 16px;
+    font-family: inherit;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease, border-color 0.2s ease;
+  }
+  .carousel-arrow:hover { background: rgba(19,20,31,0.06); border-color: rgba(19,20,31,0.4); }
+  .carousel-title {
+    flex: 1;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: clamp(20px, 2.2vw, 26px);
+    color: #13141F;
+    margin: 0;
+    text-align: center;
+    min-height: 1.3em;
+  }
+  .carousel-desc {
+    font-size: 15px;
+    line-height: 1.5;
+    color: #13141F;
+    opacity: 0.75;
+    margin: 16px 0 0 0;
+    text-align: center;
+  }
+  .carousel-dots { display: flex; justify-content: center; gap: 8px; margin-top: 18px; }
+  .carousel-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: rgba(19,20,31,0.2);
+    transition: background 0.2s ease;
+  }
+  .carousel-dot.active { background: #13141F; }
+
   /* Footer */
   footer {
     background: #0A0A16;
@@ -399,6 +452,28 @@
     </div>
 
     <div class="problema-cell">
+      <div class="carousel" id="servicesCarousel">
+        <span class="kicker">Servicios</span>
+        <div class="carousel-head">
+          <button class="carousel-arrow" type="button" data-dir="-1" aria-label="Anterior">←</button>
+          <h3 class="carousel-title"></h3>
+          <button class="carousel-arrow" type="button" data-dir="1" aria-label="Siguiente">→</button>
+        </div>
+        <p class="carousel-desc"></p>
+        <div class="carousel-dots">
+          <span class="carousel-dot"></span>
+          <span class="carousel-dot"></span>
+          <span class="carousel-dot"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="problema-cell bottom">
+      <p>La mayoría de pymes no tienen un problema de falta de clientes — tienen un problema de falta de tiempo. Diseñamos flujos de IA que se encargan de lo repetitivo.</p>
+      <a class="btn-outline" href="#contacto">Cuéntanos tu caso →</a>
+    </div>
+
+    <div class="problema-cell">
       <span class="kicker">Con qué trabajamos</span>
       <div class="stack-list">
         <div class="tool">
@@ -415,13 +490,6 @@
         </div>
       </div>
     </div>
-
-    <div class="problema-cell bottom">
-      <p>La mayoría de pymes no tienen un problema de falta de clientes — tienen un problema de falta de tiempo. Diseñamos flujos de IA que se encargan de lo repetitivo.</p>
-      <a class="btn-outline" href="#contacto">Cuéntanos tu caso →</a>
-    </div>
-
-    <div class="problema-cell"></div>
   </div>
 </section>
 
@@ -479,6 +547,37 @@
     window.addEventListener('scroll', update, { passive: true });
     window.addEventListener('resize', update);
     update();
+  })();
+
+  // Services carousel (draft): 3 slides, looping, arrow-driven.
+  (function () {
+    var root = document.getElementById('servicesCarousel');
+    if (!root) return;
+    var slides = [
+      { title: 'Respuestas automáticas 24/7', desc: 'Tu negocio nunca deja a un cliente sin respuesta, ni de noche ni en fin de semana.' },
+      { title: 'Agenda y citas sin fricción', desc: 'Tus clientes reservan y confirman solos. Tú solo ves la agenda llena.' },
+      { title: 'Flujos a medida', desc: 'Nada de plantillas genéricas. Diseñamos el flujo que encaja con tu negocio.' }
+    ];
+    var titleEl = root.querySelector('.carousel-title');
+    var descEl = root.querySelector('.carousel-desc');
+    var dots = root.querySelectorAll('.carousel-dot');
+    var index = 0;
+
+    function render() {
+      titleEl.textContent = slides[index].title;
+      descEl.textContent = slides[index].desc;
+      dots.forEach(function (dot, i) { dot.classList.toggle('active', i === index); });
+    }
+
+    root.querySelectorAll('.carousel-arrow').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var dir = Number(btn.getAttribute('data-dir'));
+        index = (index + dir + slides.length) % slides.length;
+        render();
+      });
+    });
+
+    render();
   })();
 
   // Reveal-on-scroll for section headlines.
