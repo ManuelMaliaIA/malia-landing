@@ -262,14 +262,48 @@
     color: #13141F;
   }
 
-  /* Services carousel (draft) */
+  /* Services carousel (draft) — IG-style stacked cards, next ones peeking behind */
   .carousel { width: 100%; max-width: 460px; margin-top: 4px; }
-  .carousel-head {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    margin-top: 14px;
+  .carousel-stack {
+    position: relative;
+    height: 300px;
+    margin-top: 22px;
   }
+  .carousel-card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 220px;
+    height: 270px;
+    box-sizing: border-box;
+    background: #13141F;
+    border-radius: 18px;
+    padding: 26px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    box-shadow: 0 14px 32px rgba(19,20,31,0.2);
+    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.45s ease;
+  }
+  .carousel-card h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 1.25;
+    color: #F2EFE3;
+    margin: 0 0 10px 0;
+  }
+  .carousel-card p {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #E4DFCC;
+    opacity: 0.85;
+    margin: 0;
+  }
+  .carousel-card.pos-0 { transform: translate(0, 0) scale(1); z-index: 3; opacity: 1; }
+  .carousel-card.pos-1 { transform: translate(28px, 14px) scale(0.94); z-index: 2; opacity: 0.85; }
+  .carousel-card.pos-2 { transform: translate(52px, 26px) scale(0.88); z-index: 1; opacity: 0.55; }
+  .carousel-controls { display: flex; align-items: center; justify-content: center; gap: 18px; margin-top: 24px; }
   .carousel-arrow {
     flex-shrink: 0;
     width: 36px;
@@ -287,25 +321,7 @@
     transition: background 0.2s ease, border-color 0.2s ease;
   }
   .carousel-arrow:hover { background: rgba(19,20,31,0.06); border-color: rgba(19,20,31,0.4); }
-  .carousel-title {
-    flex: 1;
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 700;
-    font-size: clamp(20px, 2.2vw, 26px);
-    color: #13141F;
-    margin: 0;
-    text-align: center;
-    min-height: 1.3em;
-  }
-  .carousel-desc {
-    font-size: 15px;
-    line-height: 1.5;
-    color: #13141F;
-    opacity: 0.75;
-    margin: 16px 0 0 0;
-    text-align: center;
-  }
-  .carousel-dots { display: flex; justify-content: center; gap: 8px; margin-top: 18px; }
+  .carousel-dots { display: flex; justify-content: center; gap: 8px; }
   .carousel-dot {
     width: 7px;
     height: 7px;
@@ -454,16 +470,28 @@
     <div class="problema-cell">
       <div class="carousel" id="servicesCarousel">
         <span class="kicker">Servicios</span>
-        <div class="carousel-head">
-          <button class="carousel-arrow" type="button" data-dir="-1" aria-label="Anterior">←</button>
-          <h3 class="carousel-title"></h3>
-          <button class="carousel-arrow" type="button" data-dir="1" aria-label="Siguiente">→</button>
+        <div class="carousel-stack">
+          <div class="carousel-card">
+            <h3>Respuestas automáticas 24/7</h3>
+            <p>Tu negocio nunca deja a un cliente sin respuesta, ni de noche ni en fin de semana.</p>
+          </div>
+          <div class="carousel-card">
+            <h3>Agenda y citas sin fricción</h3>
+            <p>Tus clientes reservan y confirman solos. Tú solo ves la agenda llena.</p>
+          </div>
+          <div class="carousel-card">
+            <h3>Flujos a medida</h3>
+            <p>Nada de plantillas genéricas. Diseñamos el flujo que encaja con tu negocio.</p>
+          </div>
         </div>
-        <p class="carousel-desc"></p>
-        <div class="carousel-dots">
-          <span class="carousel-dot"></span>
-          <span class="carousel-dot"></span>
-          <span class="carousel-dot"></span>
+        <div class="carousel-controls">
+          <button class="carousel-arrow" type="button" data-dir="-1" aria-label="Anterior">←</button>
+          <div class="carousel-dots">
+            <span class="carousel-dot"></span>
+            <span class="carousel-dot"></span>
+            <span class="carousel-dot"></span>
+          </div>
+          <button class="carousel-arrow" type="button" data-dir="1" aria-label="Siguiente">→</button>
         </div>
       </div>
     </div>
@@ -549,30 +577,26 @@
     update();
   })();
 
-  // Services carousel (draft): 3 slides, looping, arrow-driven.
+  // Services carousel (draft): IG-style card stack, looping, arrow-driven.
   (function () {
     var root = document.getElementById('servicesCarousel');
     if (!root) return;
-    var slides = [
-      { title: 'Respuestas automáticas 24/7', desc: 'Tu negocio nunca deja a un cliente sin respuesta, ni de noche ni en fin de semana.' },
-      { title: 'Agenda y citas sin fricción', desc: 'Tus clientes reservan y confirman solos. Tú solo ves la agenda llena.' },
-      { title: 'Flujos a medida', desc: 'Nada de plantillas genéricas. Diseñamos el flujo que encaja con tu negocio.' }
-    ];
-    var titleEl = root.querySelector('.carousel-title');
-    var descEl = root.querySelector('.carousel-desc');
+    var cards = Array.prototype.slice.call(root.querySelectorAll('.carousel-card'));
     var dots = root.querySelectorAll('.carousel-dot');
-    var index = 0;
+    var order = cards.map(function (_, i) { return i; });
 
     function render() {
-      titleEl.textContent = slides[index].title;
-      descEl.textContent = slides[index].desc;
-      dots.forEach(function (dot, i) { dot.classList.toggle('active', i === index); });
+      order.forEach(function (cardIndex, pos) {
+        cards[cardIndex].className = 'carousel-card pos-' + pos;
+      });
+      dots.forEach(function (dot, i) { dot.classList.toggle('active', i === order[0]); });
     }
 
     root.querySelectorAll('.carousel-arrow').forEach(function (btn) {
       btn.addEventListener('click', function () {
         var dir = Number(btn.getAttribute('data-dir'));
-        index = (index + dir + slides.length) % slides.length;
+        if (dir === 1) { order.push(order.shift()); }
+        else { order.unshift(order.pop()); }
         render();
       });
     });
