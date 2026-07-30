@@ -416,11 +416,13 @@
     targets.forEach(function (target) { io.observe(target); });
   })();
 
-  // Ensure the hero video autoplays even where the autoplay attribute alone is unreliable.
+  // Ensure the hero video autoplays even where the autoplay attribute alone is unreliable,
+  // and slow it down for a calmer background feel.
   (function () {
     var v = document.querySelector('.hero video');
     if (v) {
       v.muted = true;
+      v.playbackRate = 0.5;
       v.play().catch(function () {});
     }
   })();
