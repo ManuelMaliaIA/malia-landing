@@ -236,6 +236,103 @@
     color: #13141F;
   }
 
+  /* Tools (dark) */
+  .tools {
+    position: relative;
+    background: #13141F;
+    min-height: 560px;
+    overflow: hidden;
+  }
+  .tools-grid {
+    position: relative;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 760px) {
+    .tools-grid { grid-template-columns: 1fr 1fr; }
+    .tools .divider-h { display: block; }
+    .tools .divider-v { display: block; }
+  }
+  .tools .divider-h {
+    display: none;
+    position: absolute; left: 0; right: 0; top: 50%; height: 1px;
+    background: rgba(242,239,227,0.14);
+  }
+  .tools .divider-v {
+    display: none;
+    position: absolute; top: 0; bottom: 0; left: 50%; width: 1px;
+    background: rgba(242,239,227,0.14);
+  }
+  .tools-cell {
+    padding: 60px 6% 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .tools-cell.bottom {
+    padding: 20px 6% 60px;
+    justify-content: flex-end;
+    gap: 20px;
+  }
+  .tools h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: clamp(28px, 3.4vw, 44px);
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: #F2EFE3;
+    margin: 0;
+    max-width: 520px;
+  }
+  .tools-cell.bottom p {
+    font-size: 15px;
+    line-height: 1.5;
+    color: #E4DFCC;
+    opacity: 0.8;
+    margin: 0;
+    max-width: 420px;
+  }
+  .btn-outline-light {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #F2EFE3;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    border: 1px solid rgba(242,239,227,0.35);
+    border-radius: 100px;
+    padding: 12px 22px;
+    width: fit-content;
+  }
+  .tools-kicker {
+    font-size: 13px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #8A8C9E;
+  }
+  .tool-logos { display: flex; flex-direction: column; gap: 18px; }
+  .tool-logo { display: flex; align-items: center; gap: 14px; }
+  .tool-logo .chip {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    background: #F2EFE3;
+    border-radius: 10px;
+  }
+  .tool-logo .chip img { width: 24px; height: 24px; object-fit: contain; }
+  .tool-logo span {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    color: #F2EFE3;
+  }
+
   /* Footer */
   footer {
     background: #0A0A16;
@@ -355,11 +452,41 @@
       <a class="btn-outline" href="#contacto">Cuéntanos tu caso →</a>
     </div>
 
-    <div class="problema-cell bottom">
-      <span class="kicker">Con qué trabajamos</span>
-      <div class="stack-list">
-        <span>n8n</span>
-        <span>WhatsApp Business API</span>
+    <div class="problema-cell"></div>
+  </div>
+</section>
+
+<section class="tools">
+  <div class="tools-grid">
+    <div class="divider-h"></div>
+    <div class="divider-v"></div>
+
+    <div class="tools-cell reveal" id="toolsHeadline">
+      <h2>No reinventamos la rueda: automatizamos con herramientas que ya usan miles de negocios.</h2>
+    </div>
+
+    <div class="tools-cell"></div>
+
+    <div class="tools-cell bottom">
+      <p>Nada de plataformas cerradas ni de código que solo entendemos nosotros. Trabajamos con software abierto y estándar del sector, para que tu automatización siga funcionando pase lo que pase.</p>
+      <a class="btn-outline-light" href="#contacto">Habla con nosotros →</a>
+    </div>
+
+    <div class="tools-cell bottom">
+      <span class="tools-kicker">Con qué trabajamos</span>
+      <div class="tool-logos">
+        <div class="tool-logo">
+          <span class="chip"><img src="uploads/tool-n8n.png" alt=""></span>
+          <span>n8n</span>
+        </div>
+        <div class="tool-logo">
+          <span class="chip"><img src="uploads/tool-easypanel.png" alt=""></span>
+          <span>Easypanel</span>
+        </div>
+        <div class="tool-logo">
+          <span class="chip"><img src="uploads/tool-hostinger.png" alt=""></span>
+          <span>Hostinger</span>
+        </div>
       </div>
     </div>
   </div>
@@ -406,9 +533,9 @@
     update();
   })();
 
-  // Reveal-on-scroll for the problem statement headline.
+  // Reveal-on-scroll for section headlines.
   (function () {
-    var target = document.getElementById('problemaHeadline');
+    var targets = document.querySelectorAll('.reveal');
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
@@ -417,7 +544,7 @@
         }
       });
     }, { threshold: 0.2 });
-    io.observe(target);
+    targets.forEach(function (target) { io.observe(target); });
   })();
 
   // Ensure the hero video autoplays even where the autoplay attribute alone is unreliable.
