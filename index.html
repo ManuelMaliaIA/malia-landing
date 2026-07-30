@@ -391,16 +391,19 @@
     document.getElementById('preloader').classList.add('done');
   }, 1600);
 
-  // Navbar: hide on scroll-down, reveal on scroll-up.
+  // Navbar: only visible while inside the hero section.
   (function () {
     var navbar = document.getElementById('navbar');
-    var lastY = window.scrollY;
-    window.addEventListener('scroll', function () {
-      var y = window.scrollY;
-      var goingDown = y > lastY;
-      lastY = y;
-      navbar.classList.toggle('nav-hidden', goingDown && y > 80);
-    }, { passive: true });
+    var hero = document.querySelector('.hero');
+    if (!navbar || !hero) return;
+
+    function update() {
+      var heroBottom = hero.offsetTop + hero.offsetHeight;
+      navbar.classList.toggle('nav-hidden', window.scrollY > heroBottom - 80);
+    }
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    update();
   })();
 
   // Reveal-on-scroll for the problem statement headline.
