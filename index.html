@@ -510,7 +510,7 @@
 </nav>
 
 <section class="hero">
-  <video src="uploads/2.mp4" poster="uploads/avatar-round-6b2aa1c8.png" muted loop playsinline autoplay preload="auto"></video>
+  <video src="uploads/2.mp4" poster="uploads/avatar-round-6b2aa1c8.png" muted loop playsinline webkit-playsinline="true" autoplay preload="auto"></video>
   <div class="overlay-1"></div>
   <div class="overlay-2"></div>
   <div class="divider-h"></div>
@@ -669,6 +669,19 @@
       v.muted = true;
       v.playbackRate = 0.75;
       v.play().catch(function () {});
+
+      // Some mobile browsers (Data Saver / Low Power Mode) block the initial
+      // autoplay attempt. Retry on the first real user interaction, which is
+      // always allowed to trigger playback.
+      var retryPlay = function () {
+        if (v.paused) { v.play().catch(function () {}); }
+        window.removeEventListener('touchstart', retryPlay);
+        window.removeEventListener('scroll', retryPlay);
+        window.removeEventListener('click', retryPlay);
+      };
+      window.addEventListener('touchstart', retryPlay, { passive: true, once: true });
+      window.addEventListener('scroll', retryPlay, { passive: true, once: true });
+      window.addEventListener('click', retryPlay, { once: true });
     }
   })();
 </script>
