@@ -276,8 +276,46 @@
     font-size: 30px;
     color: #13141F;
   }
-  .client-list { display: flex; flex-direction: column; gap: 24px; margin-top: 8px; align-items: flex-start; }
-  .client-logo { height: 46px; width: auto; max-width: 220px; object-fit: contain; }
+  .clients-carousel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 16px;
+    max-width: 440px;
+  }
+  .clients-track {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    overflow: hidden;
+    min-height: 90px;
+  }
+  .client-slot {
+    object-fit: contain;
+    transition: opacity 0.35s ease, transform 0.35s ease;
+  }
+  .client-slot.side { height: 34px; opacity: 0.3; flex-shrink: 0; }
+  .client-slot.center { height: 60px; opacity: 1; flex-shrink: 0; }
+  .carousel-arrow {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid rgba(19,20,31,0.25);
+    background: transparent;
+    color: #13141F;
+    font-size: 16px;
+    font-family: inherit;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease, border-color 0.2s ease;
+  }
+  .carousel-arrow:hover { background: rgba(19,20,31,0.06); border-color: rgba(19,20,31,0.4); }
 
   /* Footer */
   footer {
@@ -423,10 +461,14 @@
 
     <div class="problema-cell">
       <span class="kicker">Nuestros clientes</span>
-      <div class="client-list">
-        <img class="client-logo" src="uploads/motodest.png" alt="Motodest">
-        <img class="client-logo" src="uploads/mavimar.png" alt="Mavimar Consultores">
-        <img class="client-logo" src="uploads/vidal-malia.png" alt="Vidal Malia">
+      <div class="clients-carousel" id="clientsCarousel">
+        <button class="carousel-arrow" type="button" data-dir="-1" aria-label="Cliente anterior">←</button>
+        <div class="clients-track">
+          <img class="client-slot side" data-role="prev" alt="">
+          <img class="client-slot center" data-role="current" alt="">
+          <img class="client-slot side" data-role="next" alt="">
+        </div>
+        <button class="carousel-arrow" type="button" data-dir="1" aria-label="Cliente siguiente">→</button>
       </div>
     </div>
 
@@ -509,6 +551,40 @@
     window.addEventListener('scroll', update, { passive: true });
     window.addEventListener('resize', update);
     update();
+  })();
+
+  // Clients carousel: center client + previous/next peeking on the sides, looping.
+  (function () {
+    var root = document.getElementById('clientsCarousel');
+    if (!root) return;
+    var clients = [
+      { src: 'uploads/motodest.png', alt: 'Motodest' },
+      { src: 'uploads/mavimar.png', alt: 'Mavimar Consultores' },
+      { src: 'uploads/vidal-malia.png', alt: 'Vidal Malia' }
+    ];
+    var prevEl = root.querySelector('[data-role="prev"]');
+    var currentEl = root.querySelector('[data-role="current"]');
+    var nextEl = root.querySelector('[data-role="next"]');
+    var index = 0;
+
+    function render() {
+      var prev = clients[(index - 1 + clients.length) % clients.length];
+      var current = clients[index];
+      var next = clients[(index + 1) % clients.length];
+      prevEl.src = prev.src; prevEl.alt = prev.alt;
+      currentEl.src = current.src; currentEl.alt = current.alt;
+      nextEl.src = next.src; nextEl.alt = next.alt;
+    }
+
+    root.querySelectorAll('.carousel-arrow').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var dir = Number(btn.getAttribute('data-dir'));
+        index = (index + dir + clients.length) % clients.length;
+        render();
+      });
+    });
+
+    render();
   })();
 
   // Reveal-on-scroll for section headlines.
