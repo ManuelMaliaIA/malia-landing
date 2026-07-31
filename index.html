@@ -296,6 +296,37 @@
     text-transform: uppercase;
     color: #6B6D7A;
   }
+  .advantages-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px 24px;
+  }
+  .advantage-num {
+    display: block;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    color: #13141F;
+    opacity: 0.35;
+    margin-bottom: 8px;
+  }
+  .advantage h4 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 17px;
+    color: #13141F;
+    margin: 0 0 6px 0;
+  }
+  .advantage p {
+    font-size: 13px;
+    line-height: 1.45;
+    color: #13141F;
+    opacity: 0.7;
+    margin: 0;
+  }
+  @media (max-width: 640px) {
+    .advantages-grid { grid-template-columns: 1fr; }
+  }
   .stack-list { display: flex; flex-direction: column; gap: 26px; margin-top: 8px; }
   .stack-list .tool { display: flex; align-items: center; gap: 18px; }
   .stack-list .tool .chip {
@@ -470,7 +501,30 @@
       <h2>Responder el mismo mensaje. Agendar la misma cita. Una y otra vez. Así no crece un negocio.</h2>
     </div>
 
-    <div class="problema-cell"></div>
+    <div class="problema-cell">
+      <div class="advantages-grid">
+        <div class="advantage">
+          <span class="advantage-num">01</span>
+          <h4>Ahorra tiempo</h4>
+          <p>Menos tareas repetitivas, más horas para hacer crecer tu negocio.</p>
+        </div>
+        <div class="advantage">
+          <span class="advantage-num">02</span>
+          <h4>Menos errores</h4>
+          <p>La IA no se olvida, no se despista y no se salta pasos.</p>
+        </div>
+        <div class="advantage">
+          <span class="advantage-num">03</span>
+          <h4>Disponible 24/7</h4>
+          <p>Atiende a tus clientes aunque tú estés cerrado o durmiendo.</p>
+        </div>
+        <div class="advantage">
+          <span class="advantage-num">04</span>
+          <h4>Crece sin contratar</h4>
+          <p>Escala tu negocio sin ampliar plantilla ni horarios.</p>
+        </div>
+      </div>
+    </div>
 
     <div class="problema-cell">
       <span class="kicker">Con qué trabajamos</span>
