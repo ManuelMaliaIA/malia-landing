@@ -171,6 +171,46 @@
     border-radius: 100px;
   }
 
+  /* Logos strip */
+  .logos-strip {
+    background: #F2EFE3;
+    padding: 30px 0;
+    overflow: hidden;
+  }
+  .logos-heading {
+    text-align: center;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #6B6D7A;
+    margin: 0 0 20px 0;
+  }
+  .marquee { width: 100%; overflow: hidden; }
+  .marquee-track {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 64px;
+    flex-wrap: wrap;
+  }
+  .marquee-item {
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .marquee-logo {
+    max-height: 100%;
+    max-width: 220px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    opacity: 0.85;
+  }
+  .marquee-logo.is-large { transform: scale(1.6); }
 
   /* Problema */
   .problema {
@@ -276,46 +316,6 @@
     font-size: 30px;
     color: #13141F;
   }
-  .clients-carousel {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    margin-top: 16px;
-    max-width: 440px;
-  }
-  .clients-track {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 18px;
-    overflow: hidden;
-    min-height: 90px;
-  }
-  .client-slot {
-    object-fit: contain;
-    transition: opacity 0.35s ease, transform 0.35s ease;
-  }
-  .client-slot.side { height: 34px; opacity: 0.3; flex-shrink: 0; }
-  .client-slot.center { height: 60px; opacity: 1; flex-shrink: 0; }
-  .carousel-arrow {
-    flex-shrink: 0;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    border: 1px solid rgba(19,20,31,0.25);
-    background: transparent;
-    color: #13141F;
-    font-size: 16px;
-    font-family: inherit;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background 0.2s ease, border-color 0.2s ease;
-  }
-  .carousel-arrow:hover { background: rgba(19,20,31,0.06); border-color: rgba(19,20,31,0.4); }
 
   /* Footer */
   footer {
@@ -430,7 +430,7 @@
   </div>
   <div class="nav-links">
     <a href="#servicios">Servicios</a>
-    <a href="#servicios">Casos</a>
+    <a href="#casos">Casos</a>
     <a href="#contacto">Contacto</a>
   </div>
 </nav>
@@ -449,6 +449,17 @@
   </div>
 </section>
 
+<section class="logos-strip" id="casos">
+  <p class="logos-heading">Nuestros clientes:</p>
+  <div class="marquee">
+    <div class="marquee-track">
+      <div class="marquee-item"><img class="marquee-logo is-large" src="uploads/motodest.png" alt="Motodest"></div>
+      <div class="marquee-item"><img class="marquee-logo" src="uploads/mavimar.png" alt="Mavimar Consultores"></div>
+      <div class="marquee-item"><img class="marquee-logo" src="uploads/vidal-malia.png" alt="Vidal Malia"></div>
+    </div>
+  </div>
+</section>
+
 <section class="problema" id="servicios">
   <div class="bg"></div>
   <div class="problema-grid">
@@ -459,18 +470,7 @@
       <h2>Responder el mismo mensaje. Agendar la misma cita. Una y otra vez. Así no crece un negocio.</h2>
     </div>
 
-    <div class="problema-cell">
-      <span class="kicker">Nuestros clientes</span>
-      <div class="clients-carousel" id="clientsCarousel">
-        <button class="carousel-arrow" type="button" data-dir="-1" aria-label="Cliente anterior">←</button>
-        <div class="clients-track">
-          <img class="client-slot side" data-role="prev" alt="">
-          <img class="client-slot center" data-role="current" alt="">
-          <img class="client-slot side" data-role="next" alt="">
-        </div>
-        <button class="carousel-arrow" type="button" data-dir="1" aria-label="Cliente siguiente">→</button>
-      </div>
-    </div>
+    <div class="problema-cell"></div>
 
     <div class="problema-cell">
       <span class="kicker">Con qué trabajamos</span>
@@ -551,40 +551,6 @@
     window.addEventListener('scroll', update, { passive: true });
     window.addEventListener('resize', update);
     update();
-  })();
-
-  // Clients carousel: center client + previous/next peeking on the sides, looping.
-  (function () {
-    var root = document.getElementById('clientsCarousel');
-    if (!root) return;
-    var clients = [
-      { src: 'uploads/motodest.png', alt: 'Motodest' },
-      { src: 'uploads/mavimar.png', alt: 'Mavimar Consultores' },
-      { src: 'uploads/vidal-malia.png', alt: 'Vidal Malia' }
-    ];
-    var prevEl = root.querySelector('[data-role="prev"]');
-    var currentEl = root.querySelector('[data-role="current"]');
-    var nextEl = root.querySelector('[data-role="next"]');
-    var index = 0;
-
-    function render() {
-      var prev = clients[(index - 1 + clients.length) % clients.length];
-      var current = clients[index];
-      var next = clients[(index + 1) % clients.length];
-      prevEl.src = prev.src; prevEl.alt = prev.alt;
-      currentEl.src = current.src; currentEl.alt = current.alt;
-      nextEl.src = next.src; nextEl.alt = next.alt;
-    }
-
-    root.querySelectorAll('.carousel-arrow').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        var dir = Number(btn.getAttribute('data-dir'));
-        index = (index + dir + clients.length) % clients.length;
-        render();
-      });
-    });
-
-    render();
   })();
 
   // Reveal-on-scroll for section headlines.
