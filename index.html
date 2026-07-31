@@ -605,18 +605,15 @@
     document.getElementById('preloader').classList.add('done');
   }, 1600);
 
-  // Navbar: only visible while inside the hero section.
+  // Navbar: only visible at the very top of the page.
   (function () {
     var navbar = document.getElementById('navbar');
-    var hero = document.querySelector('.hero');
-    if (!navbar || !hero) return;
+    if (!navbar) return;
 
     function update() {
-      var heroBottom = hero.offsetTop + hero.offsetHeight;
-      navbar.classList.toggle('nav-hidden', window.scrollY > heroBottom - 80);
+      navbar.classList.toggle('nav-hidden', window.scrollY > 4);
     }
     window.addEventListener('scroll', update, { passive: true });
-    window.addEventListener('resize', update);
     update();
   })();
 
