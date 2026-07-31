@@ -315,76 +315,6 @@
     color: #13141F;
   }
 
-  /* Services carousel (draft) — IG-style stacked cards, next ones peeking behind */
-  .carousel { width: 100%; max-width: 460px; margin-top: 4px; }
-  .carousel-stack {
-    position: relative;
-    width: 272px;
-    height: 300px;
-    margin: 22px auto 0;
-  }
-  .carousel-card {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 220px;
-    height: 270px;
-    box-sizing: border-box;
-    background: #13141F;
-    border-radius: 18px;
-    padding: 26px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    box-shadow: 0 14px 32px rgba(19,20,31,0.2);
-    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.45s ease;
-  }
-  .carousel-card .quote {
-    font-size: 16px;
-    line-height: 1.45;
-    color: #F2EFE3;
-    margin: 0 0 16px 0;
-  }
-  .carousel-card .author {
-    display: block;
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 600;
-    font-size: 13px;
-    letter-spacing: 0.02em;
-    color: #E4DFCC;
-    opacity: 0.7;
-  }
-  .carousel-card.pos-0 { transform: translate(0, 0) scale(1); z-index: 3; opacity: 1; }
-  .carousel-card.pos-1 { transform: translate(28px, 14px) scale(0.94); z-index: 2; opacity: 0.85; }
-  .carousel-card.pos-2 { transform: translate(52px, 26px) scale(0.88); z-index: 1; opacity: 0.55; }
-  .carousel-controls { display: flex; align-items: center; justify-content: center; gap: 18px; margin-top: 24px; }
-  .carousel-arrow {
-    flex-shrink: 0;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    border: 1px solid rgba(19,20,31,0.25);
-    background: transparent;
-    color: #13141F;
-    font-size: 16px;
-    font-family: inherit;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background 0.2s ease, border-color 0.2s ease;
-  }
-  .carousel-arrow:hover { background: rgba(19,20,31,0.06); border-color: rgba(19,20,31,0.4); }
-  .carousel-dots { display: flex; justify-content: center; gap: 8px; }
-  .carousel-dot {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: rgba(19,20,31,0.2);
-    transition: background 0.2s ease;
-  }
-  .carousel-dot.active { background: #13141F; }
-
   /* Footer */
   footer {
     background: #0A0A16;
@@ -532,34 +462,7 @@
       <h2>Responder el mismo mensaje. Agendar la misma cita. Una y otra vez. Así no crece un negocio.</h2>
     </div>
 
-    <div class="problema-cell">
-      <div class="carousel" id="servicesCarousel">
-        <span class="kicker">Testimonios</span>
-        <div class="carousel-stack">
-          <div class="carousel-card">
-            <p class="quote">"Desde que trabajamos con Malia, dejamos de perder horas respondiendo lo mismo cada día."</p>
-            <span class="author">Nombre del cliente — Negocio</span>
-          </div>
-          <div class="carousel-card">
-            <p class="quote">"En una semana teníamos la agenda automatizada. Ya no se nos escapa ni una cita."</p>
-            <span class="author">Nombre del cliente — Negocio</span>
-          </div>
-          <div class="carousel-card">
-            <p class="quote">"Se nota que entienden cómo trabaja una pyme de verdad, no una plantilla genérica."</p>
-            <span class="author">Nombre del cliente — Negocio</span>
-          </div>
-        </div>
-        <div class="carousel-controls">
-          <button class="carousel-arrow" type="button" data-dir="-1" aria-label="Anterior">←</button>
-          <div class="carousel-dots">
-            <span class="carousel-dot"></span>
-            <span class="carousel-dot"></span>
-            <span class="carousel-dot"></span>
-          </div>
-          <button class="carousel-arrow" type="button" data-dir="1" aria-label="Siguiente">→</button>
-        </div>
-      </div>
-    </div>
+    <div class="problema-cell"></div>
 
     <div class="problema-cell bottom">
       <p>La mayoría de pymes no tienen un problema de falta de clientes — tienen un problema de falta de tiempo. Diseñamos flujos de IA que se encargan de lo repetitivo.</p>
@@ -640,33 +543,6 @@
     window.addEventListener('scroll', update, { passive: true });
     window.addEventListener('resize', update);
     update();
-  })();
-
-  // Services carousel (draft): IG-style card stack, looping, arrow-driven.
-  (function () {
-    var root = document.getElementById('servicesCarousel');
-    if (!root) return;
-    var cards = Array.prototype.slice.call(root.querySelectorAll('.carousel-card'));
-    var dots = root.querySelectorAll('.carousel-dot');
-    var order = cards.map(function (_, i) { return i; });
-
-    function render() {
-      order.forEach(function (cardIndex, pos) {
-        cards[cardIndex].className = 'carousel-card pos-' + pos;
-      });
-      dots.forEach(function (dot, i) { dot.classList.toggle('active', i === order[0]); });
-    }
-
-    root.querySelectorAll('.carousel-arrow').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        var dir = Number(btn.getAttribute('data-dir'));
-        if (dir === 1) { order.push(order.shift()); }
-        else { order.unshift(order.pop()); }
-        render();
-      });
-    });
-
-    render();
   })();
 
   // Reveal-on-scroll for section headlines.
