@@ -323,12 +323,15 @@
     padding: 100px 8% 48px;
   }
   .footer-top {
-    display: flex;
-    flex-wrap: wrap;
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
     gap: 60px;
-    justify-content: space-between;
     max-width: 1100px;
     margin: 0 auto 80px;
+  }
+  @media (min-width: 760px) {
+    .footer-top { grid-template-columns: 1fr 1fr; }
   }
   .footer-brand { max-width: 420px; }
   .footer-logo { display: flex; align-items: center; margin-bottom: 32px; }
@@ -351,8 +354,11 @@
   }
   .footer-divider {
     display: none;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
     width: 1px;
-    align-self: stretch;
     background: rgba(242,239,227,0.15);
   }
   @media (min-width: 760px) {
