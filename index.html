@@ -5,6 +5,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>malia — Automatización con IA para pymes</title>
 <meta name="description" content="Automatiza lo repetitivo. Enfócate en crecer. Diseñamos flujos de IA a medida para comercios, hostelería y servicios.">
+
+<link rel="icon" type="image/png" href="uploads/avatar-round-6b2aa1c8.png">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="malia">
+<meta property="og:title" content="malia — Automatización con IA para pymes">
+<meta property="og:description" content="Automatiza lo repetitivo. Enfócate en crecer. Diseñamos flujos de IA a medida para comercios, hostelería y servicios.">
+<meta property="og:url" content="https://malia-landing-tau.vercel.app/">
+<meta property="og:image" content="https://malia-landing-tau.vercel.app/uploads/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="malia — Automatización con IA para pymes">
+<meta name="twitter:description" content="Automatiza lo repetitivo. Enfócate en crecer. Diseñamos flujos de IA a medida para comercios, hostelería y servicios.">
+<meta name="twitter:image" content="https://malia-landing-tau.vercel.app/uploads/og-image.jpg">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -86,8 +102,7 @@
   .hero {
     position: relative;
     width: 100%;
-    height: 100vh;
-    min-height: 640px;
+    min-height: max(640px, 100vh);
     overflow: hidden;
     background: #13141F;
   }
@@ -187,14 +202,6 @@
     justify-content: center;
     flex-shrink: 0;
   }
-  .marquee-item span {
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 600;
-    font-size: 24px;
-    color: #13141F;
-    opacity: 0.35;
-    white-space: nowrap;
-  }
   .marquee-logo {
     max-height: 100%;
     max-width: 220px;
@@ -204,17 +211,12 @@
     opacity: 0.85;
   }
   .marquee-logo.is-large { transform: scale(1.6); }
-  @keyframes marquee-scroll {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
-  }
 
   /* Problema */
   .problema {
     position: relative;
     background: #F2EFE3;
-    height: 100vh;
-    min-height: 640px;
+    min-height: max(640px, 100vh);
     overflow: hidden;
   }
   .problema .bg {
@@ -227,7 +229,7 @@
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr;
-    height: 100%;
+    min-height: max(640px, 100vh);
   }
   .problema .divider-h {
     display: none;
@@ -421,8 +423,8 @@
     <img class="wordmark" src="uploads/malia blanco vacio.png" alt="malia">
   </div>
   <div class="nav-links">
-    <a href="#testimonials">Servicios</a>
-    <a href="#testimonials">Casos</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#casos">Casos</a>
     <a href="#contacto">Contacto</a>
   </div>
 </nav>
@@ -441,7 +443,7 @@
   </div>
 </section>
 
-<section class="logos-strip">
+<section class="logos-strip" id="casos">
   <p class="logos-heading">Nuestros clientes:</p>
   <div class="marquee">
     <div class="marquee-track">
@@ -452,7 +454,7 @@
   </div>
 </section>
 
-<section class="problema">
+<section class="problema" id="servicios">
   <div class="bg"></div>
   <div class="problema-grid">
     <div class="divider-h"></div>
@@ -505,15 +507,15 @@
     <div class="footer-contact">
       <span class="label">Contacto</span>
       <a href="mailto:manuelmaliaempr@gmail.com">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
         manuelmaliaempr@gmail.com
       </a>
       <a href="tel:+34611459336">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2a1.5 1.5 0 0 1 1.6-.3c1 .4 2.1.6 3.2.6a1.5 1.5 0 0 1 1.5 1.5V21a1.5 1.5 0 0 1-1.5 1.5C10.4 22.5 1.5 13.6 1.5 3.5A1.5 1.5 0 0 1 3 2h3.6a1.5 1.5 0 0 1 1.5 1.5c0 1.1.2 2.2.6 3.2.2.5 0 1.1-.3 1.6L6.6 10.8Z"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2a1.5 1.5 0 0 1 1.6-.3c1 .4 2.1.6 3.2.6a1.5 1.5 0 0 1 1.5 1.5V21a1.5 1.5 0 0 1-1.5 1.5C10.4 22.5 1.5 13.6 1.5 3.5A1.5 1.5 0 0 1 3 2h3.6a1.5 1.5 0 0 1 1.5 1.5c0 1.1.2 2.2.6 3.2.2.5 0 1.1-.3 1.6L6.6 10.8Z"/></svg>
         611 459 336
       </a>
       <a href="https://instagram.com/malialabs_" target="_blank" rel="noopener">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
         @malialabs_
       </a>
     </div>
