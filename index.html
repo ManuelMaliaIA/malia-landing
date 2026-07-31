@@ -171,46 +171,6 @@
     border-radius: 100px;
   }
 
-  /* Logos marquee */
-  .logos-strip {
-    background: #F2EFE3;
-    padding: 30px 0;
-    overflow: hidden;
-  }
-  .logos-heading {
-    text-align: center;
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 600;
-    font-size: 13px;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    color: #6B6D7A;
-    margin: 0 0 20px 0;
-  }
-  .marquee { width: 100%; overflow: hidden; }
-  .marquee-track {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 64px;
-    flex-wrap: wrap;
-  }
-  .marquee-item {
-    height: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-  }
-  .marquee-logo {
-    max-height: 100%;
-    max-width: 220px;
-    width: auto;
-    height: auto;
-    object-fit: contain;
-    opacity: 0.85;
-  }
-  .marquee-logo.is-large { transform: scale(1.6); }
 
   /* Problema */
   .problema {
@@ -316,6 +276,8 @@
     font-size: 30px;
     color: #13141F;
   }
+  .client-list { display: flex; flex-direction: column; gap: 24px; margin-top: 8px; align-items: flex-start; }
+  .client-logo { height: 46px; width: auto; max-width: 220px; object-fit: contain; }
 
   /* Footer */
   footer {
@@ -430,7 +392,7 @@
   </div>
   <div class="nav-links">
     <a href="#servicios">Servicios</a>
-    <a href="#casos">Casos</a>
+    <a href="#servicios">Casos</a>
     <a href="#contacto">Contacto</a>
   </div>
 </nav>
@@ -449,17 +411,6 @@
   </div>
 </section>
 
-<section class="logos-strip" id="casos">
-  <p class="logos-heading">Nuestros clientes:</p>
-  <div class="marquee">
-    <div class="marquee-track">
-      <div class="marquee-item"><img class="marquee-logo is-large" src="uploads/motodest.png" alt="Motodest"></div>
-      <div class="marquee-item"><img class="marquee-logo" src="uploads/mavimar.png" alt="Mavimar Consultores"></div>
-      <div class="marquee-item"><img class="marquee-logo" src="uploads/vidal-malia.png" alt="Vidal Malia"></div>
-    </div>
-  </div>
-</section>
-
 <section class="problema" id="servicios">
   <div class="bg"></div>
   <div class="problema-grid">
@@ -468,6 +419,20 @@
 
     <div class="problema-cell reveal" id="problemaHeadline">
       <h2>Responder el mismo mensaje. Agendar la misma cita. Una y otra vez. Así no crece un negocio.</h2>
+    </div>
+
+    <div class="problema-cell">
+      <span class="kicker">Nuestros clientes</span>
+      <div class="client-list">
+        <img class="client-logo" src="uploads/motodest.png" alt="Motodest">
+        <img class="client-logo" src="uploads/mavimar.png" alt="Mavimar Consultores">
+        <img class="client-logo" src="uploads/vidal-malia.png" alt="Vidal Malia">
+      </div>
+    </div>
+
+    <div class="problema-cell bottom">
+      <p>La mayoría de pymes no tienen un problema de falta de clientes — tienen un problema de falta de tiempo. Diseñamos flujos de IA que se encargan de lo repetitivo.</p>
+      <a class="btn-outline" href="#contacto">Cuéntanos tu caso →</a>
     </div>
 
     <div class="problema-cell">
@@ -487,13 +452,6 @@
         </div>
       </div>
     </div>
-
-    <div class="problema-cell bottom">
-      <p>La mayoría de pymes no tienen un problema de falta de clientes — tienen un problema de falta de tiempo. Diseñamos flujos de IA que se encargan de lo repetitivo.</p>
-      <a class="btn-outline" href="#contacto">Cuéntanos tu caso →</a>
-    </div>
-
-    <div class="problema-cell"></div>
   </div>
 </section>
 
