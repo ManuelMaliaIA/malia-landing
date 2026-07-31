@@ -159,7 +159,7 @@
   /* Logos marquee */
   .logos-strip {
     background: #F2EFE3;
-    padding: 44px 0;
+    padding: 30px 0;
     overflow: hidden;
   }
   .marquee { width: 100%; overflow: hidden; }
@@ -170,7 +170,14 @@
     width: max-content;
     animation: marquee-scroll 24s linear infinite;
   }
-  .marquee-track span {
+  .marquee-item {
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .marquee-item span {
     font-family: 'Space Grotesk', sans-serif;
     font-weight: 600;
     font-size: 24px;
@@ -178,7 +185,14 @@
     opacity: 0.35;
     white-space: nowrap;
   }
-  .marquee-logo { height: 30px; width: auto; opacity: 0.85; flex-shrink: 0; }
+  .marquee-logo {
+    max-height: 100%;
+    max-width: 220px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    opacity: 0.85;
+  }
   @keyframes marquee-scroll {
     from { transform: translateX(0); }
     to { transform: translateX(-50%); }
@@ -488,18 +502,18 @@
 <section class="logos-strip">
   <div class="marquee">
     <div class="marquee-track">
-      <img class="marquee-logo" src="uploads/motodest.png" alt="Motodest">
-      <img class="marquee-logo" src="uploads/mavimar.png" alt="Mavimar Consultores">
-      <img class="marquee-logo" src="uploads/vidal-malia.png" alt="Vidal Malia">
-      <span>Cliente D</span>
-      <span>Cliente E</span>
-      <span>Cliente F</span>
-      <img class="marquee-logo" src="uploads/motodest.png" alt="Motodest">
-      <img class="marquee-logo" src="uploads/mavimar.png" alt="Mavimar Consultores">
-      <img class="marquee-logo" src="uploads/vidal-malia.png" alt="Vidal Malia">
-      <span>Cliente D</span>
-      <span>Cliente E</span>
-      <span>Cliente F</span>
+      <div class="marquee-item"><img class="marquee-logo" src="uploads/motodest.png" alt="Motodest"></div>
+      <div class="marquee-item"><img class="marquee-logo" src="uploads/mavimar.png" alt="Mavimar Consultores"></div>
+      <div class="marquee-item"><img class="marquee-logo" src="uploads/vidal-malia.png" alt="Vidal Malia"></div>
+      <div class="marquee-item"><span>Cliente D</span></div>
+      <div class="marquee-item"><span>Cliente E</span></div>
+      <div class="marquee-item"><span>Cliente F</span></div>
+      <div class="marquee-item"><img class="marquee-logo" src="uploads/motodest.png" alt="Motodest"></div>
+      <div class="marquee-item"><img class="marquee-logo" src="uploads/mavimar.png" alt="Mavimar Consultores"></div>
+      <div class="marquee-item"><img class="marquee-logo" src="uploads/vidal-malia.png" alt="Vidal Malia"></div>
+      <div class="marquee-item"><span>Cliente D</span></div>
+      <div class="marquee-item"><span>Cliente E</span></div>
+      <div class="marquee-item"><span>Cliente F</span></div>
     </div>
   </div>
 </section>
