@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://malia-landing-tau.vercel.app/sitemap.xml
