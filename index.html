@@ -156,6 +156,33 @@
     border-radius: 100px;
   }
 
+  /* Logos marquee */
+  .logos-strip {
+    background: #F2EFE3;
+    padding: 44px 0;
+    overflow: hidden;
+  }
+  .marquee { width: 100%; overflow: hidden; }
+  .marquee-track {
+    display: flex;
+    align-items: center;
+    gap: 64px;
+    width: max-content;
+    animation: marquee-scroll 24s linear infinite;
+  }
+  .marquee-track span {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+    color: #13141F;
+    opacity: 0.35;
+    white-space: nowrap;
+  }
+  @keyframes marquee-scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
   /* Problema */
   .problema {
     position: relative;
@@ -453,6 +480,25 @@
     <div>
       <h1>Automatiza lo repetitivo, y dedica tu tiempo a hacer crecer tu negocio.</h1>
       <p>Diseñamos flujos de IA a medida para comercios, hostelería y servicios.</p>
+    </div>
+  </div>
+</section>
+
+<section class="logos-strip">
+  <div class="marquee">
+    <div class="marquee-track">
+      <span>Cliente A</span>
+      <span>Cliente B</span>
+      <span>Cliente C</span>
+      <span>Cliente D</span>
+      <span>Cliente E</span>
+      <span>Cliente F</span>
+      <span>Cliente A</span>
+      <span>Cliente B</span>
+      <span>Cliente C</span>
+      <span>Cliente D</span>
+      <span>Cliente E</span>
+      <span>Cliente F</span>
     </div>
   </div>
 </section>
