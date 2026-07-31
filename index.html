@@ -110,7 +110,7 @@
   .navbar .brand { display: flex; align-items: center; }
   .navbar .brand img { height: 80px; width: auto; }
   .navbar .brand img.wordmark { margin-left: -100px; }
-  .nav-links { display: flex; gap: 28px; align-items: center; }
+  .nav-links { display: flex; flex-wrap: wrap; justify-content: flex-end; row-gap: 6px; gap: 28px; align-items: center; }
   .nav-links a {
     text-decoration: none;
     font-size: 13px;
@@ -163,7 +163,7 @@
     padding: 0 6%;
     text-align: center;
   }
-  .hero .content > div { max-width: 760px; display: flex; flex-direction: column; align-items: center; }
+  .hero .content > div { max-width: 760px; width: 100%; min-width: 0; display: flex; flex-direction: column; align-items: center; }
   .hero h1 {
     font-family: 'Space Grotesk', sans-serif;
     font-weight: 700;
@@ -173,6 +173,7 @@
     color: #F2EFE3;
     margin: 0 0 18px 0;
     max-width: 720px;
+    width: 100%;
   }
   .hero p {
     font-size: clamp(16px, 1.6vw, 20px);
