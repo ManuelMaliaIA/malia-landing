@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Blog — malia | Automatización con IA para pymes</title>
+<meta name="description" content="Ideas, guías y casos reales sobre automatización con IA para pymes: comercios, hostelería y servicios.">
+<link rel="canonical" href="https://malia-ai-labs.com/blog">
+
+<link rel="icon" type="image/png" href="/uploads/avatar-round-6b2aa1c8.png">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="malia">
+<meta property="og:title" content="Blog — malia | Automatización con IA para pymes">
+<meta property="og:description" content="Ideas, guías y casos reales sobre automatización con IA para pymes: comercios, hostelería y servicios.">
+<meta property="og:url" content="https://malia-ai-labs.com/blog">
+<meta property="og:image" content="https://malia-ai-labs.com/uploads/og-image.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root { color-scheme: light; }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: #F2EFE3;
+    font-family: 'Inter', sans-serif;
+    width: 100%;
+    overflow-x: hidden;
+    color: #13141F;
+  }
+  a { color: #13141F; }
+  a:hover { color: #2A2C3D; }
+
+  /* Header (variante clara del navbar de la landing, sin video de fondo) */
+  .site-header {
+    background: #13141F;
+    padding: 22px 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .site-header .brand { display: flex; align-items: center; gap: 0; }
+  .site-header .brand img { height: 44px; width: auto; }
+  .site-header .brand img.wordmark { margin-left: -24px; }
+  .site-header .nav-links { display: flex; gap: 28px; align-items: center; flex-wrap: wrap; }
+  .site-header .nav-links a {
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    color: #F2EFE3;
+    white-space: nowrap;
+  }
+  .site-header .nav-links a.current { color: #F2EFE3; border-bottom: 1px solid rgba(242,239,227,0.5); padding-bottom: 2px; }
+
+  /* Hero del blog */
+  .blog-hero { max-width: 1000px; margin: 0 auto; padding: 64px 6% 24px; }
+  .kicker {
+    font-size: 13px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #6B6D7A;
+    display: block;
+    margin-bottom: 12px;
+  }
+  .blog-hero h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: clamp(32px, 4.5vw, 48px);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: #13141F;
+    margin: 0 0 14px 0;
+  }
+  .blog-hero p {
+    font-size: 16px;
+    line-height: 1.55;
+    color: #13141F;
+    opacity: 0.75;
+    max-width: 560px;
+    margin: 0;
+  }
+
+  /* Listado */
+  .posts-grid {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 24px 6% 100px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  @media (max-width: 720px) {
+    .posts-grid { grid-template-columns: 1fr; }
+  }
+  .posts-grid:empty {
+    display: block;
+    padding: 10px 0 40px;
+  }
+  .posts-grid:empty::before {
+    content: "Todavía no hay posts publicados. Vuelve pronto.";
+    display: block;
+    color: #6B6D7A;
+    font-size: 15px;
+  }
+  .post-card {
+    display: flex;
+    flex-direction: column;
+    background: #FAF8F1;
+    border: 1px solid rgba(19,20,31,0.06);
+    border-radius: 16px;
+    box-shadow: 0 2px 10px rgba(19,20,31,0.05);
+    overflow: hidden;
+    text-decoration: none;
+    color: #13141F;
+  }
+  .post-card .cover {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    background: #E4DFCC;
+    display: block;
+  }
+  .post-card .body { padding: 20px 22px 24px; display: flex; flex-direction: column; gap: 8px; }
+  .post-card .date {
+    font-size: 12px;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: #6B6D7A;
+  }
+  .post-card h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 19px;
+    line-height: 1.3;
+    margin: 0;
+    color: #13141F;
+  }
+  .post-card p.excerpt {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #13141F;
+    opacity: 0.75;
+    margin: 0;
+  }
+  .post-card .read-more {
+    margin-top: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #13141F;
+  }
+  /* Footer (igual que la landing) */
+  footer { background: #13141F; padding: 70px 6% 30px; color: #F2EFE3; }
+  .footer-top { max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 40px; justify-content: space-between; }
+  .footer-brand { max-width: 420px; }
+  .footer-logo { display: flex; align-items: center; margin-bottom: 20px; }
+  .footer-logo img { height: 48px; width: auto; }
+  .footer-logo img.wordmark { margin-left: -24px; }
+  .footer-brand h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    margin: 0 0 10px 0;
+  }
+  .footer-brand p { font-size: 14px; line-height: 1.5; color: #D8D3C2; margin: 0 0 20px 0; }
+  .btn-light {
+    display: inline-block;
+    background: #F2EFE3;
+    color: #13141F;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    padding: 14px 28px;
+    border-radius: 100px;
+  }
+  .footer-divider { width: 1px; background: rgba(242,239,227,0.15); align-self: stretch; }
+  .footer-contact { display: flex; flex-direction: column; gap: 14px; }
+  .footer-contact .label {
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #9A9CA8;
+    margin-bottom: 4px;
+  }
+  .footer-contact a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #F2EFE3;
+    text-decoration: none;
+    font-size: 14px;
+  }
+  .footer-bottom {
+    max-width: 1200px;
+    margin: 50px auto 0;
+    padding-top: 20px;
+    border-top: 1px solid rgba(242,239,227,0.12);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 8px;
+    font-size: 12px;
+    color: #9A9CA8;
+  }
+  @media (max-width: 640px) {
+    .footer-divider { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="site-header">
+  <a class="brand" href="/">
+    <img src="/uploads/logo-inverted.png" alt="malia">
+    <img class="wordmark" src="/uploads/malia-wordmark-blanco.png" alt="malia">
+  </a>
+  <div class="nav-links">
+    <a href="/#servicios">Servicios</a>
+    <a href="/#casos">Casos</a>
+    <a class="current" href="/blog">Blog</a>
+    <a href="/#contacto">Contacto</a>
+  </div>
+</nav>
+
+<div class="blog-hero">
+  <span class="kicker">Blog de malia</span>
+  <h1>Automatización con IA, explicada sin humo.</h1>
+  <p>Casos reales, guías prácticas y aprendizajes sobre cómo las pymes ahorran tiempo automatizando con IA.</p>
+</div>
+
+<div class="posts-grid" id="posts-grid"><!-- BLOG_POSTS_START --><!-- BLOG_POSTS_END --></div>
+
+<footer id="contacto">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-logo">
+        <img src="/uploads/logo-inverted.png" alt="malia" loading="lazy">
+        <img class="wordmark" src="/uploads/malia-wordmark-blanco.png" alt="malia" loading="lazy">
+      </div>
+      <h3>¿Hablamos?</h3>
+      <p>Empieza a recuperar tu tiempo. Primera consulta sin coste, sin compromiso.</p>
+      <a class="btn-light" href="mailto:manuelmaliaempr@gmail.com">Agenda una llamada</a>
+    </div>
+    <div class="footer-divider"></div>
+    <div class="footer-contact">
+      <span class="label">Contacto</span>
+      <a href="mailto:manuelmaliaempr@gmail.com">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+        manuelmaliaempr@gmail.com
+      </a>
+      <a href="tel:+34611459336">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2a1.5 1.5 0 0 1 1.6-.3c1 .4 2.1.6 3.2.6a1.5 1.5 0 0 1 1.5 1.5V21a1.5 1.5 0 0 1-1.5 1.5C10.4 22.5 1.5 13.6 1.5 3.5A1.5 1.5 0 0 1 3 2h3.6a1.5 1.5 0 0 1 1.5 1.5c0 1.1.2 2.2.6 3.2.2.5 0 1.1-.3 1.6L6.6 10.8Z"/></svg>
+        611 459 336
+      </a>
+      <a href="https://instagram.com/malialabs_" target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
+        @malialabs_
+      </a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="tag">Malia — Automatización con IA para pymes · Barbate, Cádiz</p>
+    <p class="copy">© 2026 Malia</p>
+  </div>
+</footer>
+
+</body>
+</html>
