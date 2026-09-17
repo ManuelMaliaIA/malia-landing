@@ -3,26 +3,26 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Vigilante de tendencias en marketplaces + avisos por Telegram | Automatizaciones malia</title>
-<meta name="description" content="Automatización que vigila un marketplace de segunda mano en tiempo casi real, detecta productos que empiezan a ganar interés muy rápido, y avisa al instante por Telegram — antes de que la tendencia sea evidente para todo el mundo.">
-<link rel="canonical" href="https://malia-ai-labs.com/automatizaciones/vigilante-tendencias-vinted">
+<title>Vigilante de tendencias en tiempo real por favoritos | Automatizaciones malia</title>
+<meta name="description" content="Script de monitorización que detecta en tiempo casi real productos de un marketplace que empiezan a ganar interés muy rápido, y avisa por Telegram.">
+<link rel="canonical" href="https://malia-ai-labs.com/automatizaciones/vinted-vigilante-tendencias-favoritos">
 
 <link rel="icon" type="image/png" href="/uploads/avatar-round-6b2aa1c8.png">
 
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="malia">
-<meta property="og:title" content="Vigilante de tendencias en marketplaces + avisos por Telegram">
-<meta property="og:description" content="Automatización que vigila un marketplace de segunda mano en tiempo casi real, detecta productos que empiezan a ganar interés muy rápido, y avisa al instante por Telegram — antes de que la tendencia sea evidente para todo el mundo.">
-<meta property="og:url" content="https://malia-ai-labs.com/automatizaciones/vigilante-tendencias-vinted">
+<meta property="og:title" content="Vigilante de tendencias en tiempo real por favoritos">
+<meta property="og:description" content="Script de monitorización que detecta en tiempo casi real productos de un marketplace que empiezan a ganar interés muy rápido, y avisa por Telegram.">
+<meta property="og:url" content="https://malia-ai-labs.com/automatizaciones/vinted-vigilante-tendencias-favoritos">
 
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "HowTo",
-  "name": "Vigilante de tendencias en marketplaces + avisos por Telegram",
-  "description": "Automatización que vigila un marketplace de segunda mano en tiempo casi real, detecta productos que empiezan a ganar interés muy rápido, y avisa al instante por Telegram — antes de que la tendencia sea evidente para todo el mundo.",
+  "name": "Vigilante de tendencias en tiempo real por favoritos",
+  "description": "Script de monitorización que detecta en tiempo casi real productos de un marketplace que empiezan a ganar interés muy rápido, y avisa por Telegram.",
   "author": { "@type": "Organization", "name": "malia" },
-  "mainEntityOfPage": "https://malia-ai-labs.com/automatizaciones/vigilante-tendencias-vinted"
+  "mainEntityOfPage": "https://malia-ai-labs.com/automatizaciones/vinted-vigilante-tendencias-favoritos"
 }
 </script>
 
@@ -341,12 +341,11 @@
   <div class="item-hero">
     <a class="back-link" href="/automatizaciones">← Volver a automatizaciones</a>
     <span class="kicker">Ecommerce y reventa</span>
-    <h1>Vigilante de tendencias en marketplaces + avisos por Telegram</h1>
+    <h1>Vigilante de tendencias en tiempo real por favoritos</h1>
     <p class="item-meta">Publicado el 17 de septiembre de 2026</p>
     <div class="tools-row">
-      <span class="tool-badge">n8n</span>
+      <span class="tool-badge">Script propio (Node.js)</span>
       <span class="tool-badge">Telegram</span>
-      <span class="tool-badge">Script propio de monitorización</span>
     </div>
   </div>
   <div class="divider-h"></div>
@@ -354,10 +353,10 @@
 
 <article class="item-content">
   <h2>El problema</h2>
-  <p>Detectar a tiempo qué productos se están poniendo de moda en un marketplace exige estar refrescando búsquedas todo el día — para cuando la tendencia es evidente, ya la ha visto todo el mundo.</p>
+  <p>Para detectar una tendencia antes de que sea evidente hay que fijarse en señales muy tempranas — como un producto que de repente empieza a ganar mucho interés — algo imposible de vigilar a mano todo el día.</p>
 
   <h2>La solución</h2>
-  <p>Un vigilante que revisa periódicamente los anuncios más recientes de las búsquedas que interesan, compara el interés (favoritos) de cada anuncio con la vuelta anterior, y avisa por Telegram en cuanto algo empieza a despegar — con foto, precio y enlace directo. En paralelo, un workflow de n8n reparte también un informe semanal de tendencias, con los productos más destacados enviados uno a uno al canal.</p>
+  <p>Un vigilante que revisa periódicamente los anuncios más recientes de varias búsquedas, mide cuántos favoritos tiene cada uno, y lo compara con la revisión anterior. Si el interés sube lo bastante rápido (en número o en porcentaje), avisa al instante por Telegram con foto, precio y enlace — evitando avisar dos veces del mismo producto mientras sigue en alza.</p>
 
   <h2>Cómo funciona el flujo</h2>
   <div class="flow-diagram">
@@ -370,7 +369,7 @@
     <div class="flow-step">
       <span class="flow-num">02</span>
       <h4>Medir el interés</h4>
-      <p>Extrae cuántos favoritos tiene cada anuncio en este momento.</p>
+      <p>Extrae cuántos favoritos tiene cada anuncio.</p>
     </div>
     <div class="flow-arrow">&#8594;</div>
     <div class="flow-step">
@@ -387,20 +386,14 @@
     <div class="flow-arrow">&#8594;</div>
     <div class="flow-step">
       <span class="flow-num">05</span>
-      <h4>Evitar avisos repetidos</h4>
-      <p>No vuelve a avisar del mismo anuncio mientras siga activo el aviso.</p>
-    </div>
-    <div class="flow-arrow">&#8594;</div>
-    <div class="flow-step">
-      <span class="flow-num">06</span>
       <h4>Avisar por Telegram</h4>
-      <p>Envía foto, precio y enlace del anuncio en cuanto se confirma la tendencia.</p>
+      <p>Envía foto, precio y enlace en cuanto se confirma la tendencia.</p>
     </div>
   </div>
 
   <div class="result-box">
     <h2>Resultado</h2>
-    <p>Los avisos de productos en tendencia llegan solos, en minutos, sin tener que estar pendiente de ninguna búsqueda — la reacción es cuestión de leer una notificación, no de investigar desde cero.</p>
+    <p>Las señales de tendencia llegan en minutos, no cuando ya son noticia, sin tener que refrescar ninguna búsqueda a mano.</p>
   </div>
 </article>
 

@@ -3,26 +3,26 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Motor de blog SEO 100% automático | Automatizaciones malia</title>
-<meta name="description" content="Automatización con n8n e IA que detecta tendencias, investiga, redacta y publica solo posts de blog optimizados para SEO, con revisión humana por Telegram antes de salir a producción.">
-<link rel="canonical" href="https://malia-ai-labs.com/automatizaciones/blog-seo-automatico">
+<title>Cita semanal automática para la portada del blog | Automatizaciones malia</title>
+<meta name="description" content="Workflow de n8n que busca una cita real y verificada sobre IA y actualiza sola la sección destacada del blog cada semana.">
+<link rel="canonical" href="https://malia-ai-labs.com/automatizaciones/blog-cita-semanal-ia">
 
 <link rel="icon" type="image/png" href="/uploads/avatar-round-6b2aa1c8.png">
 
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="malia">
-<meta property="og:title" content="Motor de blog SEO 100% automático">
-<meta property="og:description" content="Automatización con n8n e IA que detecta tendencias, investiga, redacta y publica solo posts de blog optimizados para SEO, con revisión humana por Telegram antes de salir a producción.">
-<meta property="og:url" content="https://malia-ai-labs.com/automatizaciones/blog-seo-automatico">
+<meta property="og:title" content="Cita semanal automática para la portada del blog">
+<meta property="og:description" content="Workflow de n8n que busca una cita real y verificada sobre IA y actualiza sola la sección destacada del blog cada semana.">
+<meta property="og:url" content="https://malia-ai-labs.com/automatizaciones/blog-cita-semanal-ia">
 
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "HowTo",
-  "name": "Motor de blog SEO 100% automático",
-  "description": "Automatización con n8n e IA que detecta tendencias, investiga, redacta y publica solo posts de blog optimizados para SEO, con revisión humana por Telegram antes de salir a producción.",
+  "name": "Cita semanal automática para la portada del blog",
+  "description": "Workflow de n8n que busca una cita real y verificada sobre IA y actualiza sola la sección destacada del blog cada semana.",
   "author": { "@type": "Organization", "name": "malia" },
-  "mainEntityOfPage": "https://malia-ai-labs.com/automatizaciones/blog-seo-automatico"
+  "mainEntityOfPage": "https://malia-ai-labs.com/automatizaciones/blog-cita-semanal-ia"
 }
 </script>
 
@@ -341,14 +341,11 @@
   <div class="item-hero">
     <a class="back-link" href="/automatizaciones">← Volver a automatizaciones</a>
     <span class="kicker">Marketing de contenidos</span>
-    <h1>Motor de blog SEO 100% automático</h1>
+    <h1>Cita semanal automática para la portada del blog</h1>
     <p class="item-meta">Publicado el 17 de septiembre de 2026</p>
     <div class="tools-row">
       <span class="tool-badge">n8n</span>
-      <span class="tool-badge">Google Trends</span>
-      <span class="tool-badge">Perplexity</span>
       <span class="tool-badge">OpenAI</span>
-      <span class="tool-badge">Google Sheets</span>
       <span class="tool-badge">GitHub</span>
       <span class="tool-badge">Telegram</span>
     </div>
@@ -358,53 +355,41 @@
 
 <article class="item-content">
   <h2>El problema</h2>
-  <p>Mantener un blog con contenido de calidad y optimizado para SEO exige investigar tendencias, redactar, revisar y publicar de forma constante — un proceso manual que consume horas cada semana y que la mayoría de negocios acaba abandonando.</p>
+  <p>Mantener actualizada una sección de “cita destacada” en la web exige buscar una frase real, verificada y que no se haya usado antes — un detalle pequeño, pero que también se acaba olvidando con el tiempo.</p>
 
   <h2>La solución</h2>
-  <p>Un workflow de n8n que hace todo el proceso solo: detecta qué temas están en tendencia, investiga fuentes fiables, redacta un borrador optimizado para SEO, genera una imagen de portada y publica el post directamente en la web — todo sin tocar ningún editor de WordPress.</p>
+  <p>Un workflow busca una cita real y verificada relacionada con IA, comprueba que no se haya usado antes en el histórico, y actualiza directamente el bloque correspondiente de la web mediante un commit a GitHub.</p>
 
   <h2>Cómo funciona el flujo</h2>
   <div class="flow-diagram">
     <div class="flow-step">
       <span class="flow-num">01</span>
-      <h4>Detectar tendencia</h4>
-      <p>Consulta Google Trends para encontrar temas con búsquedas en alza.</p>
+      <h4>Consultar el histórico</h4>
+      <p>Revisa qué citas ya se han usado antes.</p>
     </div>
     <div class="flow-arrow">&#8594;</div>
     <div class="flow-step">
       <span class="flow-num">02</span>
-      <h4>Elegir el tema</h4>
-      <p>Una IA compara los candidatos y descarta los que ya se han publicado antes.</p>
+      <h4>Buscar una cita real</h4>
+      <p>Encuentra una cita verificada que no esté repetida.</p>
     </div>
     <div class="flow-arrow">&#8594;</div>
     <div class="flow-step">
       <span class="flow-num">03</span>
-      <h4>Investigar y redactar</h4>
-      <p>Investiga el tema con fuentes reales y escribe un borrador optimizado para SEO.</p>
+      <h4>Actualizar la web</h4>
+      <p>Sustituye la cita en la página mediante un commit directo.</p>
     </div>
     <div class="flow-arrow">&#8594;</div>
     <div class="flow-step">
       <span class="flow-num">04</span>
-      <h4>Revisar la portada</h4>
-      <p>Genera una imagen de portada y la envía por Telegram para aprobarla o pedir otra.</p>
-    </div>
-    <div class="flow-arrow">&#8594;</div>
-    <div class="flow-step">
-      <span class="flow-num">05</span>
-      <h4>Vista previa del post</h4>
-      <p>Genera el HTML final y lo enseña en una página de vista previa antes de publicarlo.</p>
-    </div>
-    <div class="flow-arrow">&#8594;</div>
-    <div class="flow-step">
-      <span class="flow-num">06</span>
-      <h4>Publicar solo</h4>
-      <p>Con el visto bueno, publica el post en la web y avisa por Telegram con el enlace.</p>
+      <h4>Confirmar por Telegram</h4>
+      <p>Avisa de que la cita se ha actualizado, o de que ha fallado.</p>
     </div>
   </div>
 
   <div class="result-box">
     <h2>Resultado</h2>
-    <p>El blog se alimenta solo cada pocos días con contenido optimizado para buscadores, y antes de publicar nada de verdad, se puede revisar y corregir la imagen y el texto directamente escribiendo por Telegram, sin abrir ningún panel de administración.</p>
+    <p>La cita de la web se renueva sola cada semana, siempre con contenido verificado y sin repetir nunca la misma frase.</p>
   </div>
 </article>
 

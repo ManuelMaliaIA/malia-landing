@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Revisión de la portada del blog por chat, antes de publicar | Automatizaciones malia</title>
+<meta name="description" content="Workflow de n8n que permite aprobar o pedir cambios en la imagen de portada de un post, escribiendo en lenguaje natural por Telegram.">
+<link rel="canonical" href="https://malia-ai-labs.com/automatizaciones/blog-revision-imagen-portada-telegram">
+
+<link rel="icon" type="image/png" href="/uploads/avatar-round-6b2aa1c8.png">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="malia">
+<meta property="og:title" content="Revisión de la portada del blog por chat, antes de publicar">
+<meta property="og:description" content="Workflow de n8n que permite aprobar o pedir cambios en la imagen de portada de un post, escribiendo en lenguaje natural por Telegram.">
+<meta property="og:url" content="https://malia-ai-labs.com/automatizaciones/blog-revision-imagen-portada-telegram">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "Revisión de la portada del blog por chat, antes de publicar",
+  "description": "Workflow de n8n que permite aprobar o pedir cambios en la imagen de portada de un post, escribiendo en lenguaje natural por Telegram.",
+  "author": { "@type": "Organization", "name": "malia" },
+  "mainEntityOfPage": "https://malia-ai-labs.com/automatizaciones/blog-revision-imagen-portada-telegram"
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root { color-scheme: light; }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: #F2EFE3;
+    font-family: 'Inter', sans-serif;
+    width: 100%;
+    overflow-x: hidden;
+    color: #13141F;
+  }
+  a { color: #13141F; }
+  a:hover { color: #2A2C3D; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    background: #13141F;
+    padding: 22px 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: transform 0.35s ease;
+  }
+  .site-header.nav-hidden { transform: translateY(-120%); }
+  .site-header .brand { display: flex; align-items: center; min-width: 0; flex-shrink: 0; }
+  .site-header .brand img { height: 80px; width: auto; }
+  .site-header .brand img.wordmark { margin-left: -100px; }
+  .site-header .nav-links { display: flex; flex-wrap: wrap; justify-content: flex-end; row-gap: 6px; gap: 28px; align-items: center; min-width: 0; }
+  .site-header .nav-links a {
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    color: #F2EFE3;
+    white-space: nowrap;
+  }
+  .site-header .nav-links a.current { color: #F2EFE3; border-bottom: 1px solid rgba(242,239,227,0.5); padding-bottom: 2px; }
+  @media (max-width: 640px) {
+    .site-header .brand img { height: 52px; }
+    .site-header .brand img.wordmark { margin-left: -65px; }
+    .site-header .nav-links { gap: 16px; }
+    .site-header .nav-links a { font-size: 12px; }
+  }
+  @media (max-width: 440px) {
+    .site-header { padding: 16px 5%; }
+    .site-header .brand img { height: 34px; }
+    .site-header .brand img.wordmark { margin-left: -42px; }
+    .site-header .nav-links { gap: 10px; }
+    .site-header .nav-links a { font-size: 11px; }
+  }
+
+  .item-hero-wrap {
+    position: relative;
+    overflow: hidden;
+    padding-top: 124px;
+    background: radial-gradient(ellipse 70% 55% at 82% 0%, rgba(228,223,204,0.85) 0%, rgba(242,239,227,1) 65%);
+  }
+  .item-hero-wrap .divider-h {
+    position: absolute; left: 0; right: 0; bottom: 0; height: 1px;
+    background: rgba(19,20,31,0.1);
+  }
+  .item-hero { position: relative; max-width: 900px; margin: 0 auto; padding: 32px 6% 44px; animation: fadeUp 0.7s ease both; }
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #6B6D7A;
+    text-decoration: none;
+    margin-bottom: 22px;
+  }
+  .back-link:hover { color: #13141F; }
+  .kicker {
+    font-size: 13px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #6B6D7A;
+    display: block;
+    margin-bottom: 14px;
+  }
+  .item-hero h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: clamp(28px, 4.2vw, 42px);
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: #13141F;
+    margin: 0 0 16px 0;
+  }
+  .item-meta { font-size: 13px; color: #6B6D7A; margin: 0 0 18px; }
+  .tools-row { display: flex; flex-wrap: wrap; gap: 10px; }
+  .tool-badge {
+    background: #FAF8F1;
+    border: 1px solid rgba(19,20,31,0.08);
+    border-radius: 100px;
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #13141F;
+  }
+
+  .item-content { max-width: 900px; margin: 0 auto; padding: 30px 6% 20px; font-size: 17px; line-height: 1.7; }
+  .item-content h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 1.3;
+    color: #13141F;
+    margin: 42px 0 14px;
+    border-bottom: 2px solid rgba(19,20,31,0.1);
+    padding-bottom: 8px;
+  }
+  .item-content p { margin: 0 0 18px; color: #13141F; }
+  .item-content ul { margin: 0 0 18px; padding-left: 22px; }
+  .item-content li { margin-bottom: 8px; }
+
+  /* Diagrama de flujo */
+  .flow-diagram {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    overflow-x: auto;
+    padding: 8px 2px 22px;
+    margin: 0 0 18px;
+  }
+  .flow-step {
+    flex: 0 0 210px;
+    background: #FAF8F1;
+    border: 1px solid rgba(19,20,31,0.08);
+    border-radius: 14px;
+    padding: 18px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .flow-step .flow-num {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    color: #13141F;
+    opacity: 0.35;
+  }
+  .flow-step h4 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    color: #13141F;
+    margin: 0;
+  }
+  .flow-step p {
+    font-size: 12.5px;
+    line-height: 1.45;
+    color: #13141F;
+    opacity: 0.72;
+    margin: 0;
+  }
+  .flow-arrow {
+    flex: 0 0 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(19,20,31,0.3);
+  }
+  @media (max-width: 640px) {
+    .flow-step { flex-basis: 180px; }
+  }
+
+  .item-content .result-box {
+    position: relative;
+    background: #FAF8F1;
+    border: 1px solid rgba(19,20,31,0.06);
+    border-radius: 16px;
+    padding: 26px 28px 26px 32px;
+    box-shadow: 0 8px 24px rgba(19,20,31,0.08);
+    margin: 34px 0;
+    overflow: hidden;
+  }
+  .item-content .result-box::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; bottom: 0;
+    width: 4px;
+    background: #13141F;
+  }
+  .item-content .result-box h2 { margin-top: 0; border-bottom: none; padding-bottom: 0; font-size: 20px; }
+  .item-content .result-box p:last-child { margin-bottom: 0; }
+
+  .item-cta {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 6% 90px;
+  }
+  .item-cta .box {
+    position: relative;
+    overflow: hidden;
+    background: #13141F;
+    color: #F2EFE3;
+    border-radius: 16px;
+    padding: 40px 32px;
+    text-align: center;
+  }
+  .item-cta .box::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 80% at 50% 0%, rgba(242,239,227,0.14) 0%, rgba(242,239,227,0) 70%);
+  }
+  .item-cta .box > * { position: relative; }
+  .item-cta .box h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    margin: 0 0 10px;
+  }
+  .item-cta .box p { font-size: 14px; color: #D8D3C2; margin: 0 0 20px; }
+  .btn-light {
+    display: inline-block;
+    background: #F2EFE3;
+    color: #13141F;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    padding: 14px 28px;
+    border-radius: 100px;
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+  }
+  .btn-light:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+  }
+
+  footer { background: #13141F; padding: 70px 6% 30px; color: #F2EFE3; }
+  .footer-top { max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 40px; justify-content: space-between; }
+  .footer-brand { max-width: 420px; }
+  .footer-logo { display: flex; align-items: center; margin-bottom: 20px; }
+  .footer-logo img { height: 48px; width: auto; }
+  .footer-logo img.wordmark { margin-left: -24px; }
+  .footer-brand h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    margin: 0 0 10px 0;
+  }
+  .footer-brand p { font-size: 14px; line-height: 1.5; color: #D8D3C2; margin: 0 0 20px 0; }
+  .footer-divider { width: 1px; background: rgba(242,239,227,0.15); align-self: stretch; }
+  .footer-contact { display: flex; flex-direction: column; gap: 14px; }
+  .footer-contact .label {
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #9A9CA8;
+    margin-bottom: 4px;
+  }
+  .footer-contact a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #F2EFE3;
+    text-decoration: none;
+    font-size: 14px;
+  }
+  .footer-bottom {
+    max-width: 1200px;
+    margin: 50px auto 0;
+    padding-top: 20px;
+    border-top: 1px solid rgba(242,239,227,0.12);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 8px;
+    font-size: 12px;
+    color: #9A9CA8;
+  }
+  @media (max-width: 640px) {
+    .footer-divider { display: none; }
+    .item-hero-wrap { padding-top: 96px; }
+  }
+  @media (max-width: 440px) {
+    .item-hero-wrap { padding-top: 66px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="site-header" id="site-header">
+  <a class="brand" href="/">
+    <img src="/uploads/logo-inverted.png" alt="malia">
+    <img class="wordmark" src="/uploads/malia-wordmark-blanco.png" alt="malia">
+  </a>
+  <div class="nav-links">
+    <a href="/#servicios">Servicios</a>
+    <a href="/#casos">Casos</a>
+    <a class="current" href="/automatizaciones">Automatizaciones</a>
+    <a href="/blog">Blog</a>
+    <a href="/#contacto">Contacto</a>
+  </div>
+</nav>
+
+<div class="item-hero-wrap">
+  <div class="item-hero">
+    <a class="back-link" href="/automatizaciones">← Volver a automatizaciones</a>
+    <span class="kicker">Marketing de contenidos</span>
+    <h1>Revisión de la portada del blog por chat, antes de publicar</h1>
+    <p class="item-meta">Publicado el 17 de septiembre de 2026</p>
+    <div class="tools-row">
+      <span class="tool-badge">n8n</span>
+      <span class="tool-badge">Telegram</span>
+      <span class="tool-badge">OpenAI</span>
+    </div>
+  </div>
+  <div class="divider-h"></div>
+</div>
+
+<article class="item-content">
+  <h2>El problema</h2>
+  <p>La imagen de portada que elige automáticamente una IA no siempre acierta — sin un punto de control, un post podía publicarse con una portada que no encajaba.</p>
+
+  <h2>La solución</h2>
+  <p>Un workflow siempre activo que espera un mensaje en Telegram, interpreta si la respuesta aprueba la imagen o pide otra distinta, y despierta al workflow principal para que continúe o repita la búsqueda de portada — todo escribiendo en lenguaje natural, sin botones ni paneles.</p>
+
+  <h2>Cómo funciona el flujo</h2>
+  <div class="flow-diagram">
+    <div class="flow-step">
+      <span class="flow-num">01</span>
+      <h4>Recibir el mensaje</h4>
+      <p>Escucha cualquier respuesta al bot de Telegram.</p>
+    </div>
+    <div class="flow-arrow">&#8594;</div>
+    <div class="flow-step">
+      <span class="flow-num">02</span>
+      <h4>Interpretar la respuesta</h4>
+      <p>Una IA decide si es una aprobación o una petición de cambio.</p>
+    </div>
+    <div class="flow-arrow">&#8594;</div>
+    <div class="flow-step">
+      <span class="flow-num">03</span>
+      <h4>Despertar el workflow principal</h4>
+      <p>Reanuda la generación del post con la decisión tomada.</p>
+    </div>
+    <div class="flow-arrow">&#8594;</div>
+    <div class="flow-step">
+      <span class="flow-num">04</span>
+      <h4>Confirmar por chat</h4>
+      <p>Responde en Telegram confirmando qué va a pasar.</p>
+    </div>
+  </div>
+
+  <div class="result-box">
+    <h2>Resultado</h2>
+    <p>Ninguna portada se publica sin un vistazo humano antes, y corregirla es tan fácil como responder a un mensaje de Telegram.</p>
+  </div>
+</article>
+
+<div class="item-cta">
+  <div class="box">
+    <h3>¿Quieres algo así para tu negocio?</h3>
+    <p>Primera consulta sin coste, sin compromiso.</p>
+    <a class="btn-light" href="mailto:manuelmaliaempr@gmail.com">Agenda una llamada</a>
+  </div>
+</div>
+
+<footer id="contacto">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-logo">
+        <img src="/uploads/logo-inverted.png" alt="malia" loading="lazy">
+        <img class="wordmark" src="/uploads/malia-wordmark-blanco.png" alt="malia" loading="lazy">
+      </div>
+      <h3>¿Hablamos?</h3>
+      <p>Empieza a recuperar tu tiempo. Primera consulta sin coste, sin compromiso.</p>
+      <a class="btn-light" href="mailto:manuelmaliaempr@gmail.com">Agenda una llamada</a>
+    </div>
+    <div class="footer-divider"></div>
+    <div class="footer-contact">
+      <span class="label">Contacto</span>
+      <a href="mailto:manuelmaliaempr@gmail.com">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+        manuelmaliaempr@gmail.com
+      </a>
+      <a href="tel:+34611459336">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2a1.5 1.5 0 0 1 1.6-.3c1 .4 2.1.6 3.2.6a1.5 1.5 0 0 1 1.5 1.5V21a1.5 1.5 0 0 1-1.5 1.5C10.4 22.5 1.5 13.6 1.5 3.5A1.5 1.5 0 0 1 3 2h3.6a1.5 1.5 0 0 1 1.5 1.5c0 1.1.2 2.2.6 3.2.2.5 0 1.1-.3 1.6L6.6 10.8Z"/></svg>
+        611 459 336
+      </a>
+      <a href="https://instagram.com/malialabs_" target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
+        @malialabs_
+      </a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="tag">Malia — Automatización con IA para pymes · Barbate, Cádiz</p>
+    <p class="copy">© 2026 Malia</p>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var header = document.getElementById('site-header');
+    if (!header) return;
+    function update() {
+      header.classList.toggle('nav-hidden', window.scrollY > 4);
+    }
+    window.addEventListener('scroll', update, { passive: true });
+    update();
+  })();
+</script>
+
+</body>
+</html>
