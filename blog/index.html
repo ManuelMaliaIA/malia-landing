@@ -41,15 +41,19 @@
 
   /* Header: igual que el navbar de la landing (misma tipografia y logo), fijo arriba */
   .site-header {
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
     z-index: 50;
     background: #13141F;
     padding: 22px 5%;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    transition: transform 0.35s ease;
   }
+  .site-header.nav-hidden { transform: translateY(-120%); }
   .site-header .brand { display: flex; align-items: center; min-width: 0; flex-shrink: 0; }
   .site-header .brand img { height: 80px; width: auto; }
   .site-header .brand img.wordmark { margin-left: -100px; }
@@ -80,6 +84,7 @@
   .blog-hero-wrap {
     position: relative;
     overflow: hidden;
+    padding-top: 124px;
     background: radial-gradient(ellipse 70% 55% at 18% 0%, rgba(228,223,204,0.85) 0%, rgba(242,239,227,1) 65%);
   }
   .blog-hero-wrap .divider-h {
@@ -90,7 +95,7 @@
     position: relative;
     max-width: 1000px;
     margin: 0 auto;
-    padding: 76px 6% 56px;
+    padding: 48px 6% 56px;
     animation: fadeUp 0.7s ease both;
   }
   .kicker {
@@ -358,12 +363,16 @@
   }
   @media (max-width: 640px) {
     .footer-divider { display: none; }
+    .blog-hero-wrap { padding-top: 96px; }
+  }
+  @media (max-width: 440px) {
+    .blog-hero-wrap { padding-top: 66px; }
   }
 </style>
 </head>
 <body>
 
-<nav class="site-header">
+<nav class="site-header" id="site-header">
   <a class="brand" href="/">
     <img src="/uploads/logo-inverted.png" alt="malia">
     <img class="wordmark" src="/uploads/malia-wordmark-blanco.png" alt="malia">
@@ -439,6 +448,19 @@
     <p class="copy">© 2026 Malia</p>
   </div>
 </footer>
+
+<script>
+  // Cabecera: visible solo al principio, se oculta al hacer scroll (igual que la landing).
+  (function () {
+    var header = document.getElementById('site-header');
+    if (!header) return;
+    function update() {
+      header.classList.toggle('nav-hidden', window.scrollY > 4);
+    }
+    window.addEventListener('scroll', update, { passive: true });
+    update();
+  })();
+</script>
 
 </body>
 </html>
