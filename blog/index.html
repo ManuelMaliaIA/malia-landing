@@ -361,18 +361,61 @@
     font-size: 12px;
     color: #9A9CA8;
   }
-  /* Cita semanal */
-  .quote-section { max-width: 1000px; margin: 0 auto; padding: 10px 6% 60px; }
-  .quote-card {
-    background: #13141F;
-    border-radius: 20px;
-    padding: 36px 40px;
+  /* Cita semanal: ventana emergente */
+  .quote-modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    background: rgba(19,20,31,0.6);
     display: flex;
     align-items: center;
-    gap: 32px;
-    flex-wrap: wrap;
+    justify-content: center;
+    padding: 24px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
   }
-  .quote-person { display: flex; align-items: center; gap: 14px; flex-shrink: 0; }
+  .quote-modal-overlay.visible { opacity: 1; visibility: visible; }
+  .quote-modal {
+    position: relative;
+    background: #13141F;
+    border-radius: 20px;
+    padding: 44px 40px 36px;
+    max-width: 460px;
+    width: 100%;
+    transform: translateY(12px) scale(0.97);
+    transition: transform 0.3s ease;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.35);
+  }
+  .quote-modal-overlay.visible .quote-modal { transform: translateY(0) scale(1); }
+  .quote-close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(242,239,227,0.08);
+    color: #F2EFE3;
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.18s ease;
+  }
+  .quote-close:hover { background: rgba(242,239,227,0.18); }
+  .quote-kicker {
+    display: block;
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #9A9CA8;
+    margin-bottom: 20px;
+  }
+  .quote-person { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
   .quote-person .avatar {
     width: 56px;
     height: 56px;
@@ -390,20 +433,18 @@
   .quote-person .name { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 15px; color: #F2EFE3; margin: 0; }
   .quote-person .role { font-size: 12px; color: #9A9CA8; margin: 2px 0 0; }
   .quote-text {
-    flex: 1;
-    min-width: 240px;
     margin: 0;
     font-family: 'Space Grotesk', sans-serif;
     font-weight: 600;
-    font-size: 20px;
+    font-size: 21px;
     line-height: 1.4;
     color: #F2EFE3;
   }
   @media (max-width: 640px) {
     .footer-divider { display: none; }
     .blog-hero-wrap { padding-top: 96px; }
-    .quote-card { flex-direction: column; align-items: flex-start; padding: 28px 24px; }
-    .quote-text { font-size: 17px; }
+    .quote-modal { padding: 32px 26px 28px; }
+    .quote-text { font-size: 18px; }
   }
   @media (max-width: 440px) {
     .blog-hero-wrap { padding-top: 66px; }
@@ -456,8 +497,10 @@
 
 <div class="posts-grid" id="posts-grid"><!-- BLOG_POSTS_START --><a class="post-card" href="/blog/stock-market-today-petroleo-bonos-ia"><span class="tag">Automatización con IA</span><img class="cover" src="https://image.cnbcfm.com/api/v1/image/107267791-1688675315779-aa4_img_100_99_112_1957665_1000-1688675238618.jpg?v=1688675499&w=1920&h=1080" alt="Stock Market Today: Impact of $100 Oil, 5% Bonds, and AI Pressures Explained"><div class="body"><span class="date">15 de septiembre de 2026</span><h2>Stock Market Today: Impact of $100 Oil, 5% Bonds, and AI Pressures Explained</h2><p class="excerpt">"Discover today's stock market trends: soaring oil prices over $100, 10-year bond yields at 5%, AI sector challenges, and Fed rate hike expectations."</p><span class="read-more">Leer más →</span></div></a><a class="post-card" href="/blog/chatgpt-business-automation-tools-2026"><span class="tag">Automatización con IA</span><img class="cover" src="https://miro.medium.com/0*Owmrjdm6WUbBCpFV" alt="ChatGPT Business Automation Tools: The Ultimate Guide to Streamlining Work in 2026"><div class="body"><span class="date">14 de septiembre de 2026</span><h2>ChatGPT Business Automation Tools: The Ultimate Guide to Streamlining Work in 2026</h2><p class="excerpt">Descubre cómo los ChatGPT Business Automation Tools revolucionarán el trabajo en 2026. Guía completa para automatizar procesos con herramientas avanzadas.</p><span class="read-more">Leer más →</span></div></a><!-- BLOG_POSTS_END --></div>
 
-<div class="quote-section">
-  <div class="quote-card">
+<div class="quote-modal-overlay" id="quote-modal-overlay">
+  <div class="quote-modal">
+    <button class="quote-close" id="quote-close" aria-label="Cerrar">&times;</button>
+    <span class="quote-kicker">Cita de la semana</span>
     <!-- QUOTE_START --><div class="quote-person"><span class="avatar">RH</span><div><p class="name">Rene Haas</p><p class="role">Chief Executive Officer de Arm</p></div></div><blockquote class="quote-text">&quot;Creo que, durante nuestra vida, la inteligencia artificial ayudará a curar el cáncer.&quot;</blockquote><!-- QUOTE_END -->
   </div>
 </div>
@@ -506,6 +549,33 @@
     }
     window.addEventListener('scroll', update, { passive: true });
     update();
+  })();
+
+  // Ventana emergente con la cita de la semana: se muestra una vez por sesion.
+  (function () {
+    var overlay = document.getElementById('quote-modal-overlay');
+    var closeBtn = document.getElementById('quote-close');
+    if (!overlay || !closeBtn) return;
+
+    function hide() {
+      overlay.classList.remove('visible');
+      try { sessionStorage.setItem('quoteModalShown', '1'); } catch (e) {}
+    }
+
+    var alreadyShown = false;
+    try { alreadyShown = sessionStorage.getItem('quoteModalShown') === '1'; } catch (e) {}
+
+    if (!alreadyShown) {
+      setTimeout(function () { overlay.classList.add('visible'); }, 1800);
+    }
+
+    closeBtn.addEventListener('click', hide);
+    overlay.addEventListener('click', function (e) {
+      if (e.target === overlay) hide();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') hide();
+    });
   })();
 </script>
 
