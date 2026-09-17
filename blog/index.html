@@ -120,6 +120,45 @@
     margin: 0;
   }
 
+  /* Temas del blog */
+  .topics-strip {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 6% 8px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+    animation: fadeUp 0.7s ease both;
+    animation-delay: 0.1s;
+  }
+  .topic-chip {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #FAF8F1;
+    border: 1px solid rgba(19,20,31,0.06);
+    border-radius: 100px;
+    padding: 8px 18px 8px 8px;
+    box-shadow: 0 2px 10px rgba(19,20,31,0.05);
+  }
+  .topic-chip .icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: #13141F;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .topic-chip .icon svg { width: 17px; height: 17px; }
+  .topic-chip span.label { font-size: 13px; font-weight: 600; color: #13141F; white-space: nowrap; }
+  @media (max-width: 640px) {
+    .topics-strip { justify-content: flex-start; overflow-x: auto; padding-bottom: 14px; }
+    .topic-chip { flex-shrink: 0; }
+  }
+
   /* Listado */
   .posts-grid {
     max-width: 1000px;
@@ -166,6 +205,20 @@
     top: 0; left: 0; right: 0;
     height: 3px;
     background: linear-gradient(90deg, #13141F 0%, rgba(19,20,31,0.15) 100%);
+  }
+  .post-card .tag {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    z-index: 2;
+    background: #13141F;
+    color: #F2EFE3;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    border-radius: 100px;
   }
   .post-card .cover {
     width: 100%;
@@ -332,7 +385,26 @@
   <div class="divider-h"></div>
 </div>
 
-<div class="posts-grid" id="posts-grid"><!-- BLOG_POSTS_START --><a class="post-card" href="/blog/stock-market-today-petroleo-bonos-ia"><img class="cover" src="https://image.cnbcfm.com/api/v1/image/107267791-1688675315779-aa4_img_100_99_112_1957665_1000-1688675238618.jpg?v=1688675499&w=1920&h=1080" alt="Stock Market Today: Impact of $100 Oil, 5% Bonds, and AI Pressures Explained"><div class="body"><span class="date">15 de septiembre de 2026</span><h2>Stock Market Today: Impact of $100 Oil, 5% Bonds, and AI Pressures Explained</h2><p class="excerpt">"Discover today's stock market trends: soaring oil prices over $100, 10-year bond yields at 5%, AI sector challenges, and Fed rate hike expectations."</p><span class="read-more">Leer más →</span></div></a><a class="post-card" href="/blog/chatgpt-business-automation-tools-2026"><img class="cover" src="https://miro.medium.com/0*Owmrjdm6WUbBCpFV" alt="ChatGPT Business Automation Tools: The Ultimate Guide to Streamlining Work in 2026"><div class="body"><span class="date">14 de septiembre de 2026</span><h2>ChatGPT Business Automation Tools: The Ultimate Guide to Streamlining Work in 2026</h2><p class="excerpt">Descubre cómo los ChatGPT Business Automation Tools revolucionarán el trabajo en 2026. Guía completa para automatizar procesos con herramientas avanzadas.</p><span class="read-more">Leer más →</span></div></a><!-- BLOG_POSTS_END --></div>
+<div class="topics-strip">
+  <div class="topic-chip">
+    <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="#F2EFE3" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg></span>
+    <span class="label">Automatización con IA</span>
+  </div>
+  <div class="topic-chip">
+    <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="#F2EFE3" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M4.2 4.2l2.2 2.2M17.6 17.6l2.2 2.2M3 12h3M18 12h3M4.2 19.8l2.2-2.2M17.6 6.4l2.2-2.2"/></svg></span>
+    <span class="label">Agentes y herramientas</span>
+  </div>
+  <div class="topic-chip">
+    <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="#F2EFE3" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></span>
+    <span class="label">Casos y guías prácticas</span>
+  </div>
+  <div class="topic-chip">
+    <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="#F2EFE3" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l5-5 4 4 8-8"/><path d="M15 8h5v5"/></svg></span>
+    <span class="label">Tendencias y actualidad</span>
+  </div>
+</div>
+
+<div class="posts-grid" id="posts-grid"><!-- BLOG_POSTS_START --><a class="post-card" href="/blog/stock-market-today-petroleo-bonos-ia"><span class="tag">Automatización con IA</span><img class="cover" src="https://image.cnbcfm.com/api/v1/image/107267791-1688675315779-aa4_img_100_99_112_1957665_1000-1688675238618.jpg?v=1688675499&w=1920&h=1080" alt="Stock Market Today: Impact of $100 Oil, 5% Bonds, and AI Pressures Explained"><div class="body"><span class="date">15 de septiembre de 2026</span><h2>Stock Market Today: Impact of $100 Oil, 5% Bonds, and AI Pressures Explained</h2><p class="excerpt">"Discover today's stock market trends: soaring oil prices over $100, 10-year bond yields at 5%, AI sector challenges, and Fed rate hike expectations."</p><span class="read-more">Leer más →</span></div></a><a class="post-card" href="/blog/chatgpt-business-automation-tools-2026"><span class="tag">Automatización con IA</span><img class="cover" src="https://miro.medium.com/0*Owmrjdm6WUbBCpFV" alt="ChatGPT Business Automation Tools: The Ultimate Guide to Streamlining Work in 2026"><div class="body"><span class="date">14 de septiembre de 2026</span><h2>ChatGPT Business Automation Tools: The Ultimate Guide to Streamlining Work in 2026</h2><p class="excerpt">Descubre cómo los ChatGPT Business Automation Tools revolucionarán el trabajo en 2026. Guía completa para automatizar procesos con herramientas avanzadas.</p><span class="read-more">Leer más →</span></div></a><!-- BLOG_POSTS_END --></div>
 
 <footer id="contacto">
   <div class="footer-top">
