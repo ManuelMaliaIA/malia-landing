@@ -361,61 +361,49 @@
     font-size: 12px;
     color: #9A9CA8;
   }
-  /* Citas de gente influyente: columnas laterales con scroll infinito */
-  .quote-ticker {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    width: 190px;
-    overflow: hidden;
-    pointer-events: none;
-    z-index: 5;
-    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
-    mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
-  }
-  .quote-ticker-left { left: 14px; }
-  .quote-ticker-right { right: 14px; }
-  .ticker-track {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    width: 100%;
-  }
-  .quote-ticker-left .ticker-track { animation: ticker-up 110s linear infinite; }
-  .quote-ticker-right .ticker-track { animation: ticker-down 110s linear infinite; }
-  @keyframes ticker-up { from { transform: translateY(0); } to { transform: translateY(-50%); } }
-  @keyframes ticker-down { from { transform: translateY(-50%); } to { transform: translateY(0); } }
-  .ticker-card {
-    background: #FAF8F1;
-    border: 1px solid rgba(19,20,31,0.06);
-    border-radius: 14px;
-    padding: 16px 18px;
-    box-shadow: 0 2px 10px rgba(19,20,31,0.05);
-  }
-  .ticker-card .top { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
-  .ticker-card .avatar {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
+  /* Cita semanal: tarjeta simple al final del blog */
+  .quote-section { max-width: 1000px; margin: 0 auto; padding: 10px 6% 60px; }
+  .quote-card {
     background: #13141F;
+    border-radius: 20px;
+    padding: 36px 40px;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+  .quote-card .quote-person { display: flex; align-items: center; gap: 14px; flex-shrink: 0; }
+  .quote-card .avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #2A2C3D;
     color: #F2EFE3;
     font-family: 'Space Grotesk', sans-serif;
     font-weight: 700;
-    font-size: 11px;
+    font-size: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
   }
-  .ticker-card .name { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 12.5px; color: #13141F; margin: 0; }
-  .ticker-card .role { font-size: 10.5px; color: #6B6D7A; margin: 1px 0 0; }
-  .ticker-card .text { font-size: 12.5px; line-height: 1.5; color: #13141F; opacity: 0.82; margin: 0; }
-  @media (max-width: 1380px) {
-    .quote-ticker { display: none; }
+  .quote-card .name { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 15px; color: #F2EFE3; margin: 0; }
+  .quote-card .role { font-size: 12px; color: #9A9CA8; margin: 2px 0 0; }
+  .quote-card .quote-text {
+    flex: 1;
+    min-width: 240px;
+    margin: 0;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 1.4;
+    color: #F2EFE3;
   }
   @media (max-width: 640px) {
     .footer-divider { display: none; }
     .blog-hero-wrap { padding-top: 96px; }
+    .quote-card { flex-direction: column; align-items: flex-start; padding: 28px 24px; }
+    .quote-card .quote-text { font-size: 17px; }
   }
   @media (max-width: 440px) {
     .blog-hero-wrap { padding-top: 66px; }
@@ -470,12 +458,7 @@
 
 <script type="application/json" id="quotes-data">[{"name":"Sundar Pichai","role":"CEO de Google y Alphabet","quote":"Siempre he pensado en la IA como la tecnología más profunda en la que trabaja la humanidad: más profunda que el fuego, la electricidad o cualquier otra cosa que hayamos creado antes.","avatar":"SP"},{"name":"Jensen Huang","role":"CEO de Nvidia","quote":"No vas a perder tu trabajo por culpa de la IA. Vas a perderlo frente a alguien que sabe usarla.","avatar":"JH"},{"name":"Demis Hassabis","role":"CEO de Google DeepMind","quote":"Esto va a ser diez veces más grande que la Revolución Industrial, y quizás diez veces más rápido.","avatar":"DH"},{"name":"Fei-Fei Li","role":"Profesora en Stanford, conocida como la “madrina de la IA”","quote":"Suelo decirles a mis estudiantes que no se dejen engañar por el nombre: no hay nada de artificial en la inteligencia artificial.","avatar":"FL"},{"name":"Ginni Rometty","role":"Ex-CEO de IBM","quote":"Algunos lo llaman inteligencia artificial, pero la realidad es que esta tecnología nos va a potenciar: más que artificial, va a ser inteligencia aumentada.","avatar":"GR"},{"name":"Satya Nadella","role":"CEO de Microsoft","quote":"El verdadero indicador será si el mundo crece más rápido: si la productividad sube y la economía acelera, entonces como sector habremos hecho las cosas bien.","avatar":"SN"},{"name":"Rene Haas","role":"CEO de Arm","quote":"Creo que, durante nuestra vida, la inteligencia artificial ayudará a curar el cáncer.","avatar":"RH"},{"name":"Tim Cook","role":"CEO de Apple","quote":"Lo que todos tenemos que hacer es asegurarnos de que estamos usando la IA de una manera que sea en beneficio de la humanidad, no en detrimento de la humanidad.","avatar":"TC"}]</script>
 
-<div class="quote-ticker quote-ticker-left" aria-hidden="true">
-  <div class="ticker-track" id="ticker-left-track"></div>
-</div>
-<div class="quote-ticker quote-ticker-right" aria-hidden="true">
-  <div class="ticker-track" id="ticker-right-track"></div>
-</div>
+<div class="quote-section" id="quote-section" style="display:none"></div>
 
 <footer id="contacto">
   <div class="footer-top">
@@ -523,32 +506,22 @@
     update();
   })();
 
-  // Columnas laterales con citas de gente influyente, en scroll infinito (izq. sube, dcha. baja).
+  // Cita de la semana: pinta la ultima cita del pool (lo va rellenando el workflow de n8n cada lunes).
   (function () {
     var dataEl = document.getElementById('quotes-data');
-    var leftTrack = document.getElementById('ticker-left-track');
-    var rightTrack = document.getElementById('ticker-right-track');
-    if (!dataEl || !leftTrack || !rightTrack) return;
+    var section = document.getElementById('quote-section');
+    if (!dataEl || !section) return;
 
     var quotes = [];
     try { quotes = JSON.parse(dataEl.textContent); } catch (e) { quotes = []; }
     if (!quotes.length) return;
 
-    function cardHtml(q) {
-      return '<div class="ticker-card">' +
-        '<div class="top"><span class="avatar">' + q.avatar + '</span>' +
-        '<div><p class="name">' + q.name + '</p><p class="role">' + q.role + '</p></div></div>' +
-        '<p class="text">“' + q.quote + '”</p></div>';
-    }
-
-    var left = quotes.filter(function (_, i) { return i % 2 === 0; });
-    var right = quotes.filter(function (_, i) { return i % 2 === 1; });
-    if (!left.length) left = quotes;
-    if (!right.length) right = quotes;
-
-    // Cada lista se duplica una vez para que la animacion (translateY 0 -> -50%) haga bucle sin cortes.
-    leftTrack.innerHTML = left.map(cardHtml).join('') + left.map(cardHtml).join('');
-    rightTrack.innerHTML = right.map(cardHtml).join('') + right.map(cardHtml).join('');
+    var q = quotes[quotes.length - 1];
+    section.innerHTML = '<div class="quote-card">' +
+      '<div class="quote-person"><span class="avatar">' + q.avatar + '</span>' +
+      '<div><p class="name">' + q.name + '</p><p class="role">' + q.role + '</p></div></div>' +
+      '<blockquote class="quote-text">“' + q.quote + '”</blockquote></div>';
+    section.style.display = '';
   })();
 </script>
 
