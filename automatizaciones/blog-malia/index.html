@@ -3,18 +3,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Automatizaciones — malia | Automatización con IA para pymes</title>
-<meta name="description" content="Biblioteca de automatizaciones creadas con n8n e IA, organizadas por proyecto: casos reales, herramientas conectadas y el flujo completo de cada una.">
-<link rel="canonical" href="https://malia-ai-labs.com/automatizaciones">
+<title>Blog de malia | Automatizaciones malia</title>
+<meta name="description" content="El sistema que alimenta solo el blog de malia: detección de tendencias, redacción con IA, revisión por chat y publicación.">
+<link rel="canonical" href="https://malia-ai-labs.com/automatizaciones/blog-malia">
 
 <link rel="icon" type="image/png" href="/uploads/avatar-round-6b2aa1c8.png">
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="malia">
-<meta property="og:title" content="Automatizaciones — malia | Automatización con IA para pymes">
-<meta property="og:description" content="Biblioteca de automatizaciones creadas con n8n e IA, organizadas por proyecto: casos reales, herramientas conectadas y el flujo completo de cada una.">
-<meta property="og:url" content="https://malia-ai-labs.com/automatizaciones">
-<meta property="og:image" content="https://malia-ai-labs.com/uploads/og-image.jpg">
+<meta property="og:title" content="Blog de malia | Automatizaciones malia">
+<meta property="og:description" content="El sistema que alimenta solo el blog de malia: detección de tendencias, redacción con IA, revisión por chat y publicación.">
+<meta property="og:url" content="https://malia-ai-labs.com/automatizaciones/blog-malia">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -47,23 +46,28 @@
 
   .lib-hero-wrap { position: relative; overflow: hidden; padding-top: 124px; background: radial-gradient(ellipse 70% 55% at 18% 0%, rgba(228,223,204,0.85) 0%, rgba(242,239,227,1) 65%); }
   .lib-hero-wrap .divider-h { position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: rgba(19,20,31,0.1); }
-  .lib-hero { position: relative; max-width: 1000px; margin: 0 auto; padding: 48px 6% 56px; animation: fadeUp 0.7s ease both; }
+  .lib-hero { position: relative; max-width: 1000px; margin: 0 auto; padding: 32px 6% 56px; animation: fadeUp 0.7s ease both; }
+  .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: #6B6D7A; text-decoration: none; margin-bottom: 18px; }
+  .back-link:hover { color: #13141F; }
   .kicker { font-size: 13px; letter-spacing: 0.05em; text-transform: uppercase; color: #6B6D7A; display: block; margin-bottom: 14px; }
-  .lib-hero h1 { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: clamp(34px, 5vw, 52px); line-height: 1.12; letter-spacing: -0.02em; color: #13141F; margin: 0 0 16px 0; max-width: 680px; }
-  .lib-hero p { font-size: 17px; line-height: 1.6; color: #13141F; opacity: 0.72; max-width: 560px; margin: 0; }
+  .lib-hero h1 { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: clamp(30px, 4.6vw, 46px); line-height: 1.15; letter-spacing: -0.02em; color: #13141F; margin: 0 0 16px 0; max-width: 680px; }
+  .lib-hero p { font-size: 16px; line-height: 1.6; color: #13141F; opacity: 0.72; max-width: 560px; margin: 0; }
 
-  .groups-grid { max-width: 1000px; margin: 0 auto; padding: 44px 6% 110px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-  @media (max-width: 720px) { .groups-grid { grid-template-columns: 1fr; padding: 32px 6% 90px; } }
-  .group-card { position: relative; display: flex; flex-direction: column; background: #FAF8F1; border: 1px solid rgba(19,20,31,0.06); border-radius: 18px; box-shadow: 0 2px 10px rgba(19,20,31,0.05); overflow: hidden; text-decoration: none; color: #13141F; animation: fadeUp 0.6s ease both; transition: transform 0.22s ease, box-shadow 0.22s ease; }
-  .group-card:hover { transform: translateY(-5px); box-shadow: 0 16px 32px rgba(19,20,31,0.14); }
-  .group-card .cover-alt { position: relative; width: 100%; aspect-ratio: 21 / 9; background: linear-gradient(135deg, #13141F 0%, #2A2C3D 100%); display: flex; align-items: center; justify-content: center; }
-  .group-card .cover-alt svg { width: 52px; height: 52px; }
-  .group-card .count { position: absolute; top: 14px; right: 14px; z-index: 2; background: rgba(242,239,227,0.92); color: #13141F; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; padding: 6px 12px; border-radius: 100px; }
-  .group-card .body { padding: 22px 24px 26px; display: flex; flex-direction: column; gap: 10px; }
-  .group-card h2 { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 21px; line-height: 1.3; margin: 0; color: #13141F; }
-  .group-card p.excerpt { font-size: 14px; line-height: 1.55; color: #13141F; opacity: 0.72; margin: 0; }
-  .group-card .read-more { margin-top: 6px; font-size: 13px; font-weight: 600; color: #13141F; display: inline-flex; align-items: center; gap: 6px; transition: gap 0.18s ease; }
-  .group-card:hover .read-more { gap: 10px; }
+  .items-grid { max-width: 1100px; margin: 0 auto; padding: 44px 6% 110px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; }
+  @media (max-width: 920px) { .items-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 640px) { .items-grid { grid-template-columns: 1fr; padding: 32px 6% 90px; } }
+  .item-card { position: relative; display: flex; flex-direction: column; background: #FAF8F1; border: 1px solid rgba(19,20,31,0.06); border-radius: 18px; box-shadow: 0 2px 10px rgba(19,20,31,0.05); overflow: hidden; text-decoration: none; color: #13141F; animation: fadeUp 0.6s ease both; transition: transform 0.22s ease, box-shadow 0.22s ease; }
+  .item-card:hover { transform: translateY(-5px); box-shadow: 0 16px 32px rgba(19,20,31,0.14); }
+  .item-card .cover-alt { position: relative; width: 100%; aspect-ratio: 16 / 9; background: linear-gradient(135deg, #13141F 0%, #2A2C3D 100%); display: flex; align-items: center; justify-content: center; }
+  .item-card .cover-alt svg { width: 46px; height: 46px; }
+  .item-card .tag { position: absolute; top: 14px; left: 14px; z-index: 2; background: rgba(242,239,227,0.92); color: #13141F; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; padding: 6px 12px; border-radius: 100px; }
+  .item-card .body { padding: 20px 22px 24px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+  .item-card h2 { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 18px; line-height: 1.3; margin: 0; color: #13141F; }
+  .item-card p.excerpt { font-size: 13.5px; line-height: 1.55; color: #13141F; opacity: 0.72; margin: 0; }
+  .item-card .tools { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 2px; }
+  .item-card .tools span { font-size: 11px; font-weight: 600; color: #13141F; opacity: 0.65; background: rgba(19,20,31,0.06); border-radius: 100px; padding: 4px 10px; }
+  .item-card .read-more { margin-top: auto; padding-top: 8px; font-size: 13px; font-weight: 600; color: #13141F; display: inline-flex; align-items: center; gap: 6px; transition: gap 0.18s ease; }
+  .item-card:hover .read-more { gap: 10px; }
 
   footer { background: #13141F; padding: 70px 6% 30px; color: #F2EFE3; }
   .footer-top { max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 40px; justify-content: space-between; }
@@ -102,14 +106,15 @@
 
 <div class="lib-hero-wrap">
   <div class="lib-hero">
+    <a class="back-link" href="/automatizaciones">← Volver a Automatizaciones</a>
     <span class="kicker">Biblioteca de malia</span>
-    <h1>Automatizaciones que ya hemos construido.</h1>
-    <p>Organizadas por proyecto: entra en cada uno para ver sus automatizaciones, qué problema resuelven y cómo funcionan paso a paso.</p>
+    <h1>Blog de malia</h1>
+    <p>El sistema que alimenta solo el blog de malia: detección de tendencias, redacción con IA, revisión por chat y publicación.</p>
   </div>
   <div class="divider-h"></div>
 </div>
 
-<div class="groups-grid" id="groups-grid"><!-- GROUPS_START --><a class="group-card" href="/automatizaciones/motodest"><div class="cover-alt"><svg viewBox="0 0 24 24" fill="none" stroke="#F2EFE3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="12" r="2.5"/><circle cx="19" cy="6" r="2.5"/><circle cx="19" cy="18" r="2.5"/><path d="M7.3 11 16.7 6.9M7.3 13 16.7 17.1"/></svg></div><span class="count">6 automatizaciones</span><div class="body"><h2>MotoDest</h2><p class="excerpt">Automatizaciones en producción para un concesionario y taller de motocicletas: documentación, PDFs y alta de clientes en el CRM.</p><span class="read-more">Ver automatizaciones →</span></div></a><a class="group-card" href="/automatizaciones/blog-malia"><div class="cover-alt"><svg viewBox="0 0 24 24" fill="none" stroke="#F2EFE3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="12" r="2.5"/><circle cx="19" cy="6" r="2.5"/><circle cx="19" cy="18" r="2.5"/><path d="M7.3 11 16.7 6.9M7.3 13 16.7 17.1"/></svg></div><span class="count">3 automatizaciones</span><div class="body"><h2>Blog de malia</h2><p class="excerpt">El sistema que alimenta solo el blog de malia: detección de tendencias, redacción con IA, revisión por chat y publicación.</p><span class="read-more">Ver automatizaciones →</span></div></a><a class="group-card" href="/automatizaciones/vigilancia-marketplace"><div class="cover-alt"><svg viewBox="0 0 24 24" fill="none" stroke="#F2EFE3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="12" r="2.5"/><circle cx="19" cy="6" r="2.5"/><circle cx="19" cy="18" r="2.5"/><path d="M7.3 11 16.7 6.9M7.3 13 16.7 17.1"/></svg></div><span class="count">2 automatizaciones</span><div class="body"><h2>Vigilancia de marketplace</h2><p class="excerpt">Automatizaciones que vigilan un marketplace de segunda mano y reparten alertas y tendencias por Telegram.</p><span class="read-more">Ver automatizaciones →</span></div></a><!-- GROUPS_END --></div>
+<div class="items-grid"><!-- GROUP_ITEMS_START --><a class="item-card" href="/automatizaciones/blog-seo-generador-posts"><span class="tag">Marketing de contenidos</span><div class="cover-alt"><svg viewBox="0 0 24 24" fill="none" stroke="#F2EFE3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="12" r="2.5"/><circle cx="19" cy="6" r="2.5"/><circle cx="19" cy="18" r="2.5"/><path d="M7.3 11 16.7 6.9M7.3 13 16.7 17.1"/></svg></div><div class="body"><h2>Motor de generación de posts de blog con IA</h2><p class="excerpt">Workflow de n8n que detecta tendencias, investiga, redacta con IA y publica automáticamente posts de blog optimizados para SEO.</p><div class="tools"><span>n8n</span><span>Google Trends</span><span>Perplexity</span><span>OpenAI</span></div><span class="read-more">Ver automatización →</span></div></a><a class="item-card" href="/automatizaciones/blog-revision-imagen-portada-telegram"><span class="tag">Marketing de contenidos</span><div class="cover-alt"><svg viewBox="0 0 24 24" fill="none" stroke="#F2EFE3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="12" r="2.5"/><circle cx="19" cy="6" r="2.5"/><circle cx="19" cy="18" r="2.5"/><path d="M7.3 11 16.7 6.9M7.3 13 16.7 17.1"/></svg></div><div class="body"><h2>Revisión de la portada del blog por chat, antes de publicar</h2><p class="excerpt">Workflow de n8n que permite aprobar o pedir cambios en la imagen de portada de un post, escribiendo en lenguaje natural por Telegram.</p><div class="tools"><span>n8n</span><span>Telegram</span><span>OpenAI</span></div><span class="read-more">Ver automatización →</span></div></a><a class="item-card" href="/automatizaciones/blog-cita-semanal-ia"><span class="tag">Marketing de contenidos</span><div class="cover-alt"><svg viewBox="0 0 24 24" fill="none" stroke="#F2EFE3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="12" r="2.5"/><circle cx="19" cy="6" r="2.5"/><circle cx="19" cy="18" r="2.5"/><path d="M7.3 11 16.7 6.9M7.3 13 16.7 17.1"/></svg></div><div class="body"><h2>Cita semanal automática para la portada del blog</h2><p class="excerpt">Workflow de n8n que busca una cita real y verificada sobre IA y actualiza sola la sección destacada del blog cada semana.</p><div class="tools"><span>n8n</span><span>OpenAI</span><span>GitHub</span><span>Telegram</span></div><span class="read-more">Ver automatización →</span></div></a><!-- GROUP_ITEMS_END --></div>
 
 <footer id="contacto">
   <div class="footer-top">

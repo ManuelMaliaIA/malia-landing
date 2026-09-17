@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MotoDest | Automatizaciones malia</title>
+<meta name="description" content="Automatizaciones en producción para un concesionario y taller de motocicletas: documentación, PDFs y alta de clientes en el CRM.">
+<link rel="canonical" href="https://malia-ai-labs.com/automatizaciones/motodest">
+
+<link rel="icon" type="image/png" href="/uploads/avatar-round-6b2aa1c8.png">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="malia">
+<meta property="og:title" content="MotoDest | Automatizaciones malia">
+<meta property="og:description" content="Automatizaciones en producción para un concesionario y taller de motocicletas: documentación, PDFs y alta de clientes en el CRM.">
+<meta property="og:url" content="https://malia-ai-labs.com/automatizaciones/motodest">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root { color-scheme: light; }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: #F2EFE3; font-family: 'Inter', sans-serif; width: 100%; overflow-x: hidden; color: #13141F; }
+  a { color: #13141F; }
+  a:hover { color: #2A2C3D; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+
+  .site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 50; background: #13141F; padding: 22px 5%; display: flex; align-items: center; justify-content: space-between; transition: transform 0.35s ease; }
+  .site-header.nav-hidden { transform: translateY(-120%); }
+  .site-header .brand { display: flex; align-items: center; min-width: 0; flex-shrink: 0; }
+  .site-header .brand img { height: 80px; width: auto; }
+  .site-header .brand img.wordmark { margin-left: -100px; }
+  .site-header .nav-links { display: flex; flex-wrap: wrap; justify-content: flex-end; row-gap: 6px; gap: 28px; align-items: center; min-width: 0; }
+  .site-header .nav-links a { text-decoration: none; font-size: 13px; font-weight: 500; color: #F2EFE3; white-space: nowrap; }
+  .site-header .nav-links a.current { color: #F2EFE3; border-bottom: 1px solid rgba(242,239,227,0.5); padding-bottom: 2px; }
+  @media (max-width: 640px) {
+    .site-header .brand img { height: 52px; } .site-header .brand img.wordmark { margin-left: -65px; }
+    .site-header .nav-links { gap: 16px; } .site-header .nav-links a { font-size: 12px; }
+  }
+  @media (max-width: 440px) {
+    .site-header { padding: 16px 5%; } .site-header .brand img { height: 34px; } .site-header .brand img.wordmark { margin-left: -42px; }
+    .site-header .nav-links { gap: 10px; } .site-header .nav-links a { font-size: 11px; }
+  }
+
+  .lib-hero-wrap { position: relative; overflow: hidden; padding-top: 124px; background: radial-gradient(ellipse 70% 55% at 18% 0%, rgba(228,223,204,0.85) 0%, rgba(242,239,227,1) 65%); }
+  .lib-hero-wrap .divider-h { position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: rgba(19,20,31,0.1); }
+  .lib-hero { position: relative; max-width: 1000px; margin: 0 auto; padding: 32px 6% 56px; animation: fadeUp 0.7s ease both; }
+  .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: #6B6D7A; text-decoration: none; margin-bottom: 18px; }
+  .back-link:hover { color: #13141F; }
+  .kicker { font-size: 13px; letter-spacing: 0.05em; text-transform: uppercase; color: #6B6D7A; display: block; margin-bottom: 14px; }
+  .lib-hero h1 { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: clamp(30px, 4.6vw, 46px); line-height: 1.15; letter-spacing: -0.02em; color: #13141F; margin: 0 0 16px 0; max-width: 680px; }
+  .lib-hero p { font-size: 16px; line-height: 1.6; color: #13141F; opacity: 0.72; max-width: 560px; margin: 0; }
+
+  .items-grid { max-width: 1100px; margin: 0 auto; padding: 44px 6% 110px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; }
+  @media (max-width: 920px) { .items-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 640px) { .items-grid { grid-template-columns: 1fr; padding: 32px 6% 90px; } }
+  .item-card { position: relative; display: flex; flex-direction: column; background: #FAF8F1; border: 1px solid rgba(19,20,31,0.06); border-radius: 18px; box-shadow: 0 2px 10px rgba(19,20,31,0.05); overflow: hidden; text-decoration: none; color: #13141F; animation: fadeUp 0.6s ease both; transition: transform 0.22s ease, box-shadow 0.22s ease; }
+  .item-card:hover { transform: translateY(-5px); box-shadow: 0 16px 32px rgba(19,20,31,0.14); }
+  .item-card .cover-alt { position: relative; width: 100%; aspect-ratio: 16 / 9; background: linear-gradient(135deg, #13141F 0%, #2A2C3D 100%); display: flex; align-items: center; justify-content: center; }
+  .item-card .cover-alt svg { width: 46px; height: 46px; }
+  .item-card .tag { position: absolute; top: 14px; left: 14px; z-index: 2; background: rgba(242,239,227,0.92); color: #13141F; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; padding: 6px 12px; border-radius: 100px; }
+  .item-card .body { padding: 20px 22px 24px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+  .item-card h2 { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 18px; line-height: 1.3; margin: 0; color: #13141F; }
+  .item-card p.excerpt { font-size: 13.5px; line-height: 1.55; color: #13141F; opacity: 0.72; margin: 0; }
+  .item-card .tools { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 2px; }
+  .item-card .tools span { font-size: 11px; font-weight: 600; color: #13141F; opacity: 0.65; background: rgba(19,20,31,0.06); border-radius: 100px; padding: 4px 10px; }
+  .item-card .read-more { margin-top: auto; padding-top: 8px; font-size: 13px; font-weight: 600; color: #13141F; display: inline-flex; align-items: center; gap: 6px; transition: gap 0.18s ease; }
+  .item-card:hover .read-more { gap: 10px; }
+
+  footer { background: #13141F; padding: 70px 6% 30px; color: #F2EFE3; }
+  .footer-top { max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 40px; justify-content: space-between; }
+  .footer-brand { max-width: 420px; }
+  .footer-logo { display: flex; align-items: center; margin-bottom: 20px; }
+  .footer-logo img { height: 48px; width: auto; }
+  .footer-logo img.wordmark { margin-left: -24px; }
+  .footer-brand h3 { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 24px; margin: 0 0 10px 0; }
+  .footer-brand p { font-size: 14px; line-height: 1.5; color: #D8D3C2; margin: 0 0 20px 0; }
+  .btn-light { display: inline-block; background: #F2EFE3; color: #13141F; text-decoration: none; font-weight: 600; font-size: 15px; padding: 14px 28px; border-radius: 100px; transition: transform 0.18s ease, box-shadow 0.18s ease; }
+  .btn-light:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.18); }
+  .footer-divider { width: 1px; background: rgba(242,239,227,0.15); align-self: stretch; }
+  .footer-contact { display: flex; flex-direction: column; gap: 14px; }
+  .footer-contact .label { font-size: 12px; letter-spacing: 0.05em; text-transform: uppercase; color: #9A9CA8; margin-bottom: 4px; }
+  .footer-contact a { display: flex; align-items: center; gap: 10px; color: #F2EFE3; text-decoration: none; font-size: 14px; }
+  .footer-bottom { max-width: 1200px; margin: 50px auto 0; padding-top: 20px; border-top: 1px solid rgba(242,239,227,0.12); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; font-size: 12px; color: #9A9CA8; }
+  @media (max-width: 640px) { .footer-divider { display: none; } .lib-hero-wrap { padding-top: 96px; } }
+  @media (max-width: 440px) { .lib-hero-wrap { padding-top: 66px; } }
+</style>
+</head>
+<body>
+
+<nav class="site-header" id="site-header">
+  <a class="brand" href="/">
+    <img src="/uploads/logo-inverted.png" alt="malia">
+    <img class="wordmark" src="/uploads/malia-wordmark-blanco.png" alt="malia">
+  </a>
+  <div class="nav-links">
+    <a href="/#servicios">Servicios</a>
+    <a href="/#casos">Casos</a>
+    <a class="current" href="/automatizaciones">Automatizaciones</a>
+    <a href="/blog">Blog</a>
+    <a href="/#contacto">Contacto</a>
+  </div>
+</nav>
+
+<div class="lib-hero-wrap">
+  <div class="lib-hero">
+    <a class="back-link" href="/automatizaciones">← Volver a Automatizaciones</a>
+    <span class="kicker">Biblioteca de malia</span>
+    <h1>MotoDest</h1>
+    <p>Automatizaciones en producción para un concesionario y taller de motocicletas: documentación, PDFs y alta de clientes en el CRM.</p>
+  </div>
+  <div class="divider-h"></div>
+</div>
+
+<div class="items-grid"><!-- GROUP_ITEMS_START --><a class="item-card" href="/automatizaciones/motodest-generacion-mandato-representacion"><span class="tag">Concesionarios y talleres</span><div class="cover-alt"><svg viewBox="0 0 24 24" fill="none" stroke="#F2EFE3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="12" r="2.5"/><circle cx="19" cy="6" r="2.5"/><circle cx="19" cy="18" r="2.5"/><path d="M7.3 11 16.7 6.9M7.3 13 16.7 17.1"/></svg></div><div class="body"><h2>Generación automática del Mandato de representación</h2><p class="excerpt">Workflow de n8n que genera y adjunta automáticamente el Mandato de representación en Notion en cuanto una venta de moto llega a matriculación.</p><div class="tools"><span>n8n</span><span>Notion</span></div><span class="read-more">Ver automatización →</span></div></a><a class="item-card" href="/automatizaciones/motodest-generacion-carta-entrega"><span class="tag">Concesionarios y talleres</span><div class="cover-alt"><svg viewBox="0 0 24 24" fill="none" stroke="#F2EFE3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="12" r="2.5"/><circle cx="19" cy="6" r="2.5"/><circle cx="19" cy="18" r="2.5"/><path d="M7.3 11 16.7 6.9M7.3 13 16.7 17.1"/></svg></div><div class="body"><h2>Generación automática de la Carta de Entrega de documentación</h2><p class="excerpt">Workflow de n8n que genera y archiva automáticamente la Carta de Entrega de documentación en cuanto una venta de moto se cierra.</p><div class="tools"><span>n8n</span><span>Notion</span></div><span class="read-more">Ver automatización →</span></div></a><a class="item-card" href="/automatizaciones/motodest-servir-pdf-historico"><span class="tag">Concesionarios y talleres</span><div class="cover-alt"><svg viewBox="0 0 24 24" fill="none" stroke="#F2EFE3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="12" r="2.5"/><circle cx="19" cy="6" r="2.5"/><circle cx="19" cy="18" r="2.5"/><path d="M7.3 11 16.7 6.9M7.3 13 16.7 17.1"/></svg></div><div class="body"><h2>Servidor de documentos PDF históricos</h2><p class="excerpt">Webhook en n8n que sigue sirviendo por enlace los documentos PDF generados por el sistema anterior de un concesionario de motos.</p><div class="tools"><span>n8n</span></div><span class="read-more">Ver automatización →</span></div></a><a class="item-card" href="/automatizaciones/motodest-alta-contactos-odoo-ventas"><span class="tag">Concesionarios y talleres</span><div class="cover-alt"><svg viewBox="0 0 24 24" fill="none" stroke="#F2EFE3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="12" r="2.5"/><circle cx="19" cy="6" r="2.5"/><circle cx="19" cy="18" r="2.5"/><path d="M7.3 11 16.7 6.9M7.3 13 16.7 17.1"/></svg></div><div class="body"><h2>Alta automática de clientes en el CRM al vender una moto</h2><p class="excerpt">Workflow de n8n que da de alta automáticamente en el CRM (Odoo) a cada cliente que compra una moto, evitando duplicados por NIF.</p><div class="tools"><span>n8n</span><span>Notion</span><span>Odoo</span></div><span class="read-more">Ver automatización →</span></div></a><a class="item-card" href="/automatizaciones/motodest-alta-contactos-odoo-citas-taller"><span class="tag">Concesionarios y talleres</span><div class="cover-alt"><svg viewBox="0 0 24 24" fill="none" stroke="#F2EFE3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="12" r="2.5"/><circle cx="19" cy="6" r="2.5"/><circle cx="19" cy="18" r="2.5"/><path d="M7.3 11 16.7 6.9M7.3 13 16.7 17.1"/></svg></div><div class="body"><h2>Alta automática de clientes en el CRM al agendar una cita de taller</h2><p class="excerpt">Workflow de n8n que da de alta automáticamente en el CRM (Odoo) a cada cliente que agenda una cita de taller, evitando duplicados por NIF.</p><div class="tools"><span>n8n</span><span>Notion</span><span>Odoo</span></div><span class="read-more">Ver automatización →</span></div></a><a class="item-card" href="/automatizaciones/motodest-redireccion-descarga-pdf"><span class="tag">Concesionarios y talleres</span><div class="cover-alt"><svg viewBox="0 0 24 24" fill="none" stroke="#F2EFE3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="12" r="2.5"/><circle cx="19" cy="6" r="2.5"/><circle cx="19" cy="18" r="2.5"/><path d="M7.3 11 16.7 6.9M7.3 13 16.7 17.1"/></svg></div><div class="body"><h2>Enlace estable de descarga para los documentos generados</h2><p class="excerpt">Webhook en n8n que da a cada documento generado un enlace de descarga permanente, aunque la URL real de almacenamiento cambie con el tiempo.</p><div class="tools"><span>n8n</span><span>Notion</span></div><span class="read-more">Ver automatización →</span></div></a><!-- GROUP_ITEMS_END --></div>
+
+<footer id="contacto">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-logo">
+        <img src="/uploads/logo-inverted.png" alt="malia" loading="lazy">
+        <img class="wordmark" src="/uploads/malia-wordmark-blanco.png" alt="malia" loading="lazy">
+      </div>
+      <h3>¿Hablamos?</h3>
+      <p>Empieza a recuperar tu tiempo. Primera consulta sin coste, sin compromiso.</p>
+      <a class="btn-light" href="mailto:manuelmaliaempr@gmail.com">Agenda una llamada</a>
+    </div>
+    <div class="footer-divider"></div>
+    <div class="footer-contact">
+      <span class="label">Contacto</span>
+      <a href="mailto:manuelmaliaempr@gmail.com">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+        manuelmaliaempr@gmail.com
+      </a>
+      <a href="tel:+34611459336">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2a1.5 1.5 0 0 1 1.6-.3c1 .4 2.1.6 3.2.6a1.5 1.5 0 0 1 1.5 1.5V21a1.5 1.5 0 0 1-1.5 1.5C10.4 22.5 1.5 13.6 1.5 3.5A1.5 1.5 0 0 1 3 2h3.6a1.5 1.5 0 0 1 1.5 1.5c0 1.1.2 2.2.6 3.2.2.5 0 1.1-.3 1.6L6.6 10.8Z"/></svg>
+        611 459 336
+      </a>
+      <a href="https://instagram.com/malialabs_" target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
+        @malialabs_
+      </a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="tag">Malia — Automatización con IA para pymes · Barbate, Cádiz</p>
+    <p class="copy">© 2026 Malia</p>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var header = document.getElementById('site-header');
+    if (!header) return;
+    function update() { header.classList.toggle('nav-hidden', window.scrollY > 4); }
+    window.addEventListener('scroll', update, { passive: true });
+    update();
+  })();
+</script>
+
+</body>
+</html>
