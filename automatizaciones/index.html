@@ -3,17 +3,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Blog — malia | Automatización con IA para pymes</title>
-<meta name="description" content="Ideas, guías y casos reales sobre automatización con IA para pymes: comercios, hostelería y servicios.">
-<link rel="canonical" href="https://malia-ai-labs.com/blog">
+<title>Automatizaciones — malia | Automatización con IA para pymes</title>
+<meta name="description" content="Biblioteca de automatizaciones creadas con n8n e IA: casos reales por sector, herramientas conectadas y el flujo completo de cada una.">
+<link rel="canonical" href="https://malia-ai-labs.com/automatizaciones">
 
 <link rel="icon" type="image/png" href="/uploads/avatar-round-6b2aa1c8.png">
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="malia">
-<meta property="og:title" content="Blog — malia | Automatización con IA para pymes">
-<meta property="og:description" content="Ideas, guías y casos reales sobre automatización con IA para pymes: comercios, hostelería y servicios.">
-<meta property="og:url" content="https://malia-ai-labs.com/blog">
+<meta property="og:title" content="Automatizaciones — malia | Automatización con IA para pymes">
+<meta property="og:description" content="Biblioteca de automatizaciones creadas con n8n e IA: casos reales por sector, herramientas conectadas y el flujo completo de cada una.">
+<meta property="og:url" content="https://malia-ai-labs.com/automatizaciones">
 <meta property="og:image" content="https://malia-ai-labs.com/uploads/og-image.jpg">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -39,7 +39,6 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
-  /* Header: igual que el navbar de la landing (misma tipografia y logo), fijo arriba */
   .site-header {
     position: fixed;
     top: 0;
@@ -80,18 +79,17 @@
     .site-header .nav-links a { font-size: 11px; }
   }
 
-  /* Hero del blog: gradiente radial + lineas divisorias, igual que la landing */
-  .blog-hero-wrap {
+  .lib-hero-wrap {
     position: relative;
     overflow: hidden;
     padding-top: 124px;
     background: radial-gradient(ellipse 70% 55% at 18% 0%, rgba(228,223,204,0.85) 0%, rgba(242,239,227,1) 65%);
   }
-  .blog-hero-wrap .divider-h {
+  .lib-hero-wrap .divider-h {
     position: absolute; left: 0; right: 0; bottom: 0; height: 1px;
     background: rgba(19,20,31,0.1);
   }
-  .blog-hero {
+  .lib-hero {
     position: relative;
     max-width: 1000px;
     margin: 0 auto;
@@ -106,7 +104,7 @@
     display: block;
     margin-bottom: 14px;
   }
-  .blog-hero h1 {
+  .lib-hero h1 {
     font-family: 'Space Grotesk', sans-serif;
     font-weight: 700;
     font-size: clamp(34px, 5vw, 52px);
@@ -116,7 +114,7 @@
     margin: 0 0 16px 0;
     max-width: 680px;
   }
-  .blog-hero p {
+  .lib-hero p {
     font-size: 17px;
     line-height: 1.6;
     color: #13141F;
@@ -125,68 +123,31 @@
     margin: 0;
   }
 
-  /* Temas del blog */
-  .topics-strip {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 0 6% 8px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-    justify-content: center;
-    animation: fadeUp 0.7s ease both;
-    animation-delay: 0.1s;
-  }
-  .topic-chip {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    background: #FAF8F1;
-    border: 1px solid rgba(19,20,31,0.06);
-    border-radius: 100px;
-    padding: 8px 18px 8px 8px;
-    box-shadow: 0 2px 10px rgba(19,20,31,0.05);
-  }
-  .topic-chip .icon {
-    width: 34px;
-    height: 34px;
-    border-radius: 50%;
-    background: #13141F;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-  }
-  .topic-chip .icon svg { width: 17px; height: 17px; }
-  .topic-chip span.label { font-size: 13px; font-weight: 600; color: #13141F; white-space: nowrap; }
-  @media (max-width: 640px) {
-    .topics-strip { justify-content: flex-start; overflow-x: auto; padding-bottom: 14px; }
-    .topic-chip { flex-shrink: 0; }
-  }
-
-  /* Listado */
-  .posts-grid {
-    max-width: 1000px;
+  .items-grid {
+    max-width: 1100px;
     margin: 0 auto;
     padding: 44px 6% 110px;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     gap: 24px;
   }
-  @media (max-width: 720px) {
-    .posts-grid { grid-template-columns: 1fr; padding: 32px 6% 90px; }
+  @media (max-width: 920px) {
+    .items-grid { grid-template-columns: 1fr 1fr; }
   }
-  .posts-grid:empty {
+  @media (max-width: 640px) {
+    .items-grid { grid-template-columns: 1fr; padding: 32px 6% 90px; }
+  }
+  .items-grid:empty {
     display: block;
     padding: 10px 0 40px;
   }
-  .posts-grid:empty::before {
-    content: "Todavía no hay posts publicados. Vuelve pronto.";
+  .items-grid:empty::before {
+    content: "Todavía no hay automatizaciones publicadas. Vuelve pronto.";
     display: block;
     color: #6B6D7A;
     font-size: 15px;
   }
-  .post-card {
+  .item-card {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -200,24 +161,27 @@
     animation: fadeUp 0.6s ease both;
     transition: transform 0.22s ease, box-shadow 0.22s ease;
   }
-  .post-card:hover {
+  .item-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 16px 32px rgba(19,20,31,0.14);
   }
-  .post-card::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, #13141F 0%, rgba(19,20,31,0.15) 100%);
+  .item-card .cover-alt {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: linear-gradient(135deg, #13141F 0%, #2A2C3D 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
-  .post-card .tag {
+  .item-card .cover-alt svg { width: 46px; height: 46px; }
+  .item-card .tag {
     position: absolute;
     top: 14px;
     left: 14px;
     z-index: 2;
-    background: #13141F;
-    color: #F2EFE3;
+    background: rgba(242,239,227,0.92);
+    color: #13141F;
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 0.04em;
@@ -225,37 +189,40 @@
     padding: 6px 12px;
     border-radius: 100px;
   }
-  .post-card .cover {
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    object-fit: cover;
-    background: #E4DFCC;
-    display: block;
-  }
-  .post-card .body { padding: 22px 24px 26px; display: flex; flex-direction: column; gap: 10px; }
-  .post-card .date {
-    font-size: 12px;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: #6B6D7A;
-  }
-  .post-card h2 {
+  .item-card .body { padding: 20px 22px 24px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+  .item-card h2 {
     font-family: 'Space Grotesk', sans-serif;
     font-weight: 700;
-    font-size: 20px;
+    font-size: 18px;
     line-height: 1.3;
     margin: 0;
     color: #13141F;
   }
-  .post-card p.excerpt {
-    font-size: 14px;
+  .item-card p.excerpt {
+    font-size: 13.5px;
     line-height: 1.55;
     color: #13141F;
     opacity: 0.72;
     margin: 0;
   }
-  .post-card .read-more {
-    margin-top: 6px;
+  .item-card .tools {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 2px;
+  }
+  .item-card .tools span {
+    font-size: 11px;
+    font-weight: 600;
+    color: #13141F;
+    opacity: 0.65;
+    background: rgba(19,20,31,0.06);
+    border-radius: 100px;
+    padding: 4px 10px;
+  }
+  .item-card .read-more {
+    margin-top: auto;
+    padding-top: 8px;
     font-size: 13px;
     font-weight: 600;
     color: #13141F;
@@ -264,46 +231,8 @@
     gap: 6px;
     transition: gap 0.18s ease;
   }
-  .post-card:hover .read-more { gap: 10px; }
+  .item-card:hover .read-more { gap: 10px; }
 
-  /* El post mas reciente ocupa el ancho completo, en formato destacado */
-  .posts-grid .post-card:first-child {
-    grid-column: 1 / -1;
-    display: grid;
-    grid-template-columns: 1.1fr 1fr;
-    align-items: stretch;
-  }
-  .posts-grid .post-card:first-child .cover {
-    height: 100%;
-    aspect-ratio: auto;
-  }
-  .posts-grid .post-card:first-child .body {
-    justify-content: center;
-    padding: 32px 40px;
-    gap: 14px;
-  }
-  .posts-grid .post-card:first-child .date::before {
-    content: "Ultimo post · ";
-    font-weight: 700;
-    color: #13141F;
-  }
-  .posts-grid .post-card:first-child h2 {
-    font-size: 27px;
-  }
-  .posts-grid .post-card:first-child p.excerpt {
-    font-size: 15px;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
-    overflow: hidden;
-  }
-  @media (max-width: 720px) {
-    .posts-grid .post-card:first-child { grid-template-columns: 1fr; }
-    .posts-grid .post-card:first-child .body { padding: 22px 24px 26px; }
-    .posts-grid .post-card:first-child h2 { font-size: 21px; }
-  }
-
-  /* Footer (igual que la landing) */
   footer { background: #13141F; padding: 70px 6% 30px; color: #F2EFE3; }
   .footer-top { max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 40px; justify-content: space-between; }
   .footer-brand { max-width: 420px; }
@@ -361,52 +290,12 @@
     font-size: 12px;
     color: #9A9CA8;
   }
-  /* Cita semanal */
-  .quote-section { max-width: 1000px; margin: 0 auto; padding: 10px 6% 60px; }
-  .quote-card {
-    background: #13141F;
-    border-radius: 20px;
-    padding: 36px 40px;
-    display: flex;
-    align-items: center;
-    gap: 32px;
-    flex-wrap: wrap;
-  }
-  .quote-person { display: flex; align-items: center; gap: 14px; flex-shrink: 0; }
-  .quote-person .avatar {
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    background: #2A2C3D;
-    color: #F2EFE3;
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 700;
-    font-size: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-  }
-  .quote-person .name { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 15px; color: #F2EFE3; margin: 0; }
-  .quote-person .role { font-size: 12px; color: #9A9CA8; margin: 2px 0 0; }
-  .quote-text {
-    flex: 1;
-    min-width: 240px;
-    margin: 0;
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 600;
-    font-size: 20px;
-    line-height: 1.4;
-    color: #F2EFE3;
-  }
   @media (max-width: 640px) {
     .footer-divider { display: none; }
-    .blog-hero-wrap { padding-top: 96px; }
-    .quote-card { flex-direction: column; align-items: flex-start; padding: 28px 24px; }
-    .quote-text { font-size: 17px; }
+    .lib-hero-wrap { padding-top: 96px; }
   }
   @media (max-width: 440px) {
-    .blog-hero-wrap { padding-top: 66px; }
+    .lib-hero-wrap { padding-top: 66px; }
   }
 </style>
 </head>
@@ -420,56 +309,22 @@
   <div class="nav-links">
     <a href="/#servicios">Servicios</a>
     <a href="/#casos">Casos</a>
-    <a href="/automatizaciones">Automatizaciones</a>
-    <a class="current" href="/blog">Blog</a>
+    <a class="current" href="/automatizaciones">Automatizaciones</a>
+    <a href="/blog">Blog</a>
     <a href="/#contacto">Contacto</a>
   </div>
 </nav>
 
-<div class="blog-hero-wrap">
-  <div class="blog-hero">
-    <span class="kicker">Blog de malia</span>
-    <h1>Automatización con IA, explicada sin humo.</h1>
-    <p>Casos reales, guías prácticas y aprendizajes sobre cómo las pymes ahorran tiempo automatizando con IA.</p>
+<div class="lib-hero-wrap">
+  <div class="lib-hero">
+    <span class="kicker">Biblioteca de malia</span>
+    <h1>Automatizaciones que ya hemos construido.</h1>
+    <p>Cada flujo que diseñamos con n8n e IA, documentado aquí: qué problema resuelve, con qué herramientas se conecta y cómo funciona paso a paso.</p>
   </div>
   <div class="divider-h"></div>
 </div>
 
-<div class="topics-strip">
-  <div class="topic-chip">
-    <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="#F2EFE3" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg></span>
-    <span class="label">Automatización con IA</span>
-  </div>
-  <div class="topic-chip">
-    <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="#F2EFE3" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M4.2 4.2l2.2 2.2M17.6 17.6l2.2 2.2M3 12h3M18 12h3M4.2 19.8l2.2-2.2M17.6 6.4l2.2-2.2"/></svg></span>
-    <span class="label">Agentes y herramientas</span>
-  </div>
-  <div class="topic-chip">
-    <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="#F2EFE3" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></span>
-    <span class="label">Casos y guías prácticas</span>
-  </div>
-  <div class="topic-chip">
-    <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="#F2EFE3" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l5-5 4 4 8-8"/><path d="M15 8h5v5"/></svg></span>
-    <span class="label">Tendencias y actualidad</span>
-  </div>
-</div>
-
-<div class="posts-grid" id="posts-grid"><!-- BLOG_POSTS_START --><a class="post-card" href="/blog/stock-market-today-petroleo-bonos-ia"><span class="tag">Automatización con IA</span><img class="cover" src="https://image.cnbcfm.com/api/v1/image/107267791-1688675315779-aa4_img_100_99_112_1957665_1000-1688675238618.jpg?v=1688675499&w=1920&h=1080" alt="Stock Market Today: Impact of $100 Oil, 5% Bonds, and AI Pressures Explained"><div class="body"><span class="date">15 de septiembre de 2026</span><h2>Stock Market Today: Impact of $100 Oil, 5% Bonds, and AI Pressures Explained</h2><p class="excerpt">"Discover today's stock market trends: soaring oil prices over $100, 10-year bond yields at 5%, AI sector challenges, and Fed rate hike expectations."</p><span class="read-more">Leer más →</span></div></a><a class="post-card" href="/blog/chatgpt-business-automation-tools-2026"><span class="tag">Automatización con IA</span><img class="cover" src="https://miro.medium.com/0*Owmrjdm6WUbBCpFV" alt="ChatGPT Business Automation Tools: The Ultimate Guide to Streamlining Work in 2026"><div class="body"><span class="date">14 de septiembre de 2026</span><h2>ChatGPT Business Automation Tools: The Ultimate Guide to Streamlining Work in 2026</h2><p class="excerpt">Descubre cómo los ChatGPT Business Automation Tools revolucionarán el trabajo en 2026. Guía completa para automatizar procesos con herramientas avanzadas.</p><span class="read-more">Leer más →</span></div></a><!-- BLOG_POSTS_END --></div>
-
-<div class="quote-section">
-  <div class="quote-card">
-    <!-- QUOTE_START -->
-    <div class="quote-person">
-      <span class="avatar">TC</span>
-      <div>
-        <p class="name">Tim Cook</p>
-        <p class="role">CEO Apple</p>
-      </div>
-    </div>
-    <blockquote class="quote-text">"Lo que todos tenemos que hacer es asegurarnos de que estamos usando la IA de una manera que sea en beneficio de la humanidad, no en detrimento de la humanidad"</blockquote>
-    <!-- QUOTE_END -->
-  </div>
-</div>
+<div class="items-grid" id="items-grid"><!-- LIBRARY_ITEMS_START --><!-- LIBRARY_ITEMS_END --></div>
 
 <footer id="contacto">
   <div class="footer-top">
@@ -506,7 +361,6 @@
 </footer>
 
 <script>
-  // Cabecera: visible solo al principio, se oculta al hacer scroll (igual que la landing).
   (function () {
     var header = document.getElementById('site-header');
     if (!header) return;
