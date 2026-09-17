@@ -34,6 +34,11 @@
   a { color: #13141F; }
   a:hover { color: #2A2C3D; }
 
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
   /* Header (variante clara del navbar de la landing, sin video de fondo) */
   .site-header {
     background: #13141F;
@@ -55,30 +60,46 @@
   }
   .site-header .nav-links a.current { color: #F2EFE3; border-bottom: 1px solid rgba(242,239,227,0.5); padding-bottom: 2px; }
 
-  /* Hero del blog */
-  .blog-hero { max-width: 1000px; margin: 0 auto; padding: 64px 6% 24px; }
+  /* Hero del blog: gradiente radial + lineas divisorias, igual que la landing */
+  .blog-hero-wrap {
+    position: relative;
+    overflow: hidden;
+    background: radial-gradient(ellipse 70% 55% at 18% 0%, rgba(228,223,204,0.85) 0%, rgba(242,239,227,1) 65%);
+  }
+  .blog-hero-wrap .divider-h {
+    position: absolute; left: 0; right: 0; bottom: 0; height: 1px;
+    background: rgba(19,20,31,0.1);
+  }
+  .blog-hero {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 76px 6% 56px;
+    animation: fadeUp 0.7s ease both;
+  }
   .kicker {
     font-size: 13px;
     letter-spacing: 0.05em;
     text-transform: uppercase;
     color: #6B6D7A;
     display: block;
-    margin-bottom: 12px;
+    margin-bottom: 14px;
   }
   .blog-hero h1 {
     font-family: 'Space Grotesk', sans-serif;
     font-weight: 700;
-    font-size: clamp(32px, 4.5vw, 48px);
-    line-height: 1.15;
+    font-size: clamp(34px, 5vw, 52px);
+    line-height: 1.12;
     letter-spacing: -0.02em;
     color: #13141F;
-    margin: 0 0 14px 0;
+    margin: 0 0 16px 0;
+    max-width: 680px;
   }
   .blog-hero p {
-    font-size: 16px;
-    line-height: 1.55;
+    font-size: 17px;
+    line-height: 1.6;
     color: #13141F;
-    opacity: 0.75;
+    opacity: 0.72;
     max-width: 560px;
     margin: 0;
   }
@@ -87,13 +108,13 @@
   .posts-grid {
     max-width: 1000px;
     margin: 0 auto;
-    padding: 24px 6% 100px;
+    padding: 44px 6% 110px;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 20px;
+    gap: 24px;
   }
   @media (max-width: 720px) {
-    .posts-grid { grid-template-columns: 1fr; }
+    .posts-grid { grid-template-columns: 1fr; padding: 32px 6% 90px; }
   }
   .posts-grid:empty {
     display: block;
@@ -106,15 +127,29 @@
     font-size: 15px;
   }
   .post-card {
+    position: relative;
     display: flex;
     flex-direction: column;
     background: #FAF8F1;
     border: 1px solid rgba(19,20,31,0.06);
-    border-radius: 16px;
+    border-radius: 18px;
     box-shadow: 0 2px 10px rgba(19,20,31,0.05);
     overflow: hidden;
     text-decoration: none;
     color: #13141F;
+    animation: fadeUp 0.6s ease both;
+    transition: transform 0.22s ease, box-shadow 0.22s ease;
+  }
+  .post-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 16px 32px rgba(19,20,31,0.14);
+  }
+  .post-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #13141F 0%, rgba(19,20,31,0.15) 100%);
   }
   .post-card .cover {
     width: 100%;
@@ -123,34 +158,77 @@
     background: #E4DFCC;
     display: block;
   }
-  .post-card .body { padding: 20px 22px 24px; display: flex; flex-direction: column; gap: 8px; }
+  .post-card .body { padding: 22px 24px 26px; display: flex; flex-direction: column; gap: 10px; }
   .post-card .date {
     font-size: 12px;
-    letter-spacing: 0.03em;
+    letter-spacing: 0.04em;
     text-transform: uppercase;
     color: #6B6D7A;
   }
   .post-card h2 {
     font-family: 'Space Grotesk', sans-serif;
     font-weight: 700;
-    font-size: 19px;
+    font-size: 20px;
     line-height: 1.3;
     margin: 0;
     color: #13141F;
   }
   .post-card p.excerpt {
     font-size: 14px;
-    line-height: 1.5;
+    line-height: 1.55;
     color: #13141F;
-    opacity: 0.75;
+    opacity: 0.72;
     margin: 0;
   }
   .post-card .read-more {
-    margin-top: 8px;
+    margin-top: 6px;
     font-size: 13px;
     font-weight: 600;
     color: #13141F;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: gap 0.18s ease;
   }
+  .post-card:hover .read-more { gap: 10px; }
+
+  /* El post mas reciente ocupa el ancho completo, en formato destacado */
+  .posts-grid .post-card:first-child {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    align-items: stretch;
+  }
+  .posts-grid .post-card:first-child .cover {
+    height: 100%;
+    aspect-ratio: auto;
+  }
+  .posts-grid .post-card:first-child .body {
+    justify-content: center;
+    padding: 32px 40px;
+    gap: 14px;
+  }
+  .posts-grid .post-card:first-child .date::before {
+    content: "Ultimo post · ";
+    font-weight: 700;
+    color: #13141F;
+  }
+  .posts-grid .post-card:first-child h2 {
+    font-size: 27px;
+  }
+  .posts-grid .post-card:first-child p.excerpt {
+    font-size: 15px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+  }
+  @media (max-width: 720px) {
+    .posts-grid .post-card:first-child { grid-template-columns: 1fr; }
+    .posts-grid .post-card:first-child .body { padding: 22px 24px 26px; }
+    .posts-grid .post-card:first-child h2 { font-size: 21px; }
+  }
+
   /* Footer (igual que la landing) */
   footer { background: #13141F; padding: 70px 6% 30px; color: #F2EFE3; }
   .footer-top { max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 40px; justify-content: space-between; }
@@ -174,6 +252,11 @@
     font-size: 15px;
     padding: 14px 28px;
     border-radius: 100px;
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+  }
+  .btn-light:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.18);
   }
   .footer-divider { width: 1px; background: rgba(242,239,227,0.15); align-self: stretch; }
   .footer-contact { display: flex; flex-direction: column; gap: 14px; }
@@ -224,10 +307,13 @@
   </div>
 </nav>
 
-<div class="blog-hero">
-  <span class="kicker">Blog de malia</span>
-  <h1>Automatización con IA, explicada sin humo.</h1>
-  <p>Casos reales, guías prácticas y aprendizajes sobre cómo las pymes ahorran tiempo automatizando con IA.</p>
+<div class="blog-hero-wrap">
+  <div class="blog-hero">
+    <span class="kicker">Blog de malia</span>
+    <h1>Automatización con IA, explicada sin humo.</h1>
+    <p>Casos reales, guías prácticas y aprendizajes sobre cómo las pymes ahorran tiempo automatizando con IA.</p>
+  </div>
+  <div class="divider-h"></div>
 </div>
 
 <div class="posts-grid" id="posts-grid"><!-- BLOG_POSTS_START --><a class="post-card" href="/blog/stock-market-today-petroleo-bonos-ia"><img class="cover" src="https://image.cnbcfm.com/api/v1/image/107267791-1688675315779-aa4_img_100_99_112_1957665_1000-1688675238618.jpg?v=1688675499&w=1920&h=1080" alt="Stock Market Today: Impact of $100 Oil, 5% Bonds, and AI Pressures Explained"><div class="body"><span class="date">15 de septiembre de 2026</span><h2>Stock Market Today: Impact of $100 Oil, 5% Bonds, and AI Pressures Explained</h2><p class="excerpt">"Discover today's stock market trends: soaring oil prices over $100, 10-year bond yields at 5%, AI sector challenges, and Fed rate hike expectations."</p><span class="read-more">Leer más →</span></div></a><a class="post-card" href="/blog/chatgpt-business-automation-tools-2026"><img class="cover" src="https://miro.medium.com/0*Owmrjdm6WUbBCpFV" alt="ChatGPT Business Automation Tools: The Ultimate Guide to Streamlining Work in 2026"><div class="body"><span class="date">14 de septiembre de 2026</span><h2>ChatGPT Business Automation Tools: The Ultimate Guide to Streamlining Work in 2026</h2><p class="excerpt">Descubre cómo los ChatGPT Business Automation Tools revolucionarán el trabajo en 2026. Guía completa para automatizar procesos con herramientas avanzadas.</p><span class="read-more">Leer más →</span></div></a><!-- BLOG_POSTS_END --></div>
