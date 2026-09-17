@@ -361,9 +361,49 @@
     font-size: 12px;
     color: #9A9CA8;
   }
+  /* Cita semanal */
+  .quote-section { max-width: 1000px; margin: 0 auto; padding: 10px 6% 60px; }
+  .quote-card {
+    background: #13141F;
+    border-radius: 20px;
+    padding: 36px 40px;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+  .quote-person { display: flex; align-items: center; gap: 14px; flex-shrink: 0; }
+  .quote-person .avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #2A2C3D;
+    color: #F2EFE3;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .quote-person .name { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 15px; color: #F2EFE3; margin: 0; }
+  .quote-person .role { font-size: 12px; color: #9A9CA8; margin: 2px 0 0; }
+  .quote-text {
+    flex: 1;
+    min-width: 240px;
+    margin: 0;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 1.4;
+    color: #F2EFE3;
+  }
   @media (max-width: 640px) {
     .footer-divider { display: none; }
     .blog-hero-wrap { padding-top: 96px; }
+    .quote-card { flex-direction: column; align-items: flex-start; padding: 28px 24px; }
+    .quote-text { font-size: 17px; }
   }
   @media (max-width: 440px) {
     .blog-hero-wrap { padding-top: 66px; }
@@ -414,6 +454,21 @@
 </div>
 
 <div class="posts-grid" id="posts-grid"><!-- BLOG_POSTS_START --><a class="post-card" href="/blog/stock-market-today-petroleo-bonos-ia"><span class="tag">Automatización con IA</span><img class="cover" src="https://image.cnbcfm.com/api/v1/image/107267791-1688675315779-aa4_img_100_99_112_1957665_1000-1688675238618.jpg?v=1688675499&w=1920&h=1080" alt="Stock Market Today: Impact of $100 Oil, 5% Bonds, and AI Pressures Explained"><div class="body"><span class="date">15 de septiembre de 2026</span><h2>Stock Market Today: Impact of $100 Oil, 5% Bonds, and AI Pressures Explained</h2><p class="excerpt">"Discover today's stock market trends: soaring oil prices over $100, 10-year bond yields at 5%, AI sector challenges, and Fed rate hike expectations."</p><span class="read-more">Leer más →</span></div></a><a class="post-card" href="/blog/chatgpt-business-automation-tools-2026"><span class="tag">Automatización con IA</span><img class="cover" src="https://miro.medium.com/0*Owmrjdm6WUbBCpFV" alt="ChatGPT Business Automation Tools: The Ultimate Guide to Streamlining Work in 2026"><div class="body"><span class="date">14 de septiembre de 2026</span><h2>ChatGPT Business Automation Tools: The Ultimate Guide to Streamlining Work in 2026</h2><p class="excerpt">Descubre cómo los ChatGPT Business Automation Tools revolucionarán el trabajo en 2026. Guía completa para automatizar procesos con herramientas avanzadas.</p><span class="read-more">Leer más →</span></div></a><!-- BLOG_POSTS_END --></div>
+
+<div class="quote-section">
+  <div class="quote-card">
+    <!-- QUOTE_START -->
+    <div class="quote-person">
+      <span class="avatar">TC</span>
+      <div>
+        <p class="name">Tim Cook</p>
+        <p class="role">CEO Apple</p>
+      </div>
+    </div>
+    <blockquote class="quote-text">"Lo que todos tenemos que hacer es asegurarnos de que estamos usando la IA de una manera que sea en beneficio de la humanidad, no en detrimento de la humanidad"</blockquote>
+    <!-- QUOTE_END -->
+  </div>
+</div>
 
 <footer id="contacto">
   <div class="footer-top">
