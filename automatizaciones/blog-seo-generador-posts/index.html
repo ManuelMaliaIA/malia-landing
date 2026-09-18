@@ -28,7 +28,8 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap"></noscript>
 <style>
   :root { color-scheme: light; }
   * { box-sizing: border-box; }
@@ -326,8 +327,8 @@
 
 <nav class="site-header" id="site-header">
   <a class="brand" href="/">
-    <picture><source srcset="/uploads/logo-inverted.webp" type="image/webp"><img src="/uploads/logo-inverted.png" alt="malia"></picture>
-    <picture><source srcset="/uploads/malia-wordmark-blanco.webp" type="image/webp"><img class="wordmark" src="/uploads/malia-wordmark-blanco.png" alt="malia"></picture>
+    <picture><source srcset="/uploads/logo-inverted.webp" type="image/webp"><img src="/uploads/logo-inverted.png" alt="malia" width="1254" height="1254"></picture>
+    <picture><source srcset="/uploads/malia-wordmark-blanco.webp" type="image/webp"><img class="wordmark" src="/uploads/malia-wordmark-blanco.png" alt="malia" width="1584" height="396"></picture>
   </a>
   <div class="nav-links">
     <a href="/#servicios">Servicios</a>
@@ -420,8 +421,8 @@
   <div class="footer-top">
     <div class="footer-brand">
       <div class="footer-logo">
-        <picture><source srcset="/uploads/logo-inverted.webp" type="image/webp"><img src="/uploads/logo-inverted.png" alt="malia" loading="lazy"></picture>
-        <picture><source srcset="/uploads/malia-wordmark-blanco.webp" type="image/webp"><img class="wordmark" src="/uploads/malia-wordmark-blanco.png" alt="malia" loading="lazy"></picture>
+        <picture><source srcset="/uploads/logo-inverted.webp" type="image/webp"><img src="/uploads/logo-inverted.png" alt="malia" loading="lazy" width="1254" height="1254"></picture>
+        <picture><source srcset="/uploads/malia-wordmark-blanco.webp" type="image/webp"><img class="wordmark" src="/uploads/malia-wordmark-blanco.png" alt="malia" loading="lazy" width="1584" height="396"></picture>
       </div>
       <h3>¿Hablamos?</h3>
       <p>Empieza a recuperar tu tiempo. Primera consulta sin coste, sin compromiso.</p>
