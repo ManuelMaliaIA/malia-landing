@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
+Disallow: /blog/preview
+Disallow: /automatizaciones/_template
+Disallow: /blog/_template
 
-Sitemap: https://malia-landing-tau.vercel.app/sitemap.xml
+Sitemap: https://malia-ai-labs.com/sitemap.xml
