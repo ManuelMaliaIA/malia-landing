@@ -146,7 +146,7 @@
     flex-shrink: 0;
     background: linear-gradient(135deg, #2A2C3D 0%, #13141F 100%);
   }
-  .hero-featured-cover { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .hero-featured-cover { width: 100%; height: 100%; object-fit: contain; display: block; }
   .hero-featured-body { display: flex; flex-direction: column; gap: 6px; flex-grow: 1; min-width: 0; }
   .hero-featured-tag { display: inline-flex; width: fit-content; background: #F2EFE3; color: #13141F; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; padding: 4px 10px; border-radius: 100px; }
   .hero-featured-title { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 17px; color: #F2EFE3; line-height: 1.3; }
@@ -161,7 +161,7 @@
   .topics-strip {
     max-width: 1320px;
     margin: 0 auto;
-    padding: 0 6% 8px;
+    padding: 36px 6% 8px;
     display: flex;
     flex-wrap: wrap;
     gap: 16px;
@@ -307,6 +307,8 @@
   .posts-grid .post-card:first-child .cover {
     height: 360px;
     aspect-ratio: auto;
+    object-fit: contain;
+    background: #13141F;
   }
   .posts-grid .post-card:first-child .body {
     padding: 32px 36px;
@@ -343,6 +345,8 @@
     aspect-ratio: 1 / 1;
     border-radius: 12px;
     flex-shrink: 0;
+    object-fit: contain;
+    background: #13141F;
   }
   .posts-grid .post-card:not(:first-child) .tag {
     position: static;
