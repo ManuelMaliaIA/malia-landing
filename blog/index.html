@@ -401,39 +401,6 @@
     line-height: 1.4;
     color: #F2EFE3;
   }
-  .quote-card .news-block {
-    width: 100%;
-    margin-top: 18px;
-    padding-top: 18px;
-    border-top: 1px solid rgba(242,239,227,0.12);
-  }
-  .quote-card .news-label {
-    display: block;
-    font-size: 11px;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    color: #9A9CA8;
-    margin-bottom: 8px;
-  }
-  .quote-card .news-title {
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 700;
-    font-size: 15px;
-    color: #F2EFE3;
-    margin: 0 0 6px;
-  }
-  .quote-card .news-summary {
-    font-size: 13px;
-    line-height: 1.5;
-    color: #D8D3C2;
-    margin: 0 0 8px;
-  }
-  .quote-card .news-source {
-    font-size: 12px;
-    color: #9A9CA8;
-    text-decoration: none;
-  }
-  .quote-card .news-source:hover { color: #F2EFE3; }
   @media (max-width: 640px) {
     .footer-divider { display: none; }
     .blog-hero-wrap { padding-top: 96px; }
@@ -594,42 +561,6 @@
 
     card.appendChild(person);
     card.appendChild(blockquote);
-
-    if (q.newsTitle) {
-      var newsBlock = document.createElement('div');
-      newsBlock.className = 'news-block';
-
-      var newsLabel = document.createElement('span');
-      newsLabel.className = 'news-label';
-      newsLabel.textContent = 'Noticia de la semana';
-      newsBlock.appendChild(newsLabel);
-
-      var newsTitle = document.createElement('p');
-      newsTitle.className = 'news-title';
-      newsTitle.textContent = q.newsTitle;
-      newsBlock.appendChild(newsTitle);
-
-      if (q.newsSummary) {
-        var newsSummary = document.createElement('p');
-        newsSummary.className = 'news-summary';
-        newsSummary.textContent = q.newsSummary;
-        newsBlock.appendChild(newsSummary);
-      }
-
-      if (q.newsSource) {
-        var newsSourceEl = q.newsUrl ? document.createElement('a') : document.createElement('span');
-        if (q.newsUrl) {
-          newsSourceEl.href = q.newsUrl;
-          newsSourceEl.target = '_blank';
-          newsSourceEl.rel = 'noopener';
-        }
-        newsSourceEl.className = 'news-source';
-        newsSourceEl.textContent = 'Fuente: ' + q.newsSource;
-        newsBlock.appendChild(newsSourceEl);
-      }
-
-      card.appendChild(newsBlock);
-    }
 
     section.appendChild(card);
     section.style.display = '';
