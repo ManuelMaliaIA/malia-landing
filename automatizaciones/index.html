@@ -22,6 +22,7 @@
 <style>
   :root { color-scheme: light; }
   * { box-sizing: border-box; }
+  picture { display: contents; }
   html { scroll-behavior: smooth; }
   body { margin: 0; background: #F2EFE3; font-family: 'Inter', sans-serif; width: 100%; overflow-x: hidden; color: #13141F; }
   a { color: #13141F; }
@@ -88,8 +89,8 @@
 
 <nav class="site-header" id="site-header">
   <a class="brand" href="/">
-    <img src="/uploads/logo-inverted.png" alt="malia">
-    <img class="wordmark" src="/uploads/malia-wordmark-blanco.png" alt="malia">
+    <picture><source srcset="/uploads/logo-inverted.webp" type="image/webp"><img src="/uploads/logo-inverted.png" alt="malia"></picture>
+    <picture><source srcset="/uploads/malia-wordmark-blanco.webp" type="image/webp"><img class="wordmark" src="/uploads/malia-wordmark-blanco.png" alt="malia"></picture>
   </a>
   <div class="nav-links">
     <a href="/#servicios">Servicios</a>
@@ -115,8 +116,8 @@
   <div class="footer-top">
     <div class="footer-brand">
       <div class="footer-logo">
-        <img src="/uploads/logo-inverted.png" alt="malia" loading="lazy">
-        <img class="wordmark" src="/uploads/malia-wordmark-blanco.png" alt="malia" loading="lazy">
+        <picture><source srcset="/uploads/logo-inverted.webp" type="image/webp"><img src="/uploads/logo-inverted.png" alt="malia" loading="lazy"></picture>
+        <picture><source srcset="/uploads/malia-wordmark-blanco.webp" type="image/webp"><img class="wordmark" src="/uploads/malia-wordmark-blanco.png" alt="malia" loading="lazy"></picture>
       </div>
       <h3>¿Hablamos?</h3>
       <p>Empieza a recuperar tu tiempo. Primera consulta sin coste, sin compromiso.</p>
