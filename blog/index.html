@@ -97,8 +97,14 @@
     max-width: 1320px;
     margin: 0 auto;
     padding: 48px 6% 56px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
     animation: fadeUp 0.7s ease both;
   }
+  .blog-hero-main { flex: 1 1 560px; min-width: 0; }
   .kicker {
     font-size: 13px;
     letter-spacing: 0.05em;
@@ -426,16 +432,18 @@
     font-size: 12px;
     color: #9A9CA8;
   }
-  /* Cita semanal: tarjeta simple al final del blog */
-  .quote-section { max-width: 1000px; margin: 0 auto; padding: 10px 6% 60px; }
+  /* Cita semanal: columna a la derecha del post destacado, dentro del hero */
+  .quote-section { flex: 1 1 380px; max-width: 460px; min-width: 260px; }
   .quote-card {
-    background: #13141F;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(242,239,227,0.12);
     border-radius: 20px;
-    padding: 36px 40px;
+    padding: 28px;
     display: flex;
-    align-items: center;
-    gap: 32px;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+    box-sizing: border-box;
   }
   .quote-card .quote-person { display: flex; align-items: center; gap: 14px; flex-shrink: 0; }
   .quote-card .avatar {
@@ -457,20 +465,17 @@
   .quote-card .name { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 15px; color: #F2EFE3; margin: 0; }
   .quote-card .role { font-size: 12px; color: #9A9CA8; margin: 2px 0 0; }
   .quote-card .quote-text {
-    flex: 1;
-    min-width: 240px;
     margin: 0;
     font-family: 'Space Grotesk', sans-serif;
     font-weight: 600;
-    font-size: 20px;
+    font-size: 18px;
     line-height: 1.4;
     color: #F2EFE3;
   }
   @media (max-width: 640px) {
     .footer-divider { display: none; }
     .blog-hero-wrap { padding-top: 96px; }
-    .quote-card { flex-direction: column; align-items: flex-start; padding: 28px 24px; }
-    .quote-card .quote-text { font-size: 17px; }
+    .quote-section { max-width: none; }
   }
   @media (max-width: 440px) {
     .blog-hero-wrap { padding-top: 66px; }
@@ -495,20 +500,23 @@
 
 <div class="blog-hero-wrap">
   <div class="blog-hero">
-    <span class="kicker">Blog de malia</span>
-    <h1>Automatización con IA, explicada sin humo.</h1>
-    <p>Casos reales, guías prácticas y aprendizajes sobre cómo las pymes ahorran tiempo automatizando con IA.</p>
-    <a class="hero-featured" id="hero-featured" href="#">
-      <span class="hero-featured-cover-wrap"><img class="hero-featured-cover" id="hero-featured-cover" src="" alt=""></span>
-      <span class="hero-featured-body">
-        <span class="hero-featured-tag">Último post</span>
-        <span class="hero-featured-title" id="hero-featured-title"></span>
-        <span class="hero-featured-date" id="hero-featured-date"></span>
-      </span>
-      <span class="hero-featured-arrow" aria-hidden="true">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#13141F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
-      </span>
-    </a>
+    <div class="blog-hero-main">
+      <span class="kicker">Blog de malia</span>
+      <h1>Automatización con IA, explicada sin humo.</h1>
+      <p>Casos reales, guías prácticas y aprendizajes sobre cómo las pymes ahorran tiempo automatizando con IA.</p>
+      <a class="hero-featured" id="hero-featured" href="#">
+        <span class="hero-featured-cover-wrap"><img class="hero-featured-cover" id="hero-featured-cover" src="" alt=""></span>
+        <span class="hero-featured-body">
+          <span class="hero-featured-tag">Último post</span>
+          <span class="hero-featured-title" id="hero-featured-title"></span>
+          <span class="hero-featured-date" id="hero-featured-date"></span>
+        </span>
+        <span class="hero-featured-arrow" aria-hidden="true">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#13141F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+        </span>
+      </a>
+    </div>
+    <div class="quote-section" id="quote-section" style="display:none"></div>
   </div>
   <div class="divider-h"></div>
 </div>
@@ -535,8 +543,6 @@
 <div class="posts-grid" id="posts-grid"><!-- BLOG_POSTS_START --><a class="post-card" href="/blog/stock-market-today-petroleo-bonos-ia"><span class="tag">Automatización con IA</span><img class="cover" src="https://image.cnbcfm.com/api/v1/image/107267791-1688675315779-aa4_img_100_99_112_1957665_1000-1688675238618.jpg?v=1688675499&w=1920&h=1080" alt="Stock Market Today: Impact of $100 Oil, 5% Bonds, and AI Pressures Explained"><div class="body"><span class="date">15 de septiembre de 2026</span><h2>Stock Market Today: Impact of $100 Oil, 5% Bonds, and AI Pressures Explained</h2><p class="excerpt">"Discover today's stock market trends: soaring oil prices over $100, 10-year bond yields at 5%, AI sector challenges, and Fed rate hike expectations."</p><span class="read-more">Leer más →</span></div></a><a class="post-card" href="/blog/chatgpt-business-automation-tools-2026"><span class="tag">Automatización con IA</span><img class="cover" src="https://miro.medium.com/0*Owmrjdm6WUbBCpFV" alt="ChatGPT Business Automation Tools: The Ultimate Guide to Streamlining Work in 2026"><div class="body"><span class="date">14 de septiembre de 2026</span><h2>ChatGPT Business Automation Tools: The Ultimate Guide to Streamlining Work in 2026</h2><p class="excerpt">Descubre cómo los ChatGPT Business Automation Tools revolucionarán el trabajo en 2026. Guía completa para automatizar procesos con herramientas avanzadas.</p><span class="read-more">Leer más →</span></div></a><!-- BLOG_POSTS_END --></div>
 
 <script type="application/json" id="quotes-data">[{"name":"Sundar Pichai","role":"CEO de Google y Alphabet","quote":"Siempre he pensado en la IA como la tecnología más profunda en la que trabaja la humanidad: más profunda que el fuego, la electricidad o cualquier otra cosa que hayamos creado antes.","avatar":"SP","photo":"https://commons.wikimedia.org/wiki/Special:FilePath/Sundar_Pichai_-_2023_(cropped).jpg"},{"name":"Jensen Huang","role":"CEO de Nvidia","quote":"No vas a perder tu trabajo por culpa de la IA. Vas a perderlo frente a alguien que sabe usarla.","avatar":"JH","photo":"https://commons.wikimedia.org/wiki/Special:FilePath/Jensen_Huang_(cropped).jpg"},{"name":"Demis Hassabis","role":"CEO de Google DeepMind","quote":"Esto va a ser diez veces más grande que la Revolución Industrial, y quizás diez veces más rápido.","avatar":"DH","photo":"https://commons.wikimedia.org/wiki/Special:FilePath/Demis_Hassabis,_2024_Nobel_Prize_Laureate_in_Chemistry_(cropped).jpg"},{"name":"Fei-Fei Li","role":"Profesora en Stanford, conocida como la “madrina de la IA”","quote":"Suelo decirles a mis estudiantes que no se dejen engañar por el nombre: no hay nada de artificial en la inteligencia artificial.","avatar":"FL","photo":"https://commons.wikimedia.org/wiki/Special:FilePath/Fei-Fei_Li_at_AI_for_Good_2017.jpg"},{"name":"Ginni Rometty","role":"Ex-CEO de IBM","quote":"Algunos lo llaman inteligencia artificial, pero la realidad es que esta tecnología nos va a potenciar: más que artificial, va a ser inteligencia aumentada.","avatar":"GR","photo":"https://commons.wikimedia.org/wiki/Special:FilePath/Ginni_Rometty_of_IBM_and_interviewer_Jessi_Hempel_of_Fortune.jpg"},{"name":"Satya Nadella","role":"CEO de Microsoft","quote":"El verdadero indicador será si el mundo crece más rápido: si la productividad sube y la economía acelera, entonces como sector habremos hecho las cosas bien.","avatar":"SN","photo":"https://commons.wikimedia.org/wiki/Special:FilePath/Satya_Nadella_(cropped).jpg"},{"name":"Rene Haas","role":"CEO de Arm","quote":"Creo que, durante nuestra vida, la inteligencia artificial ayudará a curar el cáncer.","avatar":"RH","photo":"https://commons.wikimedia.org/wiki/Special:FilePath/Rene_Haas_at_Web_Summit_2022.jpg"},{"name":"Tim Cook","role":"CEO de Apple","quote":"Lo que todos tenemos que hacer es asegurarnos de que estamos usando la IA de una manera que sea en beneficio de la humanidad, no en detrimento de la humanidad.","avatar":"TC","photo":"https://commons.wikimedia.org/wiki/Special:FilePath/Tim_Cook_(2017,_cropped).jpg"}]</script>
-
-<div class="quote-section" id="quote-section" style="display:none"></div>
 
 <footer id="contacto">
   <div class="footer-top">
