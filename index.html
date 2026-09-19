@@ -484,10 +484,15 @@
     overflow: hidden;
   }
   .automations-head {
-    max-width: 640px;
+    max-width: 1100px;
     margin: 0 auto 48px;
-    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 32px;
+    text-align: left;
   }
+  .automations-head .copy { max-width: 560px; }
   .automations-head h2 {
     font-family: 'Space Grotesk', sans-serif;
     font-weight: 700;
@@ -504,17 +509,40 @@
     opacity: 0.72;
     margin: 0;
   }
+  .automations-stats { display: flex; gap: 28px; flex-shrink: 0; }
+  .automations-stats div { display: flex; flex-direction: column; gap: 4px; }
+  .automations-stats strong {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 1;
+    color: #13141F;
+  }
+  .automations-stats span {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #6B6D7A;
+  }
+  @media (max-width: 760px) {
+    .automations-head { flex-direction: column; align-items: flex-start; }
+  }
   .automations-grid {
     max-width: 1100px;
     margin: 0 auto 40px;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1.4fr 1fr;
+    grid-template-rows: auto auto;
     gap: 22px;
   }
+  .automations-grid .automation-card:first-child { grid-row: 1 / 3; }
   @media (max-width: 860px) {
     .automations-grid { grid-template-columns: 1fr; }
+    .automations-grid .automation-card:first-child { grid-row: auto; }
   }
   .automation-card {
+    position: relative;
     display: flex;
     flex-direction: column;
     background: #FAF8F1;
@@ -531,14 +559,29 @@
     box-shadow: 0 16px 32px rgba(19,20,31,0.14);
   }
   .automation-card .cover-alt {
+    position: relative;
     width: 100%;
     aspect-ratio: 21 / 9;
     background: linear-gradient(135deg, #13141F 0%, #2A2C3D 100%);
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0;
   }
-  .automation-card .cover-alt svg { width: 42px; height: 42px; }
+  .automation-card .cover-alt svg { width: 38px; height: 38px; }
+  .automation-card .count {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background: rgba(242,239,227,0.92);
+    color: #13141F;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 100px;
+  }
   .automation-card .body { padding: 22px 24px 24px; display: flex; flex-direction: column; gap: 10px; }
   .automation-card h3 {
     font-family: 'Space Grotesk', sans-serif;
@@ -565,6 +608,11 @@
     transition: gap 0.18s ease;
   }
   .automation-card:hover .read-more { gap: 10px; }
+  .automations-grid .automation-card:first-child .cover-alt { aspect-ratio: 16 / 9; }
+  .automations-grid .automation-card:first-child .cover-alt svg { width: 52px; height: 52px; }
+  .automations-grid .automation-card:first-child .body { flex-grow: 1; justify-content: center; padding: 28px 28px 30px; gap: 14px; }
+  .automations-grid .automation-card:first-child h3 { font-size: 23px; }
+  .automations-grid .automation-card:first-child p { font-size: 14.5px; max-width: 420px; }
   .automations-cta { text-align: center; }
 
   @media (max-width: 640px) {
@@ -691,21 +739,34 @@
 
 <section class="automations" id="automatizaciones-destacadas">
   <div class="automations-head">
-    <span class="kicker">Automatizaciones reales</span>
-    <h2>Esto no es una demo — esto ya está funcionando.</h2>
-    <p>Documentos que se rellenan solos, un blog que se escribe casi sin nosotros, un vigilante que no duerme. Así trabajamos de verdad — y lo enseñamos entero.</p>
+    <div class="copy">
+      <span class="kicker">Automatizaciones reales</span>
+      <h2>Esto no es una demo — esto ya está funcionando.</h2>
+      <p>Documentos que se rellenan solos, un blog que se escribe casi sin nosotros, un vigilante que no duerme. Así trabajamos de verdad — y lo enseñamos entero.</p>
+    </div>
+    <div class="automations-stats">
+      <div><strong>11</strong><span>Automatizaciones</span></div>
+      <div><strong>3</strong><span>Proyectos</span></div>
+      <div><strong>n8n + IA</strong><span>Stack</span></div>
+    </div>
   </div>
   <div class="automations-grid">
     <a class="automation-card" href="/automatizaciones/motodest">
-      <div class="cover-alt"><svg viewBox="0 0 24 24" fill="none" stroke="#F2EFE3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="12" r="2.5"/><circle cx="19" cy="6" r="2.5"/><circle cx="19" cy="18" r="2.5"/><path d="M7.3 11 16.7 6.9M7.3 13 16.7 17.1"/></svg></div>
+      <div class="cover-alt">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#F2EFE3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 15l1.8 1.8L15 13"/></svg>
+        <span class="count">6 automatizaciones</span>
+      </div>
       <div class="body">
         <h3>MotoDest</h3>
-        <p>Un concesionario de motos que dejó de perseguir papeleo: los documentos y el CRM se rellenan solos.</p>
+        <p>Un concesionario de motos que dejó de perseguir papeleo: los documentos y el CRM se rellenan solos, mientras el equipo vende motos.</p>
         <span class="read-more">Ver automatizaciones →</span>
       </div>
     </a>
     <a class="automation-card" href="/automatizaciones/blog-malia">
-      <div class="cover-alt"><svg viewBox="0 0 24 24" fill="none" stroke="#F2EFE3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="12" r="2.5"/><circle cx="19" cy="6" r="2.5"/><circle cx="19" cy="18" r="2.5"/><path d="M7.3 11 16.7 6.9M7.3 13 16.7 17.1"/></svg></div>
+      <div class="cover-alt">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#F2EFE3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+        <span class="count">3 automatizaciones</span>
+      </div>
       <div class="body">
         <h3>Blog de malia</h3>
         <p>El blog que escribimos sin escribir: investiga, redacta y se publica solo — y solo nos molesta si algo no le convence.</p>
@@ -713,7 +774,10 @@
       </div>
     </a>
     <a class="automation-card" href="/automatizaciones/vigilancia-marketplace">
-      <div class="cover-alt"><svg viewBox="0 0 24 24" fill="none" stroke="#F2EFE3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="12" r="2.5"/><circle cx="19" cy="6" r="2.5"/><circle cx="19" cy="18" r="2.5"/><path d="M7.3 11 16.7 6.9M7.3 13 16.7 17.1"/></svg></div>
+      <div class="cover-alt">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#F2EFE3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+        <span class="count">2 automatizaciones</span>
+      </div>
       <div class="body">
         <h3>Vigilancia de marketplace</h3>
         <p>Un vigilante que no parpadea: detecta lo que se pone de moda antes que nadie, y avisa al segundo.</p>
