@@ -336,16 +336,24 @@
     overflow: hidden;
   }
 
-  /* El resto de posts se apilan como filas compactas en la columna derecha */
-  .posts-grid .post-card:not(:first-child) {
+  /* El resto de posts viven en su propia columna independiente a la derecha,
+     para que su altura no dependa de la tarjeta grande (evita huecos). */
+  .posts-side {
     grid-column: 2;
+    grid-row: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    min-width: 0;
+  }
+  .posts-side .post-card {
     flex-direction: row;
     align-items: center;
     gap: 16px;
     padding: 16px;
   }
-  .posts-grid .post-card:not(:first-child)::before { display: none; }
-  .posts-grid .post-card:not(:first-child) .cover {
+  .posts-side .post-card::before { display: none; }
+  .posts-side .post-card .cover {
     width: 88px;
     height: 88px;
     aspect-ratio: 1 / 1;
@@ -354,24 +362,25 @@
     object-fit: contain;
     background: #13141F;
   }
-  .posts-grid .post-card:not(:first-child) .tag {
+  .posts-side .post-card .tag {
     display: none;
   }
-  .posts-grid .post-card:not(:first-child) .body { padding: 0; gap: 6px; min-width: 0; }
-  .posts-grid .post-card:not(:first-child) h2 { font-size: 15px; line-height: 1.3; }
-  .posts-grid .post-card:not(:first-child) p.excerpt { display: none; }
-  .posts-grid .post-card:not(:first-child) .read-more { display: none; }
+  .posts-side .post-card .body { padding: 0; gap: 6px; min-width: 0; }
+  .posts-side .post-card h2 { font-size: 15px; line-height: 1.3; }
+  .posts-side .post-card p.excerpt { display: none; }
+  .posts-side .post-card .read-more { display: none; }
 
   @media (max-width: 900px) {
     .posts-grid .post-card:first-child { grid-row: auto; }
     .posts-grid .post-card:first-child .body { padding: 22px 24px 26px; }
     .posts-grid .post-card:first-child h2 { font-size: 21px; }
-    .posts-grid .post-card:not(:first-child) { grid-column: 1; flex-direction: column; align-items: stretch; padding: 0; }
-    .posts-grid .post-card:not(:first-child) .cover { width: 100%; height: auto; aspect-ratio: 16/9; border-radius: 0; }
-    .posts-grid .post-card:not(:first-child) .body { padding: 22px 24px 26px; }
-    .posts-grid .post-card:not(:first-child) h2 { font-size: 18px; }
-    .posts-grid .post-card:not(:first-child) p.excerpt { display: block; }
-    .posts-grid .post-card:not(:first-child) .read-more { display: inline-flex; }
+    .posts-side { grid-column: 1; gap: 20px; }
+    .posts-side .post-card { flex-direction: column; align-items: stretch; padding: 0; }
+    .posts-side .post-card .cover { width: 100%; height: auto; aspect-ratio: 16/9; border-radius: 0; }
+    .posts-side .post-card .body { padding: 22px 24px 26px; }
+    .posts-side .post-card h2 { font-size: 18px; }
+    .posts-side .post-card p.excerpt { display: block; }
+    .posts-side .post-card .read-more { display: inline-flex; }
   }
 
   /* Footer (igual que la landing) */
@@ -588,6 +597,21 @@
     }
     window.addEventListener('scroll', update, { passive: true });
     update();
+  })();
+
+  // Agrupa todos los posts menos el primero en su propia columna (.posts-side),
+  // para que su altura no dependa de la tarjeta grande y no se abran huecos.
+  (function () {
+    var grid = document.getElementById('posts-grid');
+    if (!grid) return;
+    var cards = Array.prototype.filter.call(grid.children, function (el) {
+      return el.classList && el.classList.contains('post-card');
+    });
+    if (cards.length <= 1) return;
+    var side = document.createElement('div');
+    side.className = 'posts-side';
+    cards.slice(1).forEach(function (card) { side.appendChild(card); });
+    grid.appendChild(side);
   })();
 
   // Post destacado en el hero: toma los datos del primer post ya renderizado en el listado.
