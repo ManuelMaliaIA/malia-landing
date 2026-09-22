@@ -306,29 +306,29 @@
   .post-card:hover .read-more { gap: 10px; }
 
   /* El post mas reciente ocupa toda la columna izquierda, en formato grande */
-  .posts-grid .post-card:first-child {
+  .posts-grid > .post-card:first-child {
     grid-column: 1;
     grid-row: 1;
   }
-  .posts-grid .post-card:first-child .cover {
+  .posts-grid > .post-card:first-child .cover {
     height: 360px;
     aspect-ratio: auto;
     object-fit: contain;
     background: #13141F;
   }
-  .posts-grid .post-card:first-child .body {
+  .posts-grid > .post-card:first-child .body {
     padding: 32px 36px;
     gap: 14px;
   }
-  .posts-grid .post-card:first-child .date::before {
+  .posts-grid > .post-card:first-child .date::before {
     content: "Ultimo post · ";
     font-weight: 700;
     color: #13141F;
   }
-  .posts-grid .post-card:first-child h2 {
+  .posts-grid > .post-card:first-child h2 {
     font-size: 28px;
   }
-  .posts-grid .post-card:first-child p.excerpt {
+  .posts-grid > .post-card:first-child p.excerpt {
     font-size: 15px;
     display: -webkit-box;
     -webkit-box-orient: vertical;
@@ -371,9 +371,9 @@
   .posts-side .post-card .read-more { display: none; }
 
   @media (max-width: 900px) {
-    .posts-grid .post-card:first-child { grid-row: auto; }
-    .posts-grid .post-card:first-child .body { padding: 22px 24px 26px; }
-    .posts-grid .post-card:first-child h2 { font-size: 21px; }
+    .posts-grid > .post-card:first-child { grid-row: auto; }
+    .posts-grid > .post-card:first-child .body { padding: 22px 24px 26px; }
+    .posts-grid > .post-card:first-child h2 { font-size: 21px; }
     .posts-side { grid-column: 1; gap: 20px; }
     .posts-side .post-card { flex-direction: column; align-items: stretch; padding: 0; }
     .posts-side .post-card .cover { width: 100%; height: auto; aspect-ratio: 16/9; border-radius: 0; }
