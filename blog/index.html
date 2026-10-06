@@ -646,7 +646,7 @@
     cards.slice(1).forEach(function (card) { side.appendChild(card); });
     grid.appendChild(side);
 
-    var PAGE_SIZE = 6;
+    var PAGE_SIZE = 4;
     var sideCards = cards.slice(1);
     var totalPages = Math.max(1, Math.ceil(sideCards.length / PAGE_SIZE));
     if (totalPages <= 1) return;
