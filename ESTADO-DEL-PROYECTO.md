@@ -118,6 +118,58 @@ Contrato de dirección en `.impeccable/surfaces/index-html.md`. Cambios en `inde
 - **Verificado:** capturas a 1440 y 390 sin desbordes; detector solo con avisos aceptados (flujo n8n, filas de la biblioteca del kit, falsos positivos de relleno, fuentes y arena del brief).
 - **Siguiente:** nueva `critique` de la home (hilo nuevo) para medir la subida. Sigue faltando la foto de Manuel, lo único que queda del P1.
 
+**Re-critique (2026-11-05 15:21): 28/40** (`.impeccable/critique/2026-11-05T15-21-35Z__index-html.md`). Ha bajado un punto respecto al 29, pero no es una comparación exacta: los evaluadores son distintos y este fue más estricto con los arreglos de la tanda anterior. El detector no da ningún problema real; solo hay 4 viudas tipográficas (l.1012, 1021, 1031 y 1058).
+- **P1 contacto:** no dice quién contesta ni cuándo, ni qué incluye la primera consulta. Falta el email junto al CTA en escritorio y un texto oculto «(abre WhatsApp)».
+- **P1 biblioteca:** «3 proyectos» (la cifra es correcta) choca con los 5 negocios de Casos, y 2 de las 3 filas no son clientes. Reescribir el texto de l.1078.
+- **P2:** el titular «Sin cuotas por cada tarea» (l.952) contradice la cuota fija.
+- **P2:** el bloque «Y otros negocios» es denso y con jerga, y la FAQ dice «VPS/Hostinger».
+- **P3:** la cruz del hero atraviesa el texto.
+- **Notas bajas:** H7 Flexibilidad (la navegación no enlaza a «Tu negocio» ni a «Preguntas») y H9 Recuperación de errores (no hay alternativa a wa.me en escritorio).
+- **Decisiones de Manuel tras el 28/40 (no volver a preguntar):**
+  - Compromiso de respuesta: «Te contesto yo mismo, normalmente el mismo día laborable». La primera consulta es gratis.
+  - Biblioteca: se reescribe la entradilla de l.1078 para distinguir los casos de clientes de los flujos propios de malia. Las filas del kit no se tocan.
+  - Alcance: todo, de P1 a P3, más los detalles menores y las 4 viudas tipográficas.
+- ~~Siguiente: aplicar los arreglos~~ → hecho, ver abajo.
+
+**Arreglos tras el 28/40 (2026-11-05 tarde, sin commit):**
+- **Contacto:** bajo los botones del hero, «Te contesto yo mismo, normalmente el mismo día laborable» + qué incluye la primera consulta, y la línea «¿Sin WhatsApp? Llámame al 611 459 336 o mándame un email» (enlaces con zona de 44px). La misma promesa en el pie. Nueva pregunta en la FAQ, la primera: «¿Qué pasa cuando te escribo?».
+- **WhatsApp:** los 8 enlaces llevan un texto oculto «(abre WhatsApp)» (`.sr-only`). Los enlaces por sector llevan el icono de WhatsApp en lugar de la flecha, y la entradilla dice que se abre WhatsApp. Quitado el WhatsApp repetido de la lista de contacto del pie.
+- **Biblioteca:** entradilla nueva: «11 automatizaciones: las que usa MOTODEST cada día y las que montamos para malia, como el blog que se escribe solo». Sin «3 proyectos». Filas del kit sin tocar.
+- **Precio:** el titular pasa a «Precio cerrado, sin pagar por uso». En la FAQ, el precio «depende de lo que haya que montar».
+- **Sin jerga:** «mandato de representación/matriculación» → «autorización para matricular»; fuera «asientos» (clientes y sector asesoría) y «VPS/Hostinger» (FAQ). Las filas de «Y otros negocios» son más cortas y llevan el título de cada trabajo en su propia línea, en Space Grotesk.
+- **Navegación:** Cómo trabajo · Casos · Tu negocio · Biblioteca · Preguntas · Blog · WhatsApp (todo anclas salvo el blog; fuera «Contacto»). El menú desplegable entra a ≤1080px (antes 900) porque en escritorio no cabían 7 entradas.
+- **Polish:** la cruz del hero se abre alrededor del texto con una máscara; el hueco vertical lo ajusta un JS a la altura real del texto. Fuera la coma del H1. Flechas «→» de texto cambiadas por SVG. `text-wrap: pretty` también en los `li` (viudas). En móvil, las marcas de la cruz de «Tu negocio» y del pie van al lateral, como en «Cómo trabajo».
+- **Verificado:** capturas a 1440, 1000 y 390 sin desbordes. El detector da 15 avisos, todos ya aceptados: icon-tile del flujo y de las filas, relleno, fuentes y arena.
+- **Siguiente (hilo nuevo):** re-critique de la home. Queda pendiente la foto de Manuel.
+
+**Biblioteca con los clientes y sus logos (2026-11-05 tarde, sin commit). Decisiones de Manuel (no volver a preguntar):**
+- Quitar de la home las filas «Blog de malia» y «Vigilancia de marketplace». Siguen en `/automatizaciones`.
+- Quitar de «Casos» el bloque «Y otros negocios». Casos se queda con MOTODEST en detalle.
+- Crear ya las páginas de la biblioteca de los clientes que no la tenían.
+- Usar el logo de Barlovento: **Pescados Rosados = PESCADOS BARLOVENTO, S.L.** En la web sale como «Pescados Barlovento».
+
+**Hecho:**
+- **Home `#automatizaciones-destacadas`:** 4 filas `a.automation-card.has-logo` con el logo del cliente en lugar del icono:
+  - MOTODEST.
+  - Mavimar y Vidal Malia, con los dos logos. Son las dos marcas de la gestoría de Pedro.
+  - Pescados Barlovento.
+  - BarbateHomes.
+
+  La entradilla dice «19 automatizaciones, 14 de ellas en negocios de la zona». Los marcadores `AUTOMATION_CARDS_START/END` siguen igual: una fila nueva del kit de n8n con `span.icon` sigue funcionando.
+- **Logos en `uploads/`:**
+  - `mavimar-logo.webp`, recortado sin los sellos OCA.
+  - `vidal-malia-logo.webp`.
+  - `barlovento-logo.svg`, copiado de `kit-automatizaciones-n8n/pescados-rosados/`.
+  - `barbatehomes-logo.webp`.
+- **Biblioteca:** 3 páginas de grupo nuevas, hechas a partir de la de MOTODEST, y 8 fichas hechas con `_template.html`. También están en el índice (detrás de MotoDest) y en `sitemap.xml`.
+  - `mavimar-vidal-malia`: `-contabilidad-ia`, `-impuestos-informes`, `-administracion-fincas` y `-anonimizador`.
+  - `pescados-barlovento`: `-facturas-compra` y `-comprobacion-diaria`.
+  - `barbatehomes`: `-web-catalogo` y `-panel-inmuebles`.
+- **Textos sacados de los ESTADO de cada proyecto, sin nombres de personas ni CIF.**
+  - **Confirmado por Manuel (2026-11-05):** las facturas de Barlovento y el panel de BarbateHomes ya funcionan en real. Los textos de las fichas se quedan como están.
+- **Verificado:** capturas a 1440 y 390 de la home, del índice, de un grupo y de una ficha. Las páginas nuevas de la biblioteca arrastran los avisos de la plantilla antigua (tamaños de letra fuera de escala y contraste de las etiquetas), como las 11 que ya existían. Se resolverán con el rediseño de la biblioteca.
+- **Pendiente:** contar al kit de n8n (Paso 4 de su skill) que las filas de cliente de la home ahora llevan logo (`.has-logo` + `span.logo`).
+
 **Pendiente del rediseño:**
 - Blog: `blog/index.html`, `blog/_template.html` y los 13 posts.
 - Biblioteca: `automatizaciones/index.html`, páginas de grupo, `_template.html` y 11 fichas. Todo con el mismo lenguaje y sin tocar los marcadores ni las clases del kit de n8n.

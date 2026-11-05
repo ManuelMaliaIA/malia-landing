@@ -237,7 +237,10 @@ Filas separadas por líneas de 1px en tinta al 12% (sin tarjetas): título en Sp
 - **Más clientes:** filas regladas como la lista de caso, con nombre (title) y sector a la izquierda, y trabajos en negrita + frase a la derecha (5fr / 6fr).
 - **¿Y en tu negocio?:** banda de tinta con tres columnas separadas por líneas de 1px de la cruz, títulos `title-xl`, viñetas de raya de 10px y un enlace por sector a WhatsApp con mensaje precargado.
 - **Preguntas:** `<details>` nativos en filas regladas, pregunta en title, «+» que gira 45° al abrir.
-- **Navegación:** en escritorio se queda siempre visible; solo se esconde al bajar en ≤900px. Subrayado de 1px en el enlace de la sección actual (`aria-current`). El botón del menú móvil cambia a «Cerrar», y el menú se cierra al tocar fuera o al hacer scroll.
+- **Cruz del hero:** las dos líneas se cortan con una máscara alrededor del bloque de texto (enmarcan, no tachan); el hueco vertical lo mide un JS.
+- **Línea de alternativas del hero:** bajo la nota, «¿Sin WhatsApp?» con teléfono y email en Inter 600 arena, con zonas de 44px.
+- **Enlaces que abren WhatsApp:** icono de bocadillo delante (nunca flecha, que es enlace interno) y texto oculto «(abre WhatsApp)».
+- **Navegación:** 7 entradas; en escritorio se queda siempre visible; el menú desplegable y el escondido al bajar entran a ≤1080px. Subrayado de 1px en el enlace de la sección actual (`aria-current`). El botón del menú móvil cambia a «Cerrar», y el menú se cierra al tocar fuera o al hacer scroll.
 - **WhatsApp flotante:** borde de arena al 45% para que se vea también sobre las bandas de tinta.
 - **Páginas legales** (`/aviso-legal/`, `/privacidad/`): modo Read, cabecera de tinta con logo y «Volver a la web», texto a 16px con medida de 720px.
 - Sin chips de herramientas en la home: el detalle técnico vive en la biblioteca.

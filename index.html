@@ -115,7 +115,8 @@
   a:hover { color: var(--tinta-hover); }
   a:focus-visible, button:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
   img, video { display: block; }
-  p { text-wrap: pretty; }
+  p, li { text-wrap: pretty; }
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 
   .skip-link {
     position: absolute;
@@ -199,6 +200,7 @@
     width: fit-content;
   }
   .btn-outline:hover { background: var(--tinta); color: var(--arena); border-color: var(--tinta); }
+  .btn-outline svg { margin-right: -4px; }
 
   /* Navbar */
   .site-header {
@@ -262,7 +264,7 @@
   }
   .nav-toggle:focus-visible { outline-color: var(--arena); }
 
-  @media (max-width: 900px) {
+  @media (max-width: 1080px) {
     :root { --logo-h: 48px; }
     .site-header.is-solid { --logo-h: 44px; }
     .nav-toggle { display: inline-flex; }
@@ -316,6 +318,16 @@
   .divider-h { left: 0; right: 0; top: 50%; height: 1px; }
   .divider-v { top: 0; bottom: 0; left: 50%; width: 1px; }
   .hero .divider-h, .hero .divider-v { background: var(--linea-oscura); }
+  /* La cruz se abre alrededor del texto: enmarca el titular en lugar de tacharlo */
+  .hero { --hx: min(410px, 50vw); --hy-top: 250px; --hy-bottom: 230px; }
+  .hero .divider-h {
+    -webkit-mask: linear-gradient(90deg, var(--tinta) calc(50% - var(--hx) - 48px), transparent calc(50% - var(--hx)), transparent calc(50% + var(--hx)), var(--tinta) calc(50% + var(--hx) + 48px));
+            mask: linear-gradient(90deg, var(--tinta) calc(50% - var(--hx) - 48px), transparent calc(50% - var(--hx)), transparent calc(50% + var(--hx)), var(--tinta) calc(50% + var(--hx) + 48px));
+  }
+  .hero .divider-v {
+    -webkit-mask: linear-gradient(180deg, var(--tinta) calc(50% - var(--hy-top) - 40px), transparent calc(50% - var(--hy-top)), transparent calc(50% + var(--hy-bottom)), var(--tinta) calc(50% + var(--hy-bottom) + 40px));
+            mask: linear-gradient(180deg, var(--tinta) calc(50% - var(--hy-top) - 40px), transparent calc(50% - var(--hy-top)), transparent calc(50% + var(--hy-bottom)), var(--tinta) calc(50% + var(--hy-bottom) + 40px));
+  }
   .hero-content {
     position: relative;
     z-index: 2;
@@ -353,6 +365,13 @@
     line-height: 1.6;
     color: var(--arena-sombra);
   }
+  .hero-note { max-width: 580px; }
+  .hero-alt > span:last-child { display: inline-flex; flex-wrap: wrap; justify-content: center; align-items: center; column-gap: 4px; }
+  .hero-note strong { color: var(--arena); font-weight: 600; }
+  .hero-alt { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; column-gap: 6px; margin: 8px 0 0; font-size: var(--fs-body); color: var(--arena-sombra); }
+  .hero-alt a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 4px; color: var(--arena); font-weight: 600; white-space: nowrap; }
+  .hero-alt a:hover { color: var(--arena); opacity: 0.8; }
+  .hero-alt a:focus-visible { outline-color: var(--arena); }
   .hero-note a { color: var(--arena); font-weight: 600; white-space: nowrap; }
   .hero-note a:hover { color: var(--arena); opacity: 0.8; }
   .hero-note a:focus-visible { outline-color: var(--arena); }
@@ -597,32 +616,7 @@
   .caso-list span { margin-top: 4px; line-height: 1.6; color: var(--gris-pizarra); }
   .caso-list + .btn-outline { margin-top: var(--s-lg); }
 
-  /* Más clientes: filas regladas, nombre a la izquierda y trabajos a la derecha */
-  .clientes { max-width: 1100px; margin: 96px auto 0; }
-  .clientes > h3 {
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: clamp(24px, 2.4vw, 32px);
-    line-height: 1.18;
-    letter-spacing: -0.015em;
-    margin: 0 0 var(--s-lg);
-  }
-  .cliente-list { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--tinta); }
-  .cliente-list > li {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--s-sm) var(--s-xl);
-    padding: 28px 0;
-    border-bottom: 1px solid var(--linea-clara);
-  }
-  @media (min-width: 900px) { .cliente-list > li { grid-template-columns: 5fr 6fr; } }
-  .cliente-name strong { display: block; font-family: var(--font-display); font-weight: 700; font-size: var(--fs-title); line-height: 1.35; }
-  .cliente-name span { display: block; margin-top: 4px; color: var(--gris-pizarra); }
-  .cliente-name a { display: inline-flex; align-items: center; min-height: 44px; margin-top: 4px; font-weight: 600; }
-  .cliente-tasks { margin: 0; padding: 0; list-style: none; display: grid; gap: 14px; }
-  .cliente-tasks li { line-height: 1.6; color: var(--gris-pizarra); max-width: 560px; }
-  .cliente-tasks b { color: var(--tinta); font-weight: 600; }
-  @media (max-width: 640px) { .casos { padding: 88px var(--gutter) 80px; } .clientes { margin-top: 72px; } }
+  @media (max-width: 640px) { .casos { padding: 88px var(--gutter) 80px; } }
 
   /* ¿Y en tu negocio?: ejemplos por sector sobre tinta, separados por la línea de la cruz */
   .sectores { position: relative; background: var(--tinta); color: var(--arena); padding: 128px var(--gutter) 112px; }
@@ -645,10 +639,10 @@
   .sector li { position: relative; padding-left: 22px; line-height: 1.55; color: var(--arena-sombra); }
   .sector li::before { content: ""; position: absolute; left: 0; top: 0.62em; width: 10px; height: 1px; background: var(--arena); }
   .sector-link { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; color: var(--arena); font-weight: 600; text-decoration: none; width: fit-content; }
-  .sector-link svg { transition: transform 0.3s var(--ease-out); }
-  .sector-link:hover { color: var(--arena); }
-  .sector-link:hover svg { transform: translateX(4px); }
+  .sector-link { text-decoration: underline; text-decoration-thickness: 1px; text-decoration-color: rgba(242,239,227,0.35); text-underline-offset: 6px; transition: text-decoration-color 0.25s ease; }
+  .sector-link:hover { color: var(--arena); text-decoration-color: var(--arena); }
   .sector-link:focus-visible { outline-color: var(--arena); }
+  @media (max-width: 899px) { .sectores::before { left: var(--gutter); } }
   @media (max-width: 640px) { .sectores { padding: 96px var(--gutter) 72px; } }
 
   /* Biblioteca */
@@ -694,6 +688,14 @@
   .automation-card:hover .go { transform: translateX(4px); }
   .automation-card:focus-visible { outline-offset: 2px; }
   .biblioteca .btn-outline { margin-top: var(--s-lg); }
+  /* Filas de empresa: el logo del cliente ocupa el sitio del icono */
+  .automation-card.has-logo { grid-template-columns: 200px minmax(0, 4fr) minmax(0, 6fr) 32px; }
+  .automation-card .logo { display: flex; align-items: center; gap: 14px; height: 64px; }
+  .automation-card .logo img { width: auto; height: auto; max-width: 100%; max-height: 40px; }
+  .automation-card .logo.pair img:first-child { max-width: 104px; }
+  .automation-card .logo.pair img:last-child { max-height: 58px; }
+  .automation-card .logo img[src*="barlovento"] { max-height: 50px; }
+  .automation-card h3 small { display: block; margin-top: 4px; font-family: var(--font-body); font-size: var(--fs-body); font-weight: 400; color: var(--gris-pizarra); }
 
   /* Preguntas: desplegables nativos, en la misma banda de arena que la biblioteca */
   .faq { background: var(--arena); padding: 0 var(--gutter) 128px; }
@@ -709,7 +711,7 @@
   }
   @media (min-width: 900px) { .faq-inner { grid-template-columns: 5fr 6fr; } .faq-head { position: sticky; top: 110px; } }
   .faq-head p { margin: var(--s-md) 0 0; max-width: 420px; line-height: 1.6; color: var(--gris-pizarra); }
-  .faq-head a { font-weight: 600; }
+  .faq-head a { display: inline-block; padding: 12px 0; margin: -12px 0; font-weight: 600; white-space: nowrap; }
   .faq-list { border-top: 1px solid var(--tinta); }
   .faq details { border-bottom: 1px solid var(--linea-clara); }
   .faq summary {
@@ -741,11 +743,18 @@
     .automation-card p { grid-column: 2; grid-row: 2; }
     .automation-card .go { grid-column: 3; grid-row: 1; }
     .automation-card:hover { padding-left: 0; padding-right: 0; }
+    .automation-card.has-logo { grid-template-columns: minmax(0, 1fr) 24px; gap: 10px 16px; }
+    .automation-card.has-logo .logo { grid-column: 1; grid-row: 1; height: 56px; }
+    .automation-card.has-logo .logo img:only-child { max-width: 190px; }
+    .automation-card.has-logo .go { grid-column: 2; grid-row: 1; }
+    .automation-card.has-logo h3 { grid-column: 1 / -1; grid-row: 2; margin-top: 6px; }
+    .automation-card.has-logo p { grid-column: 1 / -1; grid-row: 3; }
   }
 
   /* Footer */
   footer { position: relative; background: var(--tinta); padding: 128px 8% 48px; color: var(--arena); }
   footer::before { content: ""; position: absolute; left: 50%; top: 0; width: 1px; height: 72px; background: var(--linea-oscura); }
+  @media (max-width: 899px) { footer::before { left: 8%; } }
   .footer-top {
     position: relative;
     display: grid;
@@ -767,6 +776,7 @@
     color: var(--arena);
     margin: 0 0 14px;
   }
+  .footer-brand .footer-promise { margin-top: calc(var(--s-xs) * -1); font-size: var(--fs-body); }
   .footer-brand p {
     font-size: 16px;
     line-height: 1.6;
@@ -852,7 +862,7 @@
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
     .btn-light:hover { transform: none; }
-    .flow li::after, .node, .flow h3, .faq summary svg, .sector-link svg, .automation-card, .automation-card .go { transition: none; }
+    .flow li::after, .node, .flow h3, .faq summary svg, .sector-link, .automation-card, .automation-card .go { transition: none; }
     .site-header, .js .wa-float { transition: none; }
     #preloader img { animation: none; }
   }
@@ -879,10 +889,11 @@
     <ul class="nav-links" id="navLinks">
       <li><a href="#servicios">Cómo trabajo</a></li>
       <li><a href="#casos">Casos</a></li>
-      <li><a href="/automatizaciones">Automatizaciones</a></li>
+      <li><a href="#tu-negocio">Tu negocio</a></li>
+      <li><a href="#automatizaciones-destacadas">Biblioteca</a></li>
+      <li><a href="#preguntas">Preguntas</a></li>
       <li><a href="/blog">Blog</a></li>
-      <li><a href="#contacto">Contacto</a></li>
-      <li><a class="nav-cta" href="https://wa.me/34611459336?text=Hola%20Manuel%2C%20tengo%20un%20negocio%20y%20quiero%20saber%20qu%C3%A9%20podr%C3%ADa%20automatizar." target="_blank" rel="noopener">WhatsApp</a></li>
+      <li><a class="nav-cta" href="https://wa.me/34611459336?text=Hola%20Manuel%2C%20tengo%20un%20negocio%20y%20quiero%20saber%20qu%C3%A9%20podr%C3%ADa%20automatizar." target="_blank" rel="noopener">WhatsApp<span class="sr-only"> (abre WhatsApp)</span></a></li>
     </ul>
   </nav>
 </header>
@@ -896,16 +907,17 @@
   <div class="divider-h"></div>
   <div class="divider-v"></div>
   <div class="hero-content">
-    <h1 id="heroTitle">Automatiza lo repetitivo, y dedica tu tiempo a hacer crecer tu negocio.</h1>
+    <h1 id="heroTitle">Automatiza lo repetitivo y dedica tu tiempo a hacer crecer tu negocio.</h1>
     <p class="hero-lead">Monto automatizaciones con IA a medida para comercios, hostelería y negocios de servicios. Te atiendo yo, Manuel, desde Barbate.</p>
     <div class="hero-actions">
       <a class="btn btn-light" href="https://wa.me/34611459336?text=Hola%20Manuel%2C%20tengo%20un%20negocio%20y%20quiero%20saber%20qu%C3%A9%20podr%C3%ADa%20automatizar." target="_blank" rel="noopener">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5l1.3-3.9A8 8 0 1 1 8.4 18.7L4 19.5Z"/></svg>
-        Escríbeme por WhatsApp
+        Escríbeme por WhatsApp<span class="sr-only"> (abre WhatsApp)</span>
       </a>
       <a class="btn btn-ghost" href="#casos">Ver casos reales</a>
     </div>
-    <p class="hero-note">Primera consulta gratis y sin compromiso. ¿Prefieres llamar? <a href="tel:+34611459336">611 459 336</a></p>
+    <p class="hero-note"><strong>Te contesto yo mismo, normalmente el mismo día laborable.</strong> La primera consulta es gratis: me cuentas qué repites y te digo si se puede automatizar.</p>
+    <p class="hero-alt"><span>¿Sin WhatsApp?</span> <span>Llámame al <a href="tel:+34611459336">611 459 336</a> o <a href="mailto:manuelmaliaempr@gmail.com?subject=Consulta%20sobre%20automatizaci%C3%B3n">mándame un email</a></span></p>
   </div>
   <button class="video-toggle" type="button" aria-pressed="false" aria-label="Pausar el fondo animado">
     <svg class="icon-pause" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
@@ -949,12 +961,12 @@
 
   <div class="metodo-foot">
     <div>
-      <h3>Sin cuotas por cada tarea</h3>
-      <p>Tus automatizaciones funcionan en un servidor privado, no en una plataforma que te cobra más cuanto más la usas. Pagas un presupuesto cerrado por el trabajo y una cuota mensual fija por el mantenimiento.</p>
+      <h3>Precio cerrado, sin pagar por uso</h3>
+      <p>Pagas un presupuesto cerrado por el trabajo y una cuota mensual fija por el mantenimiento. Tus automatizaciones funcionan en un servidor privado, no en una plataforma que te cobra más cuanto más la usas.</p>
     </div>
     <a class="btn btn-light" href="https://wa.me/34611459336?text=Hola%20Manuel%2C%20tengo%20un%20negocio%20y%20quiero%20saber%20qu%C3%A9%20podr%C3%ADa%20automatizar." target="_blank" rel="noopener">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5l1.3-3.9A8 8 0 1 1 8.4 18.7L4 19.5Z"/></svg>
-      Empieza por el paso 1
+      Empieza por el paso 1<span class="sr-only"> (abre WhatsApp)</span>
     </a>
   </div>
 </section>
@@ -962,7 +974,7 @@
 <section class="casos" id="casos" aria-labelledby="casosTitle">
   <div class="casos-head">
     <h2 id="casosTitle" class="section-title">Negocios de aquí que ya trabajan con malia.</h2>
-    <p>Un concesionario de motos, dos asesorías, un mayorista de pescado y una inmobiliaria. Cada uno con su papeleo, cada uno con lo suyo automatizado.</p>
+    <p>Un concesionario de motos, una gestoría, un mayorista de pescado y una inmobiliaria. Empiezo por MOTODEST; los demás están más abajo, con lo que tiene automatizado cada uno.</p>
   </div>
 
   <div class="caso-grid">
@@ -980,8 +992,8 @@
         </li>
         <li>
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h8l4 4v14H6Z"/><path d="M9 15.5l2 2 4-4.5"/></svg>
-          <strong>El mandato de representación, listo a tiempo</strong>
-          <span>Cuando la venta llega a matriculación, el mandato aparece adjunto en su ficha.</span>
+          <strong>La autorización para matricular, lista a tiempo</strong>
+          <span>Cuando toca matricular la moto, la autorización ya está adjunta en su ficha.</span>
         </li>
         <li>
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="10" cy="8" r="4"/><path d="M3 20c.8-3.5 3.6-5.5 7-5.5 1.6 0 3 .4 4.2 1.2M16 18l2 2 3.5-4"/></svg>
@@ -994,51 +1006,16 @@
           <span>Cada documento tiene un enlace fijo, también los del sistema que usaban antes.</span>
         </li>
       </ul>
-      <a class="btn btn-outline" href="/automatizaciones/motodest/">Ver el caso MOTODEST completo →</a>
+      <a class="btn btn-outline" href="/automatizaciones/motodest/">Ver el caso MOTODEST completo <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
   </div>
 
-  <div class="clientes">
-    <h3>Y otros negocios de la zona.</h3>
-    <ul class="cliente-list">
-      <li>
-        <div class="cliente-name">
-          <strong>Mavimar Consultores y Vidal Malia</strong>
-          <span>Consultoría y asesoría</span>
-        </div>
-        <ul class="cliente-tasks">
-          <li><b>Contabilidad.</b> Las facturas y las nóminas se leen solas, y los asientos y los impuestos del trimestre quedan preparados para revisarlos.</li>
-          <li><b>Administración de fincas.</b> Los saldos y los extractos de cada propietario salen de la contabilidad, sin pasarlos a mano.</li>
-          <li><b>Datos personales a salvo.</b> Un programa borra nombres, DNI y direcciones de un PDF antes de usarlo con IA, sin que el documento salga del ordenador.</li>
-        </ul>
-      </li>
-      <li>
-        <div class="cliente-name">
-          <strong>Pescados Rosados</strong>
-          <span>Mayorista de pescado, Barbate</span>
-        </div>
-        <ul class="cliente-tasks">
-          <li><b>Facturas de compra.</b> Le llegan unas 35 al día por correo. Cada una se lee sola y queda lista para su programa de contabilidad: la empresa solo la revisa y la aprueba.</li>
-        </ul>
-      </li>
-      <li>
-        <div class="cliente-name">
-          <strong>BarbateHomes</strong>
-          <span>Inmobiliaria, Barbate</span>
-          <a href="https://barbatehomes.es" target="_blank" rel="noopener">barbatehomes.es</a>
-        </div>
-        <ul class="cliente-tasks">
-          <li><b>Su web y su catálogo.</b> Pisos y casas en venta con su propia ficha, y un panel para que la agencia publique o quite un inmueble sin tocar código.</li>
-        </ul>
-      </li>
-    </ul>
-  </div>
 </section>
 
 <section class="sectores" id="tu-negocio" aria-labelledby="sectoresTitle">
   <div class="sectores-head">
     <h2 id="sectoresTitle" class="section-title">¿Y en tu negocio? Esto es lo que suele automatizarse.</h2>
-    <p>Son ejemplos para hacerte una idea, no casos cerrados. Elige el tuyo y escríbeme: el mensaje ya va escrito.</p>
+    <p>Son ejemplos para hacerte una idea, no casos cerrados. Elige el tuyo y se abre WhatsApp con el mensaje ya escrito.</p>
   </div>
   <div class="sector-grid">
     <div class="sector">
@@ -1048,7 +1025,7 @@
         <li>Las facturas de proveedores se leen solas y quedan listas para tu gestoría.</li>
         <li>El pedido semanal a proveedores sale preparado para que solo lo revises.</li>
       </ul>
-      <a class="sector-link" href="https://wa.me/34611459336?text=Hola%20Manuel%2C%20tengo%20un%20bar%20o%20restaurante%20y%20quiero%20saber%20qu%C3%A9%20podr%C3%ADa%20automatizar." target="_blank" rel="noopener">Tengo un bar o restaurante <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="sector-link" href="https://wa.me/34611459336?text=Hola%20Manuel%2C%20tengo%20un%20bar%20o%20restaurante%20y%20quiero%20saber%20qu%C3%A9%20podr%C3%ADa%20automatizar." target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5l1.3-3.9A8 8 0 1 1 8.4 18.7L4 19.5Z"/></svg>Tengo un bar o restaurante<span class="sr-only"> (abre WhatsApp)</span></a>
     </div>
     <div class="sector">
       <h3>Tienda o comercio</h3>
@@ -1057,16 +1034,16 @@
         <li>Los documentos de cada venta se generan y se archivan solos.</li>
         <li>Las preguntas de siempre por WhatsApp o Instagram se responden también fuera de horario.</li>
       </ul>
-      <a class="sector-link" href="https://wa.me/34611459336?text=Hola%20Manuel%2C%20tengo%20una%20tienda%20y%20quiero%20saber%20qu%C3%A9%20podr%C3%ADa%20automatizar." target="_blank" rel="noopener">Tengo una tienda <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="sector-link" href="https://wa.me/34611459336?text=Hola%20Manuel%2C%20tengo%20una%20tienda%20y%20quiero%20saber%20qu%C3%A9%20podr%C3%ADa%20automatizar." target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5l1.3-3.9A8 8 0 1 1 8.4 18.7L4 19.5Z"/></svg>Tengo una tienda<span class="sr-only"> (abre WhatsApp)</span></a>
     </div>
     <div class="sector">
       <h3>Asesoría o despacho</h3>
       <ul>
-        <li>Facturas y nóminas leídas, con los asientos preparados para revisar.</li>
+        <li>Facturas y nóminas leídas, con la contabilidad lista para revisar.</li>
         <li>Los datos personales se borran de un documento antes de usarlo con IA.</li>
         <li>Cada cliente recibe el aviso de los plazos y los papeles que faltan.</li>
       </ul>
-      <a class="sector-link" href="https://wa.me/34611459336?text=Hola%20Manuel%2C%20tengo%20una%20asesor%C3%ADa%20o%20despacho%20y%20quiero%20saber%20qu%C3%A9%20podr%C3%ADa%20automatizar." target="_blank" rel="noopener">Tengo una asesoría <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="sector-link" href="https://wa.me/34611459336?text=Hola%20Manuel%2C%20tengo%20una%20asesor%C3%ADa%20o%20despacho%20y%20quiero%20saber%20qu%C3%A9%20podr%C3%ADa%20automatizar." target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5l1.3-3.9A8 8 0 1 1 8.4 18.7L4 19.5Z"/></svg>Tengo una asesoría<span class="sr-only"> (abre WhatsApp)</span></a>
     </div>
   </div>
 </section>
@@ -1075,31 +1052,37 @@
   <div class="biblioteca-inner">
     <div class="biblioteca-head">
       <h2 id="bibliotecaTitle" class="section-title">Esto no es una demo: ya está funcionando.</h2>
-      <p>La biblioteca reúne <strong>11 automatizaciones</strong> de <strong>3 proyectos</strong>. Entra en cualquiera y mira su flujo completo, paso a paso.</p>
+      <p>La biblioteca explica paso a paso <strong>19 automatizaciones</strong>, 14 de ellas en negocios de la zona. Estas son las principales de cada uno: entra y mira su flujo completo.</p>
     </div>
     <div class="automation-list">
       <!-- AUTOMATION_CARDS_START -->
-      <a class="automation-card" href="/automatizaciones/motodest">
-        <span class="icon" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M6 3h8l4 4v14H6Z"/><path d="M14 3v4h4M9 13h6M9 17h4"/></svg></span>
-        <h3>MOTODEST</h3>
-        <p>Un concesionario de motos que dejó de perseguir papeleo: los documentos y la ficha de cada cliente se rellenan solos.</p>
+      <a class="automation-card has-logo" href="/automatizaciones/motodest">
+        <span class="logo" aria-hidden="true"><img src="uploads/motodest-horizontal.webp" alt="" loading="lazy" width="640" height="112"></span>
+        <h3>MOTODEST<small>Concesionario y taller de motos</small></h3>
+        <p>La carta de entrega y la autorización para matricular se hacen solas, y cada cliente queda fichado una sola vez.</p>
         <svg class="go" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </a>
-      <a class="automation-card" href="/automatizaciones/blog-malia">
-        <span class="icon" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M4 20h4L19 9l-4-4L4 16Z"/><path d="M13 7l4 4"/></svg></span>
-        <h3>Blog de malia</h3>
-        <p>El blog que escribimos sin escribir: investiga, redacta y se publica solo, y solo avisa si algo no le convence.</p>
+      <a class="automation-card has-logo" href="/automatizaciones/mavimar-vidal-malia">
+        <span class="logo pair" aria-hidden="true"><img src="uploads/mavimar-logo.webp" alt="" loading="lazy" width="612" height="186"><img src="uploads/vidal-malia-logo.webp" alt="" loading="lazy" width="504" height="350"></span>
+        <h3>Mavimar y Vidal Malia<small>Gestoría y asesoría</small></h3>
+        <p>Facturas, nóminas y bancos leídos con IA, impuestos del trimestre preparados, saldos de propietarios y documentos anonimizados.</p>
         <svg class="go" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </a>
-      <a class="automation-card" href="/automatizaciones/vigilancia-marketplace">
-        <span class="icon" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M2 12s3.6-6.5 10-6.5S22 12 22 12s-3.6 6.5-10 6.5S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg></span>
-        <h3>Vigilancia de marketplace</h3>
-        <p>Un vigilante que no parpadea: detecta lo que se pone de moda en un marketplace y avisa al segundo.</p>
+      <a class="automation-card has-logo" href="/automatizaciones/pescados-barlovento">
+        <span class="logo" aria-hidden="true"><img src="uploads/barlovento-logo.svg" alt="" loading="lazy" width="383" height="123"></span>
+        <h3>Pescados Barlovento<small>Mayorista de pescado</small></h3>
+        <p>Unas 35 facturas de compra al día, leídas con IA, que pasan a su contabilidad cuando la empresa las aprueba.</p>
+        <svg class="go" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a class="automation-card has-logo" href="/automatizaciones/barbatehomes">
+        <span class="logo" aria-hidden="true"><img src="uploads/barbatehomes-logo.webp" alt="" loading="lazy" width="720" height="125"></span>
+        <h3>BarbateHomes<small>Inmobiliaria</small></h3>
+        <p>Su web y su catálogo se generan solos, y la agencia publica o quita inmuebles desde un panel, sin tocar código.</p>
         <svg class="go" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </a>
       <!-- AUTOMATION_CARDS_END -->
     </div>
-    <a class="btn btn-outline" href="/automatizaciones">Ver la biblioteca completa →</a>
+    <a class="btn btn-outline" href="/automatizaciones">Ver la biblioteca completa <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
   </div>
 </section>
 
@@ -1111,8 +1094,12 @@
     </div>
     <div class="faq-list">
       <details>
+        <summary>¿Qué pasa cuando te escribo?<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary>
+        <p>Te contesto yo mismo, normalmente el mismo día laborable. Quedamos para ver la tarea, y esa primera consulta es gratis. Si se puede automatizar, te dibujo el plan con un presupuesto cerrado y decides tú.</p>
+      </details>
+      <details>
         <summary>¿Cuánto cuesta?<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary>
-        <p>Antes de empezar te doy un presupuesto cerrado, así sabes el precio desde el principio. Después hay una cuota mensual fija por el mantenimiento. Lo que no pagas son licencias que suben cuantas más tareas haces.</p>
+        <p>Depende de lo que haya que montar, pero antes de empezar te doy un presupuesto cerrado, así sabes el precio desde el principio. Después hay una cuota mensual fija por el mantenimiento. Lo que no pagas son licencias que suben cuantas más tareas haces.</p>
       </details>
       <details>
         <summary>¿Cuánto se tarda en tenerlo funcionando?<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary>
@@ -1124,7 +1111,7 @@
       </details>
       <details>
         <summary>¿Dónde quedan los datos de mi negocio?<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary>
-        <p>En un servidor privado (VPS) contratado en Hostinger, el mismo donde funcionan tus automatizaciones. No es una plataforma compartida con otras empresas.</p>
+        <p>En un servidor privado, el mismo donde funcionan tus automatizaciones. No es una plataforma compartida con otras empresas.</p>
       </details>
       <details>
         <summary>¿Tengo que saber de tecnología?<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary>
@@ -1145,19 +1132,16 @@
       </div>
       <h2>¿Hablamos?</h2>
       <p>Empieza a recuperar tu tiempo. Primera consulta gratis y sin compromiso: cuéntame qué repites cada día y te digo si se puede automatizar.</p>
+      <p class="footer-promise">Te contesto yo mismo, normalmente el mismo día laborable.</p>
       <a class="btn btn-light" href="https://wa.me/34611459336?text=Hola%20Manuel%2C%20tengo%20un%20negocio%20y%20quiero%20saber%20qu%C3%A9%20podr%C3%ADa%20automatizar." target="_blank" rel="noopener">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5l1.3-3.9A8 8 0 1 1 8.4 18.7L4 19.5Z"/></svg>
-        Escríbeme por WhatsApp
+        Escríbeme por WhatsApp<span class="sr-only"> (abre WhatsApp)</span>
       </a>
       <a class="footer-alt" href="mailto:manuelmaliaempr@gmail.com?subject=Consulta%20sobre%20automatizaci%C3%B3n">¿Prefieres el email? Escríbeme aquí</a>
     </div>
     <div class="footer-divider"></div>
     <div class="footer-contact">
       <h3>Contacto</h3>
-      <a href="https://wa.me/34611459336?text=Hola%20Manuel%2C%20tengo%20un%20negocio%20y%20quiero%20saber%20qu%C3%A9%20podr%C3%ADa%20automatizar." target="_blank" rel="noopener">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5l1.3-3.9A8 8 0 1 1 8.4 18.7L4 19.5Z"/></svg>
-        WhatsApp
-      </a>
       <a href="tel:+34611459336">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2a1.5 1.5 0 0 1 1.6-.3c1 .4 2.1.6 3.2.6a1.5 1.5 0 0 1 1.5 1.5V21a1.5 1.5 0 0 1-1.5 1.5C10.4 22.5 1.5 13.6 1.5 3.5A1.5 1.5 0 0 1 3 2h3.6a1.5 1.5 0 0 1 1.5 1.5c0 1.1.2 2.2.6 3.2.2.5 0 1.1-.3 1.6L6.6 10.8Z"/></svg>
         611 459 336
@@ -1183,7 +1167,7 @@
 
 <a class="btn wa-float" id="waFloat" href="https://wa.me/34611459336?text=Hola%20Manuel%2C%20tengo%20un%20negocio%20y%20quiero%20saber%20qu%C3%A9%20podr%C3%ADa%20automatizar." target="_blank" rel="noopener">
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5l1.3-3.9A8 8 0 1 1 8.4 18.7L4 19.5Z"/></svg>
-  Escríbeme por WhatsApp
+  Escríbeme por WhatsApp<span class="sr-only"> (abre WhatsApp)</span>
 </a>
 
 <script>
@@ -1204,7 +1188,7 @@
     var header = document.getElementById('siteHeader');
     var toggle = header.querySelector('.nav-toggle');
     var label = toggle.querySelector('.nav-toggle-label');
-    var mobile = window.matchMedia('(max-width: 900px)');
+    var mobile = window.matchMedia('(max-width: 1080px)');
     var lastY = window.scrollY;
 
     function isOpen() { return header.classList.contains('menu-open'); }
@@ -1235,6 +1219,22 @@
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && isOpen()) { closeMenu(); toggle.focus(); }
     });
+  })();
+
+  // Cruz del hero: el hueco vertical se ajusta a lo que mide el texto.
+  (function () {
+    var hero = document.getElementById('hero');
+    var first = hero.querySelector('h1');
+    var last = hero.querySelector('.hero-alt');
+    function fit() {
+      var h = hero.getBoundingClientRect();
+      var mid = h.top + h.height / 2;
+      hero.style.setProperty('--hy-top', Math.round(mid - first.getBoundingClientRect().top + 24) + 'px');
+      hero.style.setProperty('--hy-bottom', Math.round(last.getBoundingClientRect().bottom - mid + 24) + 'px');
+    }
+    fit();
+    window.addEventListener('resize', fit);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
   })();
 
   // Navegación: marca la sección en la que estás.
