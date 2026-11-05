@@ -49,7 +49,18 @@ Hecho en una pasada sobre `index.html` (reescrita) y `uploads/`:
 - Menú móvil: enlaces a todo el ancho y WhatsApp centrado; relleno superior del titular del problema en móvil; enlace de email del pie con zona de pulsación de 44px.
 - La crítica del 2026-11-05 queda cerrada (el archivo cambió).
 
-## 7. Pendiente
+## 7. Rediseño completo (decidido el 2026-11-05, sin empezar)
+
+Manuel quiere rediseñar la web entera para que quede «más profesional», manteniendo la esencia. Respuestas ya dadas (no volver a preguntar):
+
+- **Alcance:** home + blog + biblioteca de automatizaciones. Implica tocar los `_template.html` que usa el kit de n8n: revisar antes cómo los usa ese kit (`kit-automatizaciones-n8n`, Pasos 4 y 4.5 y el workflow del blog) para no romper la publicación automática.
+- **Dirección:** Manuel no la tiene clara → preparar 2-3 direcciones visuales para que elija **antes de programar** (flujo `shape` + `new-work` de Impeccable).
+- **Esencia que no se toca:** los colores arena `#F2EFE3` y tinta `#13141F`, y el vídeo de humo del hero.
+- **Se puede cambiar:** el logo de semitonos y el wordmark en su uso (no el logo en sí sin preguntar), y las tipografías (Space Grotesk e Inter).
+- **Referencias:** ninguna; decide Claude a partir de `PRODUCT.md`.
+- Cuando se elija la dirección, reescribir `DESIGN.md` (es un rediseño, no un pulido).
+
+## 8. Pendiente
 
 - Revisar malia-ai-labs.com en navegador y móvil (vídeo, menú, botón flotante de WhatsApp).
 - Comprobar que el próximo post que publique n8n sale con la sombra tintada: los 6 posts del 2026-11 salieron con la plantilla antigua (`rgba(0,0,0,0.18)`) y se corrigieron a mano. Si vuelve a pasar, actualizar la plantilla en el kit de n8n.
