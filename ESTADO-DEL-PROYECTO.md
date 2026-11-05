@@ -43,11 +43,16 @@ Hecho en una pasada sobre `index.html` (reescrita) y `uploads/`:
 - **Typeset/extract:** variables CSS en `:root`, escala de DESIGN.md, Space Grotesk 500 quitada, CSS muerto eliminado. `DESIGN.md` actualizado (navbar, botón ghost, lista de caso, motion).
 - Verificado con capturas a 1440, 820 y 390 px y con el detector (solo quedan los avisos de fuentes/crema, que chocan con el brief, y el falso positivo del hero).
 
-## 6. Pendiente
+## 6. Polish (2026-11-05)
+
+- Borrado `uploads/2.mp4` (sin uso). El `2.mp4` de la raíz se conserva: es el original, no está en git y Vercel lo ignora.
+- Menú móvil: enlaces a todo el ancho y WhatsApp centrado; relleno superior del titular del problema en móvil; enlace de email del pie con zona de pulsación de 44px.
+- La crítica del 2026-11-05 queda cerrada (el archivo cambió).
+
+## 7. Pendiente
 
 - Revisar malia-ai-labs.com en navegador y móvil (vídeo, menú, botón flotante de WhatsApp).
 - Comprobar que el próximo post que publique n8n sale con la sombra tintada: los 6 posts del 2026-11 salieron con la plantilla antigua (`rgba(0,0,0,0.18)`) y se corrigieron a mano. Si vuelve a pasar, actualizar la plantilla en el kit de n8n.
-- `uploads/2.mp4` y `2.mp4` de la raíz ya no los usa la home: borrar si nadie más los usa.
 - Foto real de Manuel para el hero o el pie (ahora solo hay texto; el «avatar» es el logo de semitonos).
 - Testimonios literales de MOTODEST, Mavimar y Vidal; un caso de hostelería cuando exista.
-- Opcional: `polish` final y repasar el blog/biblioteca con la misma navbar.
+- Opcional: llevar la navbar nueva (WhatsApp + menú móvil) al blog y la biblioteca; toca los `_template.html` que usa el kit de n8n.

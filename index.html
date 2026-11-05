@@ -275,7 +275,7 @@
     }
     .js .site-header.menu-open { background: var(--tinta); }
     .js .site-header.menu-open .nav-links { display: flex; }
-    .js .nav-links a { min-height: 52px; font-size: var(--fs-title); border-bottom: 1px solid rgba(242,239,227,0.1); padding: 0 4px; }
+    .js .nav-links a { display: flex; min-height: 52px; font-size: var(--fs-title); border-bottom: 1px solid rgba(242,239,227,0.1); padding: 0 4px; }
     .js .nav-links .nav-cta { margin: 16px 0 0; justify-content: center; border-bottom: 1px solid rgba(242,239,227,0.45); }
     html:not(.js) .nav-links { flex-wrap: wrap; justify-content: flex-end; }
   }
@@ -421,7 +421,7 @@
   .problema-cell.bottom { padding-bottom: var(--s-xl); justify-content: flex-end; gap: var(--s-md); }
   @media (max-width: 999px) {
     .problema-cell { padding-top: var(--s-lg); padding-bottom: var(--s-lg); }
-    .problema-cell:first-of-type { padding-top: 70px; }
+    .problema-cell.is-first { padding-top: 70px; }
     .problema-cell.bottom { padding-bottom: 70px; }
   }
   .problema h2, .caso h2 {
@@ -617,7 +617,7 @@
     color: var(--arena-sombra);
     margin: 0 0 28px;
   }
-  .footer-alt { display: inline-block; margin-top: var(--s-sm); color: var(--arena-sombra); font-size: var(--fs-body); text-underline-offset: 4px; }
+  .footer-alt { display: flex; align-items: center; width: fit-content; min-height: 44px; margin-top: var(--s-xs); color: var(--arena-sombra); font-size: var(--fs-body); text-underline-offset: 4px; }
   .footer-alt:hover { color: var(--arena); }
   .footer-alt:focus-visible { outline-color: var(--arena); }
   .footer-divider {
@@ -766,7 +766,7 @@
     <div class="divider-h"></div>
     <div class="divider-v"></div>
 
-    <div class="problema-cell reveal">
+    <div class="problema-cell is-first reveal">
       <h2 id="problemaTitle">Lo mismo, a mano, todos los días — ¿cuánto tiempo más vas a perder así?</h2>
     </div>
 
@@ -866,7 +866,6 @@
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5l1.3-3.9A8 8 0 1 1 8.4 18.7L4 19.5Z"/></svg>
         Escríbeme por WhatsApp
       </a>
-      <br>
       <a class="footer-alt" href="mailto:manuelmaliaempr@gmail.com?subject=Consulta%20sobre%20automatizaci%C3%B3n">¿Prefieres el email? Escríbeme aquí</a>
     </div>
     <div class="footer-divider"></div>
