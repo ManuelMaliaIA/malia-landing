@@ -9,6 +9,7 @@ colors:
   arena-apagada: "#D8D3C2"
   tinta-nocturna: "#13141F"
   tinta-hover: "#2A2C3D"
+  tinta-alzada: "#1A1B29"
   noche-profunda: "#0A0A16"
   gris-pizarra: "#5C5E6B"
   gris-texto: "#6B6D7A"
@@ -27,6 +28,22 @@ typography:
     fontWeight: 700
     lineHeight: 1.15
     letterSpacing: "-0.02em"
+  subhead:
+    fontFamily: "Space Grotesk, sans-serif"
+    fontSize: "clamp(24px, 2.4vw, 32px)"
+    fontWeight: 700
+    lineHeight: 1.18
+    letterSpacing: "-0.015em"
+  title-lg:
+    fontFamily: "Space Grotesk, sans-serif"
+    fontSize: "22px"
+    fontWeight: 600
+    lineHeight: 1.25
+  title-xl:
+    fontFamily: "Space Grotesk, sans-serif"
+    fontSize: "24px"
+    fontWeight: 700
+    lineHeight: 1.2
   title:
     fontFamily: "Space Grotesk, sans-serif"
     fontSize: "17px"
@@ -56,6 +73,9 @@ rounded:
   sm: "12px"
   chip: "14px"
   card: "16px"
+  node: "18px"
+  trigger-mobile: "30px"
+  trigger: "44px"
   panel: "28px"
   pill: "100px"
 spacing:
@@ -211,6 +231,16 @@ Cercanos y tranquilos: píldoras de texto corto y una sola acción por bloque.
 
 ### Lista de caso real
 Filas separadas por líneas de 1px en tinta al 12% (sin tarjetas): título en Space Grotesk 700 de 17px y una línea de Inter 15px al 78%. Se usa para contar qué hace una automatización en un cliente con nombre.
+
+### Home rediseñada (2026-11-05, pendiente de integrar en la reescritura de este archivo)
+- **Flujo «Cómo trabajo»:** nodos de 88px (60px en móvil) con radio `node` de 18px, el primero en forma de disparador (`trigger` 44px a la izquierda; 30px en móvil), sobre `tinta-alzada`. Se encienden en secuencia; el último queda relleno de arena.
+- **Más clientes:** filas regladas como la lista de caso, con nombre (title) y sector a la izquierda, y trabajos en negrita + frase a la derecha (5fr / 6fr).
+- **¿Y en tu negocio?:** banda de tinta con tres columnas separadas por líneas de 1px de la cruz, títulos `title-xl`, viñetas de raya de 10px y un enlace por sector a WhatsApp con mensaje precargado.
+- **Preguntas:** `<details>` nativos en filas regladas, pregunta en title, «+» que gira 45° al abrir.
+- **Navegación:** en escritorio se queda siempre visible; solo se esconde al bajar en ≤900px. Subrayado de 1px en el enlace de la sección actual (`aria-current`). El botón del menú móvil cambia a «Cerrar», y el menú se cierra al tocar fuera o al hacer scroll.
+- **WhatsApp flotante:** borde de arena al 45% para que se vea también sobre las bandas de tinta.
+- **Páginas legales** (`/aviso-legal/`, `/privacidad/`): modo Read, cabecera de tinta con logo y «Volver a la web», texto a 16px con medida de 720px.
+- Sin chips de herramientas en la home: el detalle técnico vive en la biblioteca.
 
 ### Chips (herramientas)
 - **Style:** cuadro blanco de 60×60px con radio de 14px y sombra de chip, con el logo de 34px centrado, seguido del nombre en Space Grotesk 600 de 30px.

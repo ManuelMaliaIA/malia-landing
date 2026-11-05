@@ -34,7 +34,7 @@
   "image": "https://malia-ai-labs.com/uploads/og-image.jpg",
   "email": "manuelmaliaempr@gmail.com",
   "telephone": "+34611459336",
-  "areaServed": "ES",
+  "areaServed": { "@type": "AdministrativeArea", "name": "Provincia de Cádiz" },
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Barbate",
@@ -61,6 +61,7 @@
     --arena-apagada: #D8D3C2;
     --tinta: #13141F;
     --tinta-hover: #2A2C3D;
+    --tinta-alzada: #1A1B29;
     --noche: #0A0A16;
     --gris-pizarra: #5C5E6B;
     --gris-humo: #8A8C9E;
@@ -107,10 +108,14 @@
     overflow-x: hidden;
   }
   ::selection { background: var(--tinta); color: var(--arena); }
+  .metodo ::selection, footer ::selection, .hero ::selection { background: var(--arena); color: var(--tinta); }
+  html { scrollbar-color: var(--gris-humo) var(--arena); caret-color: var(--tinta); }
+  a { text-underline-offset: 4px; }
   a { color: var(--tinta); }
   a:hover { color: var(--tinta-hover); }
   a:focus-visible, button:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
   img, video { display: block; }
+  p { text-wrap: pretty; }
 
   .skip-link {
     position: absolute;
@@ -232,6 +237,7 @@
     transition: opacity 0.25s ease;
   }
   .nav-links a:hover { color: var(--arena); opacity: 0.7; }
+  .nav-links a[aria-current] { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 8px; }
   .nav-links a:focus-visible { outline-color: var(--arena); outline-offset: 0; border-radius: 12px; }
   .nav-links .nav-cta {
     margin-left: 8px;
@@ -343,10 +349,13 @@
   .hero-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
   .hero-note {
     margin: var(--s-md) 0 0;
-    font-size: var(--fs-label);
+    font-size: var(--fs-body);
+    line-height: 1.6;
     color: var(--arena-sombra);
-    opacity: 0.85;
   }
+  .hero-note a { color: var(--arena); font-weight: 600; white-space: nowrap; }
+  .hero-note a:hover { color: var(--arena); opacity: 0.8; }
+  .hero-note a:focus-visible { outline-color: var(--arena); }
   .video-toggle {
     position: absolute;
     right: 5%;
@@ -371,225 +380,372 @@
   .video-toggle[aria-pressed="true"] .icon-play { display: block; }
   .video-toggle[aria-pressed="true"] .icon-pause { display: none; }
 
-  /* Clientes */
-  .logos-strip { background: var(--arena); padding: 40px var(--gutter) 32px; }
-  .logos-heading {
-    text-align: center;
-    font-size: var(--fs-body);
-    color: var(--gris-pizarra);
-    margin: 0 0 var(--s-sm);
-  }
-  .logos-list {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 24px 64px;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-  .logos-list li { height: 96px; display: flex; align-items: center; }
-  .logos-list img { max-height: 100%; max-width: 200px; width: auto; height: auto; object-fit: contain; opacity: 0.85; }
-  .logos-list img.is-wide { max-height: 40px; max-width: 220px; }
-  @media (max-width: 640px) {
-    .logos-list { gap: 8px 32px; }
-    .logos-list li { height: 76px; }
-    .logos-list img { max-width: 140px; }
-    .logos-list img.is-wide { max-width: 180px; max-height: 32px; }
-  }
-
-  /* Problema */
-  .problema { position: relative; background: var(--arena); overflow: hidden; }
-  .problema .bg {
-    position: absolute; inset: 0;
-    background: radial-gradient(ellipse 70% 60% at 30% 20%, rgba(228,223,204,0.9) 0%, rgba(242,239,227,1) 70%);
-  }
-  .problema-grid {
+  /* Cómo trabajo: el humo del hero se ordena en un flujo */
+  .metodo {
     position: relative;
-    max-width: 1400px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr;
+    background: var(--tinta);
+    color: var(--arena);
+    padding: 140px var(--gutter) 120px;
+    overflow: hidden;
   }
-  .problema .divider-h, .problema .divider-v { display: none; background: var(--linea-clara); }
-  @media (min-width: 1000px) {
-    .problema-grid { grid-template-columns: 1fr 1fr; min-height: max(640px, 100svh); }
-    .problema .divider-h, .problema .divider-v { display: block; }
+  .metodo::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 1px;
+    height: 96px;
+    background: var(--linea-oscura);
   }
-  .problema-cell { padding: var(--s-xl) var(--gutter) var(--s-md); display: flex; flex-direction: column; }
-  .problema-cell.bottom { padding-bottom: var(--s-xl); justify-content: flex-end; gap: var(--s-md); }
-  @media (max-width: 999px) {
-    .problema-cell { padding-top: var(--s-lg); padding-bottom: var(--s-lg); }
-    .problema-cell.is-first { padding-top: 70px; }
-    .problema-cell.bottom { padding-bottom: 70px; }
-  }
-  .problema h2, .caso h2 {
+  .metodo-head { max-width: 760px; margin: 0 auto 88px; text-align: center; }
+  .section-title {
     font-family: var(--font-display);
     font-weight: 700;
     font-size: var(--fs-headline);
-    line-height: 1.15;
+    line-height: 1.12;
     letter-spacing: -0.02em;
     text-wrap: balance;
-    color: var(--tinta);
     margin: 0;
-    max-width: 520px;
   }
-  .js .reveal { opacity: 0; }
-  .js .reveal.in { animation: fadeUp 0.9s var(--ease-out) forwards; }
-  .problema-cell.bottom p {
-    font-size: var(--fs-body);
+  .metodo-head p {
+    font-size: var(--fs-lead);
     line-height: 1.55;
-    color: var(--tinta);
-    opacity: 0.78;
-    margin: 0;
-    max-width: 440px;
+    color: var(--arena-sombra);
+    margin: var(--s-md) auto 0;
+    max-width: 560px;
+    text-wrap: pretty;
   }
-  .advantages-grid {
-    flex: 1;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--s-sm);
-    width: 100%;
-    margin: 0;
-    padding: 0;
+  .flow {
+    --node: 88px;
+    --dim: rgba(242,239,227,0.26);
     list-style: none;
+    margin: 0 auto;
+    padding: 0;
+    max-width: 1240px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
   }
-  .advantage {
-    background: var(--papel-tarjeta);
-    border: 1px solid rgba(19,20,31,0.06);
-    border-radius: var(--r-card);
-    padding: var(--s-md);
-    box-shadow: 0 2px 10px rgba(19,20,31,0.05);
+  .flow li {
+    position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-  }
-  .advantage h3 {
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: var(--fs-title);
-    line-height: 1.3;
-    color: var(--tinta);
-    margin: 0 0 6px;
-  }
-  .advantage p { font-size: var(--fs-body); line-height: 1.5; color: var(--tinta); opacity: 0.75; margin: 0; }
-  @media (max-width: 640px) { .advantages-grid { grid-template-columns: 1fr; } }
-
-  .sin-cuotas h3 {
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: var(--fs-title);
-    line-height: 1.3;
-    margin: 0 0 var(--s-xs);
-  }
-  .sin-cuotas p { margin: 0 0 var(--s-md); max-width: 440px; line-height: 1.55; opacity: 0.78; }
-  .stack-list { display: flex; flex-wrap: wrap; gap: 12px 24px; margin: 0; padding: 0; list-style: none; }
-  .stack-list li { display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 600; font-size: var(--fs-body); }
-  .stack-list .chip {
-    display: flex;
     align-items: center;
-    justify-content: center;
-    width: 44px;
-    height: 44px;
-    background: var(--blanco-chip);
-    border-radius: 12px;
-    box-shadow: 0 2px 6px rgba(19,20,31,0.1);
+    text-align: center;
+    padding: 0 14px;
   }
-  .stack-list .chip img { width: 26px; height: 26px; object-fit: contain; }
-
-  /* Caso real */
-  .caso {
+  .flow li + li::before,
+  .flow li + li::after {
+    content: "";
+    position: absolute;
+    top: calc(var(--node) / 2);
+    left: calc(-50% + var(--node) / 2 + 10px);
+    right: calc(50% + var(--node) / 2 + 10px);
+    height: 1.5px;
+    background: var(--dim);
+  }
+  .flow li + li::after {
+    background: var(--arena);
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 0.7s var(--ease-out);
+  }
+  .node {
     position: relative;
-    padding: var(--s-section) var(--gutter);
-    border-top: 1px solid var(--linea-clara);
+    z-index: 1;
+    width: var(--node);
+    height: var(--node);
+    border-radius: 18px;
+    border: 1.5px solid var(--dim);
+    background: var(--tinta-alzada);
+    color: rgba(242,239,227,0.42);
+    display: grid;
+    place-items: center;
+    transition: border-color 0.6s var(--ease-out), color 0.6s var(--ease-out), background 0.6s var(--ease-out), box-shadow 0.6s var(--ease-out);
   }
-  .caso-grid {
+  .flow li:first-child .node { border-radius: 44px 18px 18px 44px; }
+  .node::before, .node::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 9px;
+    height: 9px;
+    margin-top: -4.5px;
+    border-radius: 50%;
+    background: var(--tinta);
+    border: 1.5px solid currentColor;
+  }
+  .node::before { left: -6px; }
+  .node::after { right: -6px; }
+  .flow li:first-child .node::before, .flow li:last-child .node::after { display: none; }
+  .flow h3 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: var(--fs-title);
+    line-height: 1.3;
+    margin: 26px 0 8px;
+    color: rgba(242,239,227,0.6);
+    transition: color 0.6s var(--ease-out);
+  }
+  .flow p {
+    margin: 0;
+    max-width: 230px;
+    font-size: var(--fs-body);
+    line-height: 1.55;
+    color: var(--gris-niebla);
+  }
+  .flow li.is-lit .node { border-color: var(--arena); color: var(--arena); box-shadow: 0 10px 30px rgba(10,10,22,0.5); }
+  .flow li.is-lit h3 { color: var(--arena); }
+  .flow li.is-lit::after { transform: scaleX(1); }
+  .flow li.is-lit:last-child .node { background: var(--arena); color: var(--tinta); }
+  html:not(.js) .flow li .node { border-color: var(--arena); color: var(--arena); }
+  html:not(.js) .flow li h3 { color: var(--arena); }
+  html:not(.js) .flow li::after { transform: none; }
+
+  .metodo-foot {
+    max-width: 1100px;
+    margin: 96px auto 0;
+    padding-top: var(--s-lg);
+    border-top: 1px solid var(--linea-oscura);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: var(--s-lg) var(--s-xl);
+    align-items: center;
+  }
+  .metodo-foot h3 { font-family: var(--font-display); font-weight: 600; font-size: var(--fs-title); margin: 0 0 6px; }
+  .metodo-foot p { margin: 0; max-width: 560px; line-height: 1.55; color: var(--arena-sombra); }
+
+  @media (max-width: 899px) {
+    .metodo { padding: 110px var(--gutter) 80px; }
+    .metodo::before { left: var(--gutter); height: 72px; }
+    .metodo-head { text-align: left; margin-bottom: 56px; }
+    .metodo-head p { margin-left: 0; }
+    .flow { --node: 60px; grid-template-columns: 1fr; max-width: 520px; margin: 0; }
+    .flow li {
+      display: grid;
+      grid-template-columns: var(--node) 1fr;
+      column-gap: 20px;
+      align-items: start;
+      text-align: left;
+      padding: 0 0 36px;
+    }
+    .flow li .node { grid-row: span 2; border-radius: 14px; }
+    .flow li:first-child .node { border-radius: 30px 14px 14px 30px; }
+    .node::before, .node::after { display: none; }
+    .flow h3 { margin: 4px 0 6px; }
+    .flow p { max-width: none; }
+    .flow li + li::before, .flow li + li::after {
+      top: -36px;
+      left: calc(var(--node) / 2);
+      right: auto;
+      width: 1.5px;
+      height: 36px;
+    }
+    .flow li + li::after { transform: scaleY(0); transform-origin: center top; }
+    .flow li.is-lit::after { transform: scaleY(1); }
+    .metodo-foot { grid-template-columns: 1fr; margin-top: 48px; }
+  }
+
+  /* Casos */
+  .casos { position: relative; background: var(--arena); padding: 128px var(--gutter) 96px; }
+  .casos-head {
     max-width: 1100px;
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr;
     gap: var(--s-lg) var(--s-xl);
-  }
-  @media (min-width: 900px) { .caso-grid { grid-template-columns: 5fr 6fr; align-items: start; } }
-  .caso-intro img { width: 220px; height: auto; margin: 0 0 var(--s-lg); }
-  .caso-intro p { margin: var(--s-md) 0 0; max-width: 440px; line-height: 1.55; opacity: 0.78; }
-  .caso-list { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--linea-clara); }
-  .caso-list li {
-    display: grid;
-    gap: 4px;
-    padding: var(--s-md) 0;
+    align-items: end;
+    padding-bottom: var(--s-xl);
     border-bottom: 1px solid var(--linea-clara);
   }
-  .caso-list strong { font-family: var(--font-display); font-weight: 700; font-size: var(--fs-title); line-height: 1.3; }
-  .caso-list span { line-height: 1.55; opacity: 0.78; }
+  .casos-head .section-title { max-width: 520px; }
+  .casos-head p { margin: 0; max-width: 520px; font-size: var(--fs-lead); line-height: 1.55; color: var(--gris-pizarra); }
+  @media (min-width: 900px) { .casos-head { grid-template-columns: 5fr 6fr; } }
+  .caso-logo { height: 30px; width: auto; margin-bottom: var(--s-md); }
+
+  .caso-grid {
+    max-width: 1100px;
+    margin: var(--s-xl) auto 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--s-lg) var(--s-xl);
+  }
+  @media (min-width: 900px) {
+    .caso-grid { grid-template-columns: 5fr 6fr; align-items: start; }
+    .caso-intro { position: sticky; top: 110px; }
+  }
+  .caso-intro h3 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(24px, 2.4vw, 32px);
+    line-height: 1.18;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+    margin: 0;
+    max-width: 440px;
+  }
+  .caso-intro p { margin: var(--s-md) 0 0; max-width: 440px; line-height: 1.6; color: var(--gris-pizarra); }
+  .caso-list { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--tinta); }
+  .caso-list li {
+    display: grid;
+    grid-template-columns: 22px 1fr;
+    column-gap: 18px;
+    padding: 24px 0;
+    border-bottom: 1px solid var(--linea-clara);
+  }
+  .caso-list li svg { grid-row: span 2; margin-top: 3px; color: var(--tinta); }
+  .caso-list strong { font-family: var(--font-display); font-weight: 600; font-size: var(--fs-title); line-height: 1.35; }
+  .caso-list span { margin-top: 4px; line-height: 1.6; color: var(--gris-pizarra); }
   .caso-list + .btn-outline { margin-top: var(--s-lg); }
-  @media (max-width: 640px) { .caso { padding: 70px var(--gutter); } }
+
+  /* Más clientes: filas regladas, nombre a la izquierda y trabajos a la derecha */
+  .clientes { max-width: 1100px; margin: 96px auto 0; }
+  .clientes > h3 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(24px, 2.4vw, 32px);
+    line-height: 1.18;
+    letter-spacing: -0.015em;
+    margin: 0 0 var(--s-lg);
+  }
+  .cliente-list { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--tinta); }
+  .cliente-list > li {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--s-sm) var(--s-xl);
+    padding: 28px 0;
+    border-bottom: 1px solid var(--linea-clara);
+  }
+  @media (min-width: 900px) { .cliente-list > li { grid-template-columns: 5fr 6fr; } }
+  .cliente-name strong { display: block; font-family: var(--font-display); font-weight: 700; font-size: var(--fs-title); line-height: 1.35; }
+  .cliente-name span { display: block; margin-top: 4px; color: var(--gris-pizarra); }
+  .cliente-name a { display: inline-flex; align-items: center; min-height: 44px; margin-top: 4px; font-weight: 600; }
+  .cliente-tasks { margin: 0; padding: 0; list-style: none; display: grid; gap: 14px; }
+  .cliente-tasks li { line-height: 1.6; color: var(--gris-pizarra); max-width: 560px; }
+  .cliente-tasks b { color: var(--tinta); font-weight: 600; }
+  @media (max-width: 640px) { .casos { padding: 88px var(--gutter) 80px; } .clientes { margin-top: 72px; } }
+
+  /* ¿Y en tu negocio?: ejemplos por sector sobre tinta, separados por la línea de la cruz */
+  .sectores { position: relative; background: var(--tinta); color: var(--arena); padding: 128px var(--gutter) 112px; }
+  .sectores::before { content: ""; position: absolute; left: 50%; top: 0; width: 1px; height: 72px; background: var(--linea-oscura); }
+  .sectores-head { max-width: 1100px; margin: 0 auto 56px; display: grid; grid-template-columns: 1fr; gap: var(--s-md) var(--s-xl); align-items: end; }
+  @media (min-width: 900px) { .sectores-head { grid-template-columns: 5fr 6fr; } }
+  .sectores-head .section-title { max-width: 520px; }
+  .sectores-head p { margin: 0; max-width: 520px; line-height: 1.6; color: var(--arena-sombra); }
+  .sector-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr; border-top: 1px solid var(--linea-oscura); }
+  .sector { display: flex; flex-direction: column; padding: 36px 0; border-bottom: 1px solid var(--linea-oscura); }
+  @media (min-width: 900px) {
+    .sector-grid { grid-template-columns: repeat(3, 1fr); }
+    .sector { padding: 40px 36px 8px; border-bottom: 0; }
+    .sector:first-child { padding-left: 0; }
+    .sector:last-child { padding-right: 0; }
+    .sector + .sector { border-left: 1px solid var(--linea-oscura); }
+  }
+  .sector h3 { font-family: var(--font-display); font-weight: 700; font-size: 24px; line-height: 1.2; letter-spacing: -0.015em; margin: 0 0 var(--s-md); }
+  .sector ul { margin: 0 0 var(--s-lg); padding: 0; list-style: none; display: grid; gap: 14px; flex: 1; }
+  .sector li { position: relative; padding-left: 22px; line-height: 1.55; color: var(--arena-sombra); }
+  .sector li::before { content: ""; position: absolute; left: 0; top: 0.62em; width: 10px; height: 1px; background: var(--arena); }
+  .sector-link { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; color: var(--arena); font-weight: 600; text-decoration: none; width: fit-content; }
+  .sector-link svg { transition: transform 0.3s var(--ease-out); }
+  .sector-link:hover { color: var(--arena); }
+  .sector-link:hover svg { transform: translateX(4px); }
+  .sector-link:focus-visible { outline-color: var(--arena); }
+  @media (max-width: 640px) { .sectores { padding: 96px var(--gutter) 72px; } }
 
   /* Biblioteca */
-  .automations { position: relative; padding: 0 var(--gutter) var(--s-section); }
-  .automations-banner {
-    position: relative;
+  .biblioteca { background: var(--arena); padding: 0 var(--gutter) 112px; }
+  .biblioteca-inner { max-width: 1100px; margin: 0 auto; padding-top: 96px; border-top: 1px solid var(--linea-clara); }
+  .biblioteca-head {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--s-md) var(--s-xl);
+    align-items: end;
+    margin-bottom: 48px;
+  }
+  @media (min-width: 900px) { .biblioteca-head { grid-template-columns: 5fr 6fr; } }
+  .biblioteca-head .section-title { max-width: 480px; }
+  .biblioteca-head p { margin: 0; max-width: 520px; line-height: 1.6; color: var(--gris-pizarra); }
+  .biblioteca-head p strong { color: var(--tinta); font-weight: 600; font-variant-numeric: tabular-nums; }
+  .automation-list { border-top: 1px solid var(--tinta); }
+  .automation-card {
+    display: grid;
+    grid-template-columns: 56px minmax(0, 4fr) minmax(0, 6fr) 32px;
+    gap: 28px;
+    align-items: center;
+    padding: 26px 0;
+    border-bottom: 1px solid var(--linea-clara);
+    text-decoration: none;
+    color: var(--tinta);
+    transition: background 0.3s var(--ease-out), padding 0.3s var(--ease-out);
+  }
+  .automation-card .icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    border: 1.5px solid var(--tinta);
+    display: grid;
+    place-items: center;
+    transition: background 0.3s var(--ease-out), color 0.3s var(--ease-out);
+  }
+  .automation-card h3 { font-family: var(--font-display); font-weight: 600; font-size: 22px; line-height: 1.25; margin: 0; }
+  .automation-card p { margin: 0; line-height: 1.55; color: var(--gris-pizarra); }
+  .automation-card .go { justify-self: end; transition: transform 0.3s var(--ease-out); }
+  .automation-card:hover { color: var(--tinta); background: var(--arena-sombra); padding-left: 16px; padding-right: 16px; }
+  .automation-card:hover .icon { background: var(--tinta); color: var(--arena); }
+  .automation-card:hover .go { transform: translateX(4px); }
+  .automation-card:focus-visible { outline-offset: 2px; }
+  .biblioteca .btn-outline { margin-top: var(--s-lg); }
+
+  /* Preguntas: desplegables nativos, en la misma banda de arena que la biblioteca */
+  .faq { background: var(--arena); padding: 0 var(--gutter) 128px; }
+  .faq-inner {
     max-width: 1100px;
     margin: 0 auto;
-    background: var(--tinta);
-    border-radius: var(--r-panel);
-    padding: 64px 48px;
-    overflow: hidden;
-    text-align: center;
+    padding-top: 96px;
+    border-top: 1px solid var(--linea-clara);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--s-lg) var(--s-xl);
+    align-items: start;
   }
-  .automations-banner::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse 60% 80% at 50% 0%, rgba(242,239,227,0.14) 0%, rgba(242,239,227,0) 70%);
-  }
-  .automations-banner > * { position: relative; }
-  .automations-banner h2 {
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: clamp(28px, 3.4vw, 42px);
-    line-height: 1.18;
-    letter-spacing: -0.02em;
-    text-wrap: balance;
-    color: var(--arena);
-    margin: 0 auto 14px;
-    max-width: 620px;
-  }
-  .automations-banner p {
-    font-size: var(--fs-body);
-    line-height: 1.6;
-    color: var(--arena-apagada);
-    max-width: 560px;
-    margin: 0 auto var(--s-lg);
-  }
-  .automations-stats {
+  @media (min-width: 900px) { .faq-inner { grid-template-columns: 5fr 6fr; } .faq-head { position: sticky; top: 110px; } }
+  .faq-head p { margin: var(--s-md) 0 0; max-width: 420px; line-height: 1.6; color: var(--gris-pizarra); }
+  .faq-head a { font-weight: 600; }
+  .faq-list { border-top: 1px solid var(--tinta); }
+  .faq details { border-bottom: 1px solid var(--linea-clara); }
+  .faq summary {
     display: flex;
-    justify-content: center;
     align-items: center;
-    gap: var(--s-lg);
-    margin: 0 0 36px;
-  }
-  .automations-stats div { display: flex; flex-direction: column; gap: 6px; align-items: center; }
-  .automations-stats div + div { border-left: 1px solid rgba(242,239,227,0.15); padding-left: var(--s-lg); }
-  .automations-stats dd {
-    order: -1;
-    margin: 0;
+    justify-content: space-between;
+    gap: var(--s-sm);
+    min-height: 68px;
+    padding: 14px 0;
+    cursor: pointer;
+    list-style: none;
     font-family: var(--font-display);
-    font-weight: 700;
-    font-size: var(--fs-stat);
-    line-height: 1;
-    color: var(--arena);
-    font-variant-numeric: tabular-nums;
+    font-weight: 600;
+    font-size: var(--fs-title);
+    line-height: 1.35;
   }
-  .automations-stats dt { font-size: var(--fs-label); color: var(--gris-niebla); }
-  @media (max-width: 640px) {
-    .automations { padding-bottom: 70px; }
-    .automations-banner { padding: 48px 24px; border-radius: var(--r-card); }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary svg { flex-shrink: 0; transition: transform 0.35s var(--ease-out); }
+  .faq details[open] summary svg { transform: rotate(45deg); }
+  .faq summary:hover { color: var(--tinta-hover); }
+  .faq summary:focus-visible { outline: 2px solid var(--tinta); outline-offset: 4px; border-radius: 12px; }
+  .faq details p { margin: 0; padding: 0 40px 26px 0; max-width: 600px; line-height: 1.65; color: var(--gris-pizarra); }
+  @media (max-width: 760px) { .faq { padding-bottom: 88px; } .faq-inner { padding-top: 80px; } .faq details p { padding-right: 0; } }
+  @media (max-width: 760px) {
+    .biblioteca { padding-bottom: 88px; }
+    .biblioteca-inner { padding-top: 80px; }
+    .automation-card { grid-template-columns: 48px 1fr 24px; gap: 6px 18px; }
+    .automation-card .icon { width: 48px; height: 48px; grid-row: span 2; align-self: start; }
+    .automation-card p { grid-column: 2; grid-row: 2; }
+    .automation-card .go { grid-column: 3; grid-row: 1; }
+    .automation-card:hover { padding-left: 0; padding-right: 0; }
   }
 
   /* Footer */
-  footer { background: var(--noche); padding: var(--s-section) 8% 48px; color: var(--arena); }
+  footer { position: relative; background: var(--tinta); padding: 128px 8% 48px; color: var(--arena); }
+  footer::before { content: ""; position: absolute; left: 50%; top: 0; width: 1px; height: 72px; background: var(--linea-oscura); }
   .footer-top {
     position: relative;
     display: grid;
@@ -605,7 +761,7 @@
   .footer-brand h2 {
     font-family: var(--font-display);
     font-weight: 700;
-    font-size: clamp(30px, 3vw, 38px);
+    font-size: var(--fs-headline);
     line-height: 1.15;
     letter-spacing: -0.02em;
     color: var(--arena);
@@ -662,7 +818,12 @@
     gap: var(--s-sm);
     justify-content: space-between;
   }
-  .footer-bottom p { font-size: var(--fs-label); color: var(--arena-sombra); margin: 0; opacity: 0.75; }
+  .footer-bottom p { font-size: var(--fs-label); color: var(--arena-sombra); margin: 0; }
+  .footer-bottom nav { display: flex; flex-wrap: wrap; gap: 0 20px; }
+  .footer-bottom nav a { display: inline-flex; align-items: center; min-height: 44px; font-size: var(--fs-label); color: var(--arena-sombra); }
+  .footer-bottom nav a:hover { color: var(--arena); }
+  .footer-bottom nav a:focus-visible { outline-color: var(--arena); }
+  .footer-bottom { align-items: center; }
 
   /* WhatsApp flotante en móvil, solo entre el hero y el pie */
   .wa-float { display: none; }
@@ -675,6 +836,7 @@
       z-index: 40;
       background: var(--tinta);
       color: var(--arena);
+      border: 1px solid rgba(242,239,227,0.45);
       box-shadow: 0 8px 20px rgba(10,10,22,0.3);
       transform: translate(-50%, 140%);
       visibility: hidden;
@@ -684,13 +846,13 @@
     .js .wa-float:hover { color: var(--arena); }
     .js .wa-float.is-visible { transform: translate(-50%, 0); visibility: visible; transition: transform 0.35s var(--ease-out); }
     .js .wa-float:focus-visible { outline-color: var(--tinta); }
+    .js footer { padding-bottom: 104px; }
   }
 
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
     .btn-light:hover { transform: none; }
-    .js .reveal { opacity: 1; }
-    .js .reveal.in { animation: none; }
+    .flow li::after, .node, .flow h3, .faq summary svg, .sector-link svg, .automation-card, .automation-card .go { transition: none; }
     .site-header, .js .wa-float { transition: none; }
     #preloader img { animation: none; }
   }
@@ -712,10 +874,10 @@
     </a>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navLinks">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
-      Menú
+      <span class="nav-toggle-label">Menú</span>
     </button>
     <ul class="nav-links" id="navLinks">
-      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#servicios">Cómo trabajo</a></li>
       <li><a href="#casos">Casos</a></li>
       <li><a href="/automatizaciones">Automatizaciones</a></li>
       <li><a href="/blog">Blog</a></li>
@@ -741,9 +903,9 @@
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5l1.3-3.9A8 8 0 1 1 8.4 18.7L4 19.5Z"/></svg>
         Escríbeme por WhatsApp
       </a>
-      <a class="btn btn-ghost" href="#casos">Ver un caso real</a>
+      <a class="btn btn-ghost" href="#casos">Ver casos reales</a>
     </div>
-    <p class="hero-note">Primera consulta gratis y sin compromiso.</p>
+    <p class="hero-note">Primera consulta gratis y sin compromiso. ¿Prefieres llamar? <a href="tel:+34611459336">611 459 336</a></p>
   </div>
   <button class="video-toggle" type="button" aria-pressed="false" aria-label="Pausar el fondo animado">
     <svg class="icon-pause" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
@@ -751,85 +913,83 @@
   </button>
 </section>
 
-<section class="logos-strip" aria-label="Clientes">
-  <p class="logos-heading">Negocios que ya trabajan con malia</p>
-  <ul class="logos-list">
-    <li><img class="is-wide" src="uploads/motodest-horizontal.webp" alt="MOTODEST" loading="lazy" width="640" height="112"></li>
-    <li><picture><source srcset="uploads/mavimar.webp" type="image/webp"><img src="uploads/mavimar.png" alt="Mavimar Consultores" loading="lazy" width="500" height="282"></picture></li>
-    <li><picture><source srcset="uploads/vidal-malia.webp" type="image/webp"><img src="uploads/vidal-malia.png" alt="Vidal Malia" loading="lazy" width="500" height="373"></picture></li>
-  </ul>
-</section>
+<section class="metodo" id="servicios" aria-labelledby="metodoTitle">
+  <div class="metodo-head">
+    <h2 id="metodoTitle" class="section-title">Lo mismo, a mano, todos los días. Así te lo quito de encima.</h2>
+    <p>Cada automatización se monta en cinco pasos. Tú solo pones el primero.</p>
+  </div>
 
-<section class="problema" id="servicios" aria-labelledby="problemaTitle">
-  <div class="bg"></div>
-  <div class="problema-grid">
-    <div class="divider-h"></div>
-    <div class="divider-v"></div>
+  <ol class="flow" id="flow">
+    <li>
+      <span class="node" aria-hidden="true"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M4 19.5l1.3-3.9A8 8 0 1 1 8.4 18.7L4 19.5Z"/></svg></span>
+      <h3>Me escribes</h3>
+      <p>Por WhatsApp y con tus palabras: qué repites cada día y cuánto te cuesta.</p>
+    </li>
+    <li>
+      <span class="node" aria-hidden="true"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6"/><path d="M15 15l5 5"/></svg></span>
+      <h3>Vemos la tarea</h3>
+      <p>Me enseñas cómo la hacéis hoy. La primera consulta es gratis y sin compromiso.</p>
+    </li>
+    <li>
+      <span class="node" aria-hidden="true"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="3" y="4" width="7" height="6" rx="1.5"/><rect x="14" y="14" width="7" height="6" rx="1.5"/><path d="M10 7h3.5a1.5 1.5 0 0 1 1.5 1.5V14"/></svg></span>
+      <h3>Te dibujo el plan</h3>
+      <p>Te enseño un esquema y un presupuesto cerrado antes de montar nada, para que sepas qué hará y qué no.</p>
+    </li>
+    <li>
+      <span class="node" aria-hidden="true"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M13 3L5 14h6l-1 7 8-11h-6l1-7Z"/></svg></span>
+      <h3>Lo monto y lo probamos</h3>
+      <p>En un servidor privado, y lo probamos con casos reales de tu negocio.</p>
+    </li>
+    <li>
+      <span class="node" aria-hidden="true"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
+      <h3>Funciona solo</h3>
+      <p>Te explico cómo funciona, y yo lo reviso al menos dos días por semana.</p>
+    </li>
+  </ol>
 
-    <div class="problema-cell is-first reveal">
-      <h2 id="problemaTitle">Lo mismo, a mano, todos los días — ¿cuánto tiempo más vas a perder así?</h2>
-    </div>
-
-    <div class="problema-cell">
-      <ul class="advantages-grid">
-        <li class="advantage">
-          <h3>Ahorra tiempo</h3>
-          <p>Menos tareas repetitivas, más horas libres cada semana.</p>
-        </li>
-        <li class="advantage">
-          <h3>Menos errores</h3>
-          <p>Corregir errores también cuesta tiempo. Una automatización no se olvida ni se despista.</p>
-        </li>
-        <li class="advantage">
-          <h3>Trabaja cuando tú no estás</h3>
-          <p>Avisa, rellena y archiva de noche y en festivos, sin que tengas que estar pendiente.</p>
-        </li>
-        <li class="advantage">
-          <h3>Crece sin contratar</h3>
-          <p>Haces más en el mismo tiempo, sin ampliar plantilla.</p>
-        </li>
-      </ul>
-    </div>
-
-    <div class="problema-cell sin-cuotas">
+  <div class="metodo-foot">
+    <div>
       <h3>Sin cuotas por cada tarea</h3>
-      <p>Tus automatizaciones funcionan en un servidor propio, no en una plataforma que te cobra más cuanto más la usas. Pagas el trabajo hecho a medida.</p>
-      <ul class="stack-list" aria-label="Herramientas">
-        <li><span class="chip"><picture><source srcset="uploads/tool-n8n.webp" type="image/webp"><img src="uploads/tool-n8n.png" alt="" loading="lazy" width="120" height="83"></picture></span>n8n</li>
-        <li><span class="chip"><picture><source srcset="uploads/tool-easypanel.webp" type="image/webp"><img src="uploads/tool-easypanel.png" alt="" loading="lazy" width="120" height="120"></picture></span>Easypanel</li>
-        <li><span class="chip"><img src="uploads/tool-hostinger.png" alt="" loading="lazy" width="173" height="95"></span>Hostinger</li>
-      </ul>
+      <p>Tus automatizaciones funcionan en un servidor privado, no en una plataforma que te cobra más cuanto más la usas. Pagas un presupuesto cerrado por el trabajo y una cuota mensual fija por el mantenimiento.</p>
     </div>
-
-    <div class="problema-cell bottom">
-      <p>La mayoría de pymes no tienen un problema de falta de clientes — tienen un problema de falta de tiempo. Escucho cómo trabajas hoy y monto la automatización que se encarga de lo repetitivo.</p>
-      <a class="btn btn-outline" href="#contacto">Cuéntame tu caso →</a>
-    </div>
+    <a class="btn btn-light" href="https://wa.me/34611459336?text=Hola%20Manuel%2C%20tengo%20un%20negocio%20y%20quiero%20saber%20qu%C3%A9%20podr%C3%ADa%20automatizar." target="_blank" rel="noopener">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5l1.3-3.9A8 8 0 1 1 8.4 18.7L4 19.5Z"/></svg>
+      Empieza por el paso 1
+    </a>
   </div>
 </section>
 
-<section class="caso" id="casos" aria-labelledby="casoTitle">
+<section class="casos" id="casos" aria-labelledby="casosTitle">
+  <div class="casos-head">
+    <h2 id="casosTitle" class="section-title">Negocios de aquí que ya trabajan con malia.</h2>
+    <p>Un concesionario de motos, dos asesorías, un mayorista de pescado y una inmobiliaria. Cada uno con su papeleo, cada uno con lo suyo automatizado.</p>
+  </div>
+
   <div class="caso-grid">
     <div class="caso-intro">
-      <img src="uploads/motodest-horizontal.webp" alt="MOTODEST" loading="lazy" width="640" height="112">
-      <h2 id="casoTitle" class="reveal">Un concesionario de motos que ya no rellena papeles a mano.</h2>
+      <img class="caso-logo" src="uploads/motodest-horizontal.webp" alt="" loading="lazy" width="640" height="112">
+      <h3>MOTODEST: un concesionario de motos que ya no rellena papeles a mano.</h3>
       <p>MOTODEST vende y repara motos. Estas automatizaciones funcionan cada día en su negocio, sin que nadie tenga que acordarse de ellas.</p>
     </div>
     <div>
       <ul class="caso-list">
         <li>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h8l4 4v14H6Z"/><path d="M14 3v4h4M9 13h6M9 17h4"/></svg>
           <strong>La carta de entrega se hace sola</strong>
           <span>En cuanto se cierra la venta de una moto, el documento se genera y se archiva.</span>
         </li>
         <li>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h8l4 4v14H6Z"/><path d="M9 15.5l2 2 4-4.5"/></svg>
           <strong>El mandato de representación, listo a tiempo</strong>
           <span>Cuando la venta llega a matriculación, el mandato aparece adjunto en su ficha.</span>
         </li>
         <li>
-          <strong>Cada cliente entra en el CRM sin duplicados</strong>
-          <span>Al comprar una moto o pedir cita en el taller, se da de alta solo y se comprueba por NIF.</span>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="10" cy="8" r="4"/><path d="M3 20c.8-3.5 3.6-5.5 7-5.5 1.6 0 3 .4 4.2 1.2M16 18l2 2 3.5-4"/></svg>
+          <strong>Cada cliente queda fichado una sola vez</strong>
+          <span>Al comprar una moto o pedir cita en el taller, se da de alta solo, y se comprueba por NIF para no repetirlo.</span>
         </li>
         <li>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M10 14a4.5 4.5 0 0 0 6.4 0l3-3a4.5 4.5 0 0 0-6.4-6.4l-1 1"/><path d="M14 10a4.5 4.5 0 0 0-6.4 0l-3 3a4.5 4.5 0 0 0 6.4 6.4l1-1"/></svg>
           <strong>Enlaces de descarga que no caducan</strong>
           <span>Cada documento tiene un enlace fijo, también los del sistema que usaban antes.</span>
         </li>
@@ -837,17 +997,140 @@
       <a class="btn btn-outline" href="/automatizaciones/motodest/">Ver el caso MOTODEST completo →</a>
     </div>
   </div>
+
+  <div class="clientes">
+    <h3>Y otros negocios de la zona.</h3>
+    <ul class="cliente-list">
+      <li>
+        <div class="cliente-name">
+          <strong>Mavimar Consultores y Vidal Malia</strong>
+          <span>Consultoría y asesoría</span>
+        </div>
+        <ul class="cliente-tasks">
+          <li><b>Contabilidad.</b> Las facturas y las nóminas se leen solas, y los asientos y los impuestos del trimestre quedan preparados para revisarlos.</li>
+          <li><b>Administración de fincas.</b> Los saldos y los extractos de cada propietario salen de la contabilidad, sin pasarlos a mano.</li>
+          <li><b>Datos personales a salvo.</b> Un programa borra nombres, DNI y direcciones de un PDF antes de usarlo con IA, sin que el documento salga del ordenador.</li>
+        </ul>
+      </li>
+      <li>
+        <div class="cliente-name">
+          <strong>Pescados Rosados</strong>
+          <span>Mayorista de pescado, Barbate</span>
+        </div>
+        <ul class="cliente-tasks">
+          <li><b>Facturas de compra.</b> Le llegan unas 35 al día por correo. Cada una se lee sola y queda lista para su programa de contabilidad: la empresa solo la revisa y la aprueba.</li>
+        </ul>
+      </li>
+      <li>
+        <div class="cliente-name">
+          <strong>BarbateHomes</strong>
+          <span>Inmobiliaria, Barbate</span>
+          <a href="https://barbatehomes.es" target="_blank" rel="noopener">barbatehomes.es</a>
+        </div>
+        <ul class="cliente-tasks">
+          <li><b>Su web y su catálogo.</b> Pisos y casas en venta con su propia ficha, y un panel para que la agencia publique o quite un inmueble sin tocar código.</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
 </section>
 
-<section class="automations" aria-labelledby="bibliotecaTitle">
-  <div class="automations-banner">
-    <h2 id="bibliotecaTitle">Esto no es una demo — esto ya está funcionando.</h2>
-    <p>Documentos que se rellenan solos, un blog que se escribe casi sin mí, un vigilante que no duerme. Entra en la biblioteca y mira el flujo completo de cada una.</p>
-    <dl class="automations-stats">
-      <div><dt>automatizaciones</dt><dd>11</dd></div>
-      <div><dt>proyectos</dt><dd>3</dd></div>
-    </dl>
-    <a class="btn btn-light" href="/automatizaciones">Ver la biblioteca completa →</a>
+<section class="sectores" id="tu-negocio" aria-labelledby="sectoresTitle">
+  <div class="sectores-head">
+    <h2 id="sectoresTitle" class="section-title">¿Y en tu negocio? Esto es lo que suele automatizarse.</h2>
+    <p>Son ejemplos para hacerte una idea, no casos cerrados. Elige el tuyo y escríbeme: el mensaje ya va escrito.</p>
+  </div>
+  <div class="sector-grid">
+    <div class="sector">
+      <h3>Bar o restaurante</h3>
+      <ul>
+        <li>Las reservas que llegan por WhatsApp quedan apuntadas en un solo sitio.</li>
+        <li>Las facturas de proveedores se leen solas y quedan listas para tu gestoría.</li>
+        <li>El pedido semanal a proveedores sale preparado para que solo lo revises.</li>
+      </ul>
+      <a class="sector-link" href="https://wa.me/34611459336?text=Hola%20Manuel%2C%20tengo%20un%20bar%20o%20restaurante%20y%20quiero%20saber%20qu%C3%A9%20podr%C3%ADa%20automatizar." target="_blank" rel="noopener">Tengo un bar o restaurante <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+    <div class="sector">
+      <h3>Tienda o comercio</h3>
+      <ul>
+        <li>Cada cliente nuevo queda fichado una sola vez, sin copiar datos.</li>
+        <li>Los documentos de cada venta se generan y se archivan solos.</li>
+        <li>Las preguntas de siempre por WhatsApp o Instagram se responden también fuera de horario.</li>
+      </ul>
+      <a class="sector-link" href="https://wa.me/34611459336?text=Hola%20Manuel%2C%20tengo%20una%20tienda%20y%20quiero%20saber%20qu%C3%A9%20podr%C3%ADa%20automatizar." target="_blank" rel="noopener">Tengo una tienda <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+    <div class="sector">
+      <h3>Asesoría o despacho</h3>
+      <ul>
+        <li>Facturas y nóminas leídas, con los asientos preparados para revisar.</li>
+        <li>Los datos personales se borran de un documento antes de usarlo con IA.</li>
+        <li>Cada cliente recibe el aviso de los plazos y los papeles que faltan.</li>
+      </ul>
+      <a class="sector-link" href="https://wa.me/34611459336?text=Hola%20Manuel%2C%20tengo%20una%20asesor%C3%ADa%20o%20despacho%20y%20quiero%20saber%20qu%C3%A9%20podr%C3%ADa%20automatizar." target="_blank" rel="noopener">Tengo una asesoría <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<section class="biblioteca" id="automatizaciones-destacadas" aria-labelledby="bibliotecaTitle">
+  <div class="biblioteca-inner">
+    <div class="biblioteca-head">
+      <h2 id="bibliotecaTitle" class="section-title">Esto no es una demo: ya está funcionando.</h2>
+      <p>La biblioteca reúne <strong>11 automatizaciones</strong> de <strong>3 proyectos</strong>. Entra en cualquiera y mira su flujo completo, paso a paso.</p>
+    </div>
+    <div class="automation-list">
+      <!-- AUTOMATION_CARDS_START -->
+      <a class="automation-card" href="/automatizaciones/motodest">
+        <span class="icon" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M6 3h8l4 4v14H6Z"/><path d="M14 3v4h4M9 13h6M9 17h4"/></svg></span>
+        <h3>MOTODEST</h3>
+        <p>Un concesionario de motos que dejó de perseguir papeleo: los documentos y la ficha de cada cliente se rellenan solos.</p>
+        <svg class="go" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a class="automation-card" href="/automatizaciones/blog-malia">
+        <span class="icon" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M4 20h4L19 9l-4-4L4 16Z"/><path d="M13 7l4 4"/></svg></span>
+        <h3>Blog de malia</h3>
+        <p>El blog que escribimos sin escribir: investiga, redacta y se publica solo, y solo avisa si algo no le convence.</p>
+        <svg class="go" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a class="automation-card" href="/automatizaciones/vigilancia-marketplace">
+        <span class="icon" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M2 12s3.6-6.5 10-6.5S22 12 22 12s-3.6 6.5-10 6.5S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg></span>
+        <h3>Vigilancia de marketplace</h3>
+        <p>Un vigilante que no parpadea: detecta lo que se pone de moda en un marketplace y avisa al segundo.</p>
+        <svg class="go" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <!-- AUTOMATION_CARDS_END -->
+    </div>
+    <a class="btn btn-outline" href="/automatizaciones">Ver la biblioteca completa →</a>
+  </div>
+</section>
+
+<section class="faq" id="preguntas" aria-labelledby="faqTitle">
+  <div class="faq-inner">
+    <div class="faq-head">
+      <h2 id="faqTitle" class="section-title">Antes de escribirme.</h2>
+      <p>Lo que casi todo el mundo pregunta primero. Si te queda alguna duda, llámame al <a href="tel:+34611459336">611 459 336</a>.</p>
+    </div>
+    <div class="faq-list">
+      <details>
+        <summary>¿Cuánto cuesta?<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary>
+        <p>Antes de empezar te doy un presupuesto cerrado, así sabes el precio desde el principio. Después hay una cuota mensual fija por el mantenimiento. Lo que no pagas son licencias que suben cuantas más tareas haces.</p>
+      </details>
+      <details>
+        <summary>¿Cuánto se tarda en tenerlo funcionando?<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary>
+        <p>Depende de la carga: no es lo mismo una tarea sencilla que una que toca varios programas. Lo vemos en la primera consulta, antes de que decidas nada.</p>
+      </details>
+      <details>
+        <summary>¿Y si algo deja de funcionar?<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary>
+        <p>El mantenimiento es semanal: reviso tus automatizaciones al menos dos días por semana. Y si ves algo raro, me escribes a mí directamente, sin centralitas.</p>
+      </details>
+      <details>
+        <summary>¿Dónde quedan los datos de mi negocio?<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary>
+        <p>En un servidor privado (VPS) contratado en Hostinger, el mismo donde funcionan tus automatizaciones. No es una plataforma compartida con otras empresas.</p>
+      </details>
+      <details>
+        <summary>¿Tengo que saber de tecnología?<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary>
+        <p>No. Me cuentas con tus palabras qué haces a mano cada día, y del resto me encargo yo.</p>
+      </details>
+    </div>
   </div>
 </section>
 
@@ -871,7 +1154,7 @@
     <div class="footer-divider"></div>
     <div class="footer-contact">
       <h3>Contacto</h3>
-      <a href="https://wa.me/34611459336" target="_blank" rel="noopener">
+      <a href="https://wa.me/34611459336?text=Hola%20Manuel%2C%20tengo%20un%20negocio%20y%20quiero%20saber%20qu%C3%A9%20podr%C3%ADa%20automatizar." target="_blank" rel="noopener">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5l1.3-3.9A8 8 0 1 1 8.4 18.7L4 19.5Z"/></svg>
         WhatsApp
       </a>
@@ -890,8 +1173,11 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <p>Malia — Automatización con IA para pymes · Barbate, Cádiz</p>
-    <p>© 2026 Malia</p>
+    <p>© 2026 Malia · Automatización con IA para pymes · Barbate, Cádiz</p>
+    <nav aria-label="Legal">
+      <a href="/aviso-legal/">Aviso legal</a>
+      <a href="/privacidad/">Privacidad</a>
+    </nav>
   </div>
 </footer>
 
@@ -912,53 +1198,64 @@
     window.setTimeout(function () { pre.classList.add('done'); }, 900);
   })();
 
-  // Navbar: transparente sobre el hero; fuera de él, sólida. Se esconde al bajar y vuelve al subir.
+  // Navbar: transparente sobre el hero; fuera de él, sólida. En móvil se esconde al bajar y vuelve al subir
+  // (allí está el WhatsApp flotante); en escritorio se queda siempre a la vista con su botón de WhatsApp.
   (function () {
     var header = document.getElementById('siteHeader');
     var toggle = header.querySelector('.nav-toggle');
+    var label = toggle.querySelector('.nav-toggle-label');
+    var mobile = window.matchMedia('(max-width: 900px)');
     var lastY = window.scrollY;
 
+    function isOpen() { return header.classList.contains('menu-open'); }
+    function closeMenu() {
+      header.classList.remove('menu-open');
+      toggle.setAttribute('aria-expanded', 'false');
+      label.textContent = 'Menú';
+    }
     function update() {
       var y = window.scrollY;
-      var menuOpen = header.classList.contains('menu-open');
+      if (isOpen() && Math.abs(y - lastY) > 24) closeMenu();
       header.classList.toggle('is-solid', y > 40);
-      header.classList.toggle('nav-hidden', !menuOpen && y > 200 && y > lastY);
+      header.classList.toggle('nav-hidden', mobile.matches && !isOpen() && y > 200 && y > lastY);
       lastY = y;
     }
     window.addEventListener('scroll', update, { passive: true });
     update();
 
-    function closeMenu() {
-      header.classList.remove('menu-open');
-      toggle.setAttribute('aria-expanded', 'false');
-    }
     toggle.addEventListener('click', function () {
-      var open = !header.classList.contains('menu-open');
+      var open = !isOpen();
       header.classList.toggle('menu-open', open);
       toggle.setAttribute('aria-expanded', String(open));
+      label.textContent = open ? 'Cerrar' : 'Menú';
+      lastY = window.scrollY;
     });
     header.querySelectorAll('.nav-links a').forEach(function (a) { a.addEventListener('click', closeMenu); });
+    document.addEventListener('click', function (e) { if (isOpen() && !header.contains(e.target)) closeMenu(); });
     document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && header.classList.contains('menu-open')) { closeMenu(); toggle.focus(); }
+      if (e.key === 'Escape' && isOpen()) { closeMenu(); toggle.focus(); }
     });
   })();
 
-  // Revelado de titulares al entrar en pantalla.
+  // Navegación: marca la sección en la que estás.
   (function () {
-    var targets = document.querySelectorAll('.reveal');
-    if (reduceMotion || !('IntersectionObserver' in window)) {
-      targets.forEach(function (t) { t.classList.add('in'); });
-      return;
-    }
+    if (!('IntersectionObserver' in window)) return;
+    var links = document.querySelectorAll('.nav-links a[href^="#"]');
+    var map = {};
+    links.forEach(function (a) { var s = document.querySelector(a.getAttribute('href')); if (s) map[s.id] = a; });
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
+        var a = map[entry.target.id];
+        if (!a) return;
         if (entry.isIntersecting) {
-          entry.target.classList.add('in');
-          io.unobserve(entry.target);
+          links.forEach(function (l) { l.removeAttribute('aria-current'); });
+          a.setAttribute('aria-current', 'location');
+        } else if (a.hasAttribute('aria-current')) {
+          a.removeAttribute('aria-current');
         }
       });
-    }, { threshold: 0.2 });
-    targets.forEach(function (t) { io.observe(t); });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    Object.keys(map).forEach(function (id) { io.observe(document.getElementById(id)); });
   })();
 
   // Vídeo del hero: versión ligera en móvil, nada con movimiento reducido o ahorro de datos, y botón de pausa.
@@ -996,6 +1293,21 @@
         if (entries[0].isIntersecting) { v.play().catch(function () {}); } else { v.pause(); }
       }).observe(document.getElementById('hero'));
     }
+  })();
+
+  // Flujo de Cómo trabajo: los pasos se encienden en secuencia la primera vez que se ve.
+  (function () {
+    var flow = document.getElementById('flow');
+    if (!flow) return;
+    var steps = flow.querySelectorAll('li');
+    function lightAll() { steps.forEach(function (li) { li.classList.add('is-lit'); }); }
+    if (reduceMotion || !('IntersectionObserver' in window)) { lightAll(); return; }
+    var io = new IntersectionObserver(function (entries) {
+      if (!entries[0].isIntersecting) return;
+      io.disconnect();
+      steps.forEach(function (li, i) { window.setTimeout(function () { li.classList.add('is-lit'); }, 180 + i * 420); });
+    }, { threshold: 0.45 });
+    io.observe(flow);
   })();
 
   // WhatsApp flotante en móvil: aparece tras el hero y se esconde al llegar al pie.
