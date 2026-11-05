@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-05T12:00:00Z",
+  "title": "Design System: malia",
+  "extensions": {
+    "colorMeta": {
+      "arena": { "role": "neutral", "displayName": "Arena", "canonical": "#F2EFE3", "tonalRamp": ["#2B2820", "#48443A", "#6A6556", "#8F8977", "#B3AD99", "#D2CCB8", "#E9E5D6", "#F7F5EE"] },
+      "papel-tarjeta": { "role": "neutral", "displayName": "Papel Tarjeta", "canonical": "#FAF8F1" },
+      "blanco-chip": { "role": "neutral", "displayName": "Blanco Chip", "canonical": "#FFFFFF" },
+      "arena-sombra": { "role": "neutral", "displayName": "Arena Sombra", "canonical": "#E4DFCC" },
+      "arena-apagada": { "role": "neutral", "displayName": "Arena Apagada", "canonical": "#D8D3C2" },
+      "tinta-nocturna": { "role": "primary", "displayName": "Tinta Nocturna", "canonical": "#13141F", "tonalRamp": ["#0A0A16", "#13141F", "#2A2C3D", "#44465A", "#62647A", "#8A8C9E", "#B6B7C4", "#E2E3EA"] },
+      "tinta-hover": { "role": "primary", "displayName": "Tinta Hover", "canonical": "#2A2C3D" },
+      "noche-profunda": { "role": "primary", "displayName": "Noche Profunda", "canonical": "#0A0A16" },
+      "gris-pizarra": { "role": "neutral", "displayName": "Gris Pizarra", "canonical": "#5C5E6B" },
+      "gris-texto": { "role": "neutral", "displayName": "Gris Texto", "canonical": "#6B6D7A" },
+      "gris-humo": { "role": "neutral", "displayName": "Gris Humo", "canonical": "#8A8C9E" },
+      "gris-niebla": { "role": "neutral", "displayName": "Gris Niebla", "canonical": "#9A9CA8" }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "H1 del hero, uno por página." },
+      "headline": { "displayName": "Headline", "purpose": "H2 de sección." },
+      "title": { "displayName": "Title", "purpose": "H3 de tarjetas." },
+      "stat": { "displayName": "Stat", "purpose": "Cifras del panel de la biblioteca." },
+      "body": { "displayName": "Body", "purpose": "Párrafos en medidas cortas." },
+      "body-lead": { "displayName": "Body Lead", "purpose": "Subtítulo del hero." },
+      "label": { "displayName": "Label", "purpose": "Kickers y rótulos en mayúsculas." }
+    },
+    "shadows": [
+      { "name": "reposo-tarjeta", "value": "0 2px 10px rgba(19,20,31,0.05)", "purpose": "Tarjetas de ventajas sobre arena." },
+      { "name": "chip", "value": "0 2px 6px rgba(19,20,31,0.1)", "purpose": "Cuadros de logo de herramientas." },
+      { "name": "flotante", "value": "0 8px 20px rgba(10,10,22,0.3)", "purpose": "Hover del botón principal (elevación de 2px) sobre fondo oscuro." }
+    ],
+    "motion": [
+      { "name": "reveal", "value": "fadeUp 0.9s ease (translateY 28px → 0, opacity 0 → 1)", "purpose": "Titulares al entrar en pantalla." },
+      { "name": "nav-hide", "value": "transform 0.35s ease", "purpose": "Ocultar la navbar al hacer scroll." },
+      { "name": "preloader", "value": "logoIn 1.1s ease; fade 0.6s ease", "purpose": "Entrada del avatar y salida del preloader." }
+    ],
+    "breakpoints": [
+      { "name": "xs", "value": "440px" },
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "760px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Botón principal",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Acción principal en píldora sobre fondos oscuros.",
+      "html": "<div class=\"ds-dark\"><a class=\"ds-btn-light\" href=\"#\">Agenda una llamada</a></div>",
+      "css": ".ds-dark { background: #13141F; padding: 32px; } .ds-btn-light { display: inline-block; background: #F2EFE3; color: #13141F; text-decoration: none; font-family: Inter, sans-serif; font-weight: 600; font-size: 16px; padding: 16px 32px; border-radius: 100px; transition: transform 0.18s ease, box-shadow 0.18s ease; } .ds-btn-light:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(10,10,22,0.3); } .ds-btn-light:focus-visible { outline: 2px solid #F2EFE3; outline-offset: 3px; }"
+    },
+    {
+      "name": "Botón outline",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Acción secundaria sobre arena, con flecha.",
+      "html": "<a class=\"ds-btn-outline\" href=\"#\">Cuéntanos tu caso →</a>",
+      "css": ".ds-btn-outline { display: inline-flex; align-items: center; gap: 8px; color: #13141F; text-decoration: none; font-family: Inter, sans-serif; font-size: 14px; font-weight: 600; border: 1px solid rgba(19,20,31,0.3); border-radius: 100px; padding: 12px 22px; transition: border-color 0.25s ease, background 0.25s ease; } .ds-btn-outline:hover { border-color: #13141F; background: #13141F; color: #F2EFE3; } .ds-btn-outline:focus-visible { outline: 2px solid #13141F; outline-offset: 3px; }"
+    },
+    {
+      "name": "Tarjeta de ventaja",
+      "kind": "card",
+      "refersTo": "card-ventaja",
+      "description": "Tarjeta numerada sobre arena.",
+      "html": "<div class=\"ds-advantage\"><span class=\"ds-advantage-num\">01</span><h3>Ahorra tiempo</h3><p>Menos tareas repetitivas, más horas libres cada semana.</p></div>",
+      "css": ".ds-advantage { background: #FAF8F1; border: 1px solid rgba(19,20,31,0.06); border-radius: 16px; padding: 20px; box-shadow: 0 2px 10px rgba(19,20,31,0.05); max-width: 260px; } .ds-advantage-num { display: block; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 13px; color: #5C5E6B; margin-bottom: 8px; } .ds-advantage h3 { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 17px; color: #13141F; margin: 0 0 6px; } .ds-advantage p { font-family: Inter, sans-serif; font-size: 13px; line-height: 1.45; color: #13141F; opacity: 0.7; margin: 0; }"
+    },
+    {
+      "name": "Chip de herramienta",
+      "kind": "chip",
+      "refersTo": "chip-herramienta",
+      "description": "Logo de herramienta en cuadro blanco con su nombre.",
+      "html": "<div class=\"ds-tool\"><span class=\"ds-chip\"><svg width=\"30\" height=\"30\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#13141F\" stroke-width=\"1.6\"><circle cx=\"6\" cy=\"12\" r=\"3\"/><circle cx=\"18\" cy=\"6\" r=\"3\"/><circle cx=\"18\" cy=\"18\" r=\"3\"/><path d=\"M9 12h3l3-6M12 12l3 6\"/></svg></span><span class=\"ds-tool-name\">n8n</span></div>",
+      "css": ".ds-tool { display: flex; align-items: center; gap: 18px; } .ds-chip { display: flex; align-items: center; justify-content: center; width: 60px; height: 60px; background: #FFFFFF; border-radius: 14px; box-shadow: 0 2px 6px rgba(19,20,31,0.1); } .ds-tool-name { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 30px; color: #13141F; }"
+    },
+    {
+      "name": "Navegación",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Navbar transparente sobre el hero oscuro.",
+      "html": "<nav class=\"ds-nav\"><span class=\"ds-brand\">malia</span><div class=\"ds-links\"><a href=\"#\">Servicios</a><a href=\"#\">Casos</a><a href=\"#\">Automatizaciones</a><a href=\"#\">Blog</a><a href=\"#\">Contacto</a></div></nav>",
+      "css": ".ds-nav { display: flex; align-items: center; justify-content: space-between; padding: 22px 5%; background: #13141F; } .ds-brand { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 24px; color: #F2EFE3; } .ds-links { display: flex; gap: 28px; } .ds-links a { text-decoration: none; font-family: Inter, sans-serif; font-size: 13px; font-weight: 500; color: #F2EFE3; transition: opacity 0.25s ease; } .ds-links a:hover { opacity: 0.7; } .ds-links a:focus-visible { outline: 2px solid #F2EFE3; outline-offset: 3px; }"
+    },
+    {
+      "name": "Panel oscuro",
+      "kind": "card",
+      "refersTo": "panel-oscuro",
+      "description": "Bloque de tinta con brillo superior, cifras y acción.",
+      "html": "<div class=\"ds-panel\"><span class=\"ds-kicker\">Automatizaciones reales</span><h2>Esto no es una demo — esto ya está funcionando.</h2><div class=\"ds-stats\"><div><strong>11</strong><span>Automatizaciones</span></div><i></i><div><strong>3</strong><span>Proyectos</span></div></div></div>",
+      "css": ".ds-panel { position: relative; background: #13141F radial-gradient(ellipse 60% 80% at 50% 0%, rgba(242,239,227,0.14) 0%, rgba(242,239,227,0) 70%); border-radius: 28px; padding: 64px 48px; text-align: center; } .ds-kicker { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 13px; letter-spacing: 0.05em; text-transform: uppercase; color: #9A9CA8; } .ds-panel h2 { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: clamp(28px, 3.4vw, 42px); line-height: 1.18; letter-spacing: -0.02em; color: #F2EFE3; margin: 10px auto 28px; max-width: 620px; } .ds-stats { display: flex; justify-content: center; align-items: center; gap: 32px; } .ds-stats div { display: flex; flex-direction: column; gap: 4px; } .ds-stats i { width: 1px; height: 36px; background: rgba(242,239,227,0.15); } .ds-stats strong { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 30px; line-height: 1; color: #F2EFE3; } .ds-stats span { font-family: Inter, sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: #9A9CA8; }"
+    },
+    {
+      "name": "Retícula en cruz",
+      "kind": "custom",
+      "refersTo": "crosshair-grid",
+      "description": "Firma: líneas de 1px al 50% que ordenan la sección en cuadrantes.",
+      "html": "<div class=\"ds-cross\"><i class=\"h\"></i><i class=\"v\"></i><p>Lo mismo, a mano, todos los días.</p></div>",
+      "css": ".ds-cross { position: relative; height: 240px; background: #F2EFE3; padding: 32px; } .ds-cross .h { position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: rgba(19,20,31,0.12); } .ds-cross .v { position: absolute; top: 0; bottom: 0; left: 50%; width: 1px; background: rgba(19,20,31,0.12); } .ds-cross p { position: relative; max-width: 45%; margin: 0; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 22px; line-height: 1.15; letter-spacing: -0.02em; color: #13141F; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "El Taller a la Vista",
+    "overview": "malia es el taller de un artesano que deja la puerta abierta: se ve cómo se trabaja, con qué herramientas y para quién. El sistema es sobrio a propósito. Hay dos tintas, un papel cálido y una tinta nocturna, y dos tipos de letra. La confianza no la ganan los efectos: la ganan la claridad, el espacio y lo concreto (clientes con nombre, herramientas reales, automatizaciones que funcionan).\n\nLa página alterna dos climas: bandas nocturnas (hero con vídeo, panel de la biblioteca, footer) y bandas de arena donde vive el contenido. Dentro de ese ritmo, la densidad es baja. Hay titulares grandes y apretados en Space Grotesk, texto corto en Inter, mucho aire y una retícula de líneas finas que divide las secciones en cuadrantes, como las marcas de trazado de un banco de trabajo.\n\nEl tono es cercano y tranquilo: formas redondeadas, botones en píldora, tarjetas apenas elevadas y movimientos lentos que acompañan sin llamar la atención.",
+    "keyCharacteristics": [
+      "Dos tintas (arena y tinta nocturna) sin color de acento cromático.",
+      "Titulares en Space Grotesk 700 con tracking negativo; cuerpo en Inter.",
+      "Retícula en cruz de líneas de 1px como firma visual.",
+      "Bandas oscuras y claras alternas; el oscuro enmarca y el claro explica.",
+      "Formas suaves: píldoras para acciones, 16px para tarjetas.",
+      "Movimiento pausado: fundido hacia arriba de 0.9s y vídeo al 75% de velocidad."
+    ],
+    "rules": [
+      { "name": "The Two Inks Rule", "body": "Toda la página se resuelve con arena y tinta nocturna. Los grises son matices de esas dos tintas, no colores nuevos. Un acento cromático solo entra con una decisión explícita, nunca como adorno.", "section": "colors" },
+      { "name": "The Tinted Transparency Rule", "body": "Las líneas, bordes, sombras y overlays usan siempre la tinta de la marca con alfa (rgba(19,20,31,x) sobre claro y rgba(242,239,227,x) sobre oscuro), nunca negro ni blanco puros.", "section": "colors" },
+      { "name": "The Tight Headline Rule", "body": "Todo titular en Space Grotesk 700 lleva un tracking de -0.02em y un line-height de 1.15–1.18. Los titulares no se escriben en Inter.", "section": "typography" },
+      { "name": "The Barely-There Rule", "body": "Ninguna sombra en reposo supera un 10% de opacidad. Si una superficie necesita separarse más, cambia de tono (papel tarjeta o blanco), no de sombra.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do construir cada pantalla nueva con arena (#F2EFE3) como fondo y tinta nocturna (#13141F) como texto y banda oscura.",
+      "Do usar Space Grotesk 700 con tracking de -0.02em en todo titular, e Inter en todo párrafo.",
+      "Do usar píldoras de 100px para las acciones y radios de 16px para las tarjetas.",
+      "Do tintar líneas, bordes y overlays con la tinta de la marca en alfa.",
+      "Do mantener los párrafos en medidas cortas (420–560px) y los titulares por debajo de ~720px.",
+      "Do repetir la retícula en cruz de 1px cuando una sección se organice en cuadrantes."
+    ],
+    "donts": [
+      "Don't introducir un color de acento cromático (ni azules «tech» ni degradados de IA) sin una decisión explícita: el sistema es de dos tintas.",
+      "Don't usar negro (#000) ni blanco puros para texto o fondos; lo más oscuro es noche profunda (#0A0A16) y el blanco queda reservado a los chips de herramientas.",
+      "Don't usar sombras de más del 10% de opacidad en reposo ni elevar tarjetas para darles importancia.",
+      "Don't usar esquinas vivas en botones o tarjetas.",
+      "Don't acelerar el movimiento: las transiciones van entre 0.35s y 1.1s con ease, nunca con rebotes."
+    ]
+  }
+}

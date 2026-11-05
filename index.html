@@ -4,22 +4,24 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>malia — Automatización con IA para pymes | Barbate, Cádiz</title>
-<meta name="description" content="Automatiza lo repetitivo con automatizaciones de IA a medida. Diseñamos flujos para comercios, hostelería y servicios en Barbate, Cádiz.">
+<meta name="description" content="Automatiza lo repetitivo con automatizaciones de IA a medida para comercios, hostelería y servicios en Barbate, Cádiz. Primera consulta gratis.">
 <link rel="canonical" href="https://malia-ai-labs.com/">
 
-<link rel="icon" type="image/png" href="uploads/avatar-round-6b2aa1c8.png">
+<link rel="icon" type="image/png" sizes="64x64" href="uploads/favicon-64.png">
+<link rel="apple-touch-icon" href="uploads/apple-touch-icon.png">
+<meta name="theme-color" content="#13141F">
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="malia">
 <meta property="og:title" content="malia — Automatización con IA para pymes | Barbate, Cádiz">
-<meta property="og:description" content="Automatiza lo repetitivo con automatizaciones de IA a medida. Diseñamos flujos para comercios, hostelería y servicios en Barbate, Cádiz.">
+<meta property="og:description" content="Automatiza lo repetitivo con automatizaciones de IA a medida para comercios, hostelería y servicios en Barbate, Cádiz. Primera consulta gratis.">
 <meta property="og:url" content="https://malia-ai-labs.com/">
 <meta property="og:image" content="https://malia-ai-labs.com/uploads/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="malia — Automatización con IA para pymes | Barbate, Cádiz">
-<meta name="twitter:description" content="Automatiza lo repetitivo con automatizaciones de IA a medida. Diseñamos flujos para comercios, hostelería y servicios en Barbate, Cádiz.">
+<meta name="twitter:description" content="Automatiza lo repetitivo con automatizaciones de IA a medida para comercios, hostelería y servicios en Barbate, Cádiz. Primera consulta gratis.">
 <meta name="twitter:image" content="https://malia-ai-labs.com/uploads/og-image.jpg">
 
 <script type="application/ld+json">
@@ -43,23 +45,86 @@
 }
 </script>
 
+<script>document.documentElement.classList.add('js');</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root { color-scheme: light; }
+  :root {
+    color-scheme: light;
+    /* Dos tintas (DESIGN.md) */
+    --arena: #F2EFE3;
+    --papel-tarjeta: #FAF8F1;
+    --blanco-chip: #FFFFFF;
+    --arena-sombra: #E4DFCC;
+    --arena-apagada: #D8D3C2;
+    --tinta: #13141F;
+    --tinta-hover: #2A2C3D;
+    --noche: #0A0A16;
+    --gris-pizarra: #5C5E6B;
+    --gris-humo: #8A8C9E;
+    --gris-niebla: #9A9CA8;
+    --linea-clara: rgba(19,20,31,0.12);
+    --linea-oscura: rgba(242,239,227,0.18);
+
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --fs-label: 13px;
+    --fs-body: 15px;
+    --fs-title: 17px;
+    --fs-stat: 30px;
+    --fs-lead: clamp(16px, 1.6vw, 20px);
+    --fs-headline: clamp(30px, 3.6vw, 48px);
+    --fs-display: clamp(30px, 5vw, 64px);
+
+    --r-chip: 14px;
+    --r-card: 16px;
+    --r-panel: 28px;
+    --r-pill: 100px;
+
+    --s-xs: 8px;
+    --s-sm: 16px;
+    --s-md: 20px;
+    --s-lg: 32px;
+    --s-xl: 60px;
+    --s-section: 100px;
+    --gutter: 6%;
+
+    --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+    --logo-h: 64px;
+  }
   * { box-sizing: border-box; }
   picture { display: contents; }
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; scroll-padding-top: 96px; }
   body {
     margin: 0;
-    background: #F2EFE3;
-    font-family: 'Inter', sans-serif;
+    background: var(--arena);
+    color: var(--tinta);
+    font-family: var(--font-body);
+    font-size: var(--fs-body);
     width: 100%;
     overflow-x: hidden;
   }
-  a { color: #13141F; }
-  a:hover { color: #2A2C3D; }
+  ::selection { background: var(--tinta); color: var(--arena); }
+  a { color: var(--tinta); }
+  a:hover { color: var(--tinta-hover); }
+  a:focus-visible, button:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+  img, video { display: block; }
+
+  .skip-link {
+    position: absolute;
+    left: 16px;
+    top: -60px;
+    z-index: 300;
+    background: var(--arena);
+    color: var(--tinta);
+    padding: 12px 20px;
+    border-radius: var(--r-pill);
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .skip-link:focus { top: 16px; }
 
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(28px); }
@@ -70,64 +135,161 @@
     to { opacity: 1; transform: scale(1); }
   }
 
-  /* Preloader */
-  #preloader {
+  /* Preloader: breve, fuera del árbol de accesibilidad y solo con JS */
+  #preloader { display: none; }
+  .js #preloader {
     position: fixed;
     inset: 0;
     z-index: 200;
-    background: #F6F5EA;
+    background: #F6F5EA; /* el mismo papel que lleva el PNG del logo, para que no se vea su recuadro */
     display: flex;
     align-items: center;
     justify-content: center;
-    opacity: 1;
-    transition: opacity 0.6s ease;
+    transition: opacity 0.6s ease, visibility 0s linear 0.6s;
   }
-  #preloader.done {
-    opacity: 0;
-    pointer-events: none;
-  }
+  #preloader.done { opacity: 0; visibility: hidden; pointer-events: none; }
   #preloader img {
-    height: 400px;
+    height: min(320px, 60vw);
     width: auto;
-    max-width: 80vw;
-    animation: logoIn 1.1s ease forwards;
+    animation: logoIn 1.1s var(--ease-out) forwards;
   }
 
+  /* Botones */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 48px;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1.2;
+    text-decoration: none;
+    border-radius: var(--r-pill);
+    padding: 14px 28px;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+  }
+  .btn svg { flex-shrink: 0; }
+  .btn-light { background: var(--arena); color: var(--tinta); }
+  .btn-light:hover {
+    color: var(--tinta);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(10,10,22,0.3);
+  }
+  .btn-light:focus-visible { outline-color: var(--arena); }
+  .btn-ghost {
+    color: var(--arena);
+    border: 1px solid rgba(242,239,227,0.45);
+    background: transparent;
+  }
+  .btn-ghost:hover { background: var(--arena); color: var(--tinta); border-color: var(--arena); }
+  .btn-ghost:focus-visible { outline-color: var(--arena); }
+  .btn-outline {
+    color: var(--tinta);
+    font-size: var(--fs-body);
+    border: 1px solid rgba(19,20,31,0.45);
+    padding: 12px 22px;
+    min-height: 44px;
+    width: fit-content;
+  }
+  .btn-outline:hover { background: var(--tinta); color: var(--arena); border-color: var(--tinta); }
+
   /* Navbar */
-  .navbar {
+  .site-header {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 50;
+    transition: transform 0.35s ease, background 0.35s ease;
+  }
+  .site-header.is-solid { background: var(--tinta); }
+  .site-header.nav-hidden { transform: translateY(-110%); }
+  .navbar {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 22px 5%;
-    background: transparent;
-    transform: translateY(0);
-    transition: transform 0.35s ease;
+    gap: var(--s-sm);
+    padding: 12px 5%;
   }
-  .navbar.nav-hidden { transform: translateY(-120%); }
-  .navbar .brand { display: flex; align-items: center; min-width: 0; flex-shrink: 0; }
-  .navbar .brand img { height: 80px; width: auto; }
-  .navbar .brand img.wordmark { margin-left: -100px; }
-  .nav-links { display: flex; flex-wrap: wrap; justify-content: flex-end; row-gap: 6px; gap: 28px; align-items: center; min-width: 0; }
+  .brand { display: flex; align-items: center; flex-shrink: 0; text-decoration: none; }
+  .brand img { height: var(--logo-h); width: auto; }
+  /* El wordmark lleva aire transparente a la izquierda: se compensa en proporción a su altura */
+  .brand img.wordmark, .footer-logo img.wordmark { margin-left: calc(var(--logo-h) * -1.25); }
+  .site-header.is-solid { --logo-h: 52px; }
+  .nav-links { display: flex; align-items: center; gap: 4px; margin: 0; padding: 0; list-style: none; }
   .nav-links a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0 12px;
     text-decoration: none;
-    font-size: 13px;
+    font-size: var(--fs-body);
     font-weight: 500;
-    color: #F2EFE3;
+    color: var(--arena);
     white-space: nowrap;
+    transition: opacity 0.25s ease;
+  }
+  .nav-links a:hover { color: var(--arena); opacity: 0.7; }
+  .nav-links a:focus-visible { outline-color: var(--arena); outline-offset: 0; border-radius: 12px; }
+  .nav-links .nav-cta {
+    margin-left: 8px;
+    border: 1px solid rgba(242,239,227,0.45);
+    border-radius: var(--r-pill);
+    padding: 0 18px;
+    font-weight: 600;
+  }
+  .nav-links .nav-cta:hover { opacity: 1; background: var(--arena); color: var(--tinta); }
+  .nav-toggle {
+    display: none;
+    align-items: center;
+    gap: 8px;
+    min-height: 44px;
+    padding: 0 18px;
+    background: transparent;
+    color: var(--arena);
+    border: 1px solid rgba(242,239,227,0.45);
+    border-radius: var(--r-pill);
+    font: 600 var(--fs-body) var(--font-body);
+    cursor: pointer;
+  }
+  .nav-toggle:focus-visible { outline-color: var(--arena); }
+
+  @media (max-width: 900px) {
+    :root { --logo-h: 48px; }
+    .site-header.is-solid { --logo-h: 44px; }
+    .nav-toggle { display: inline-flex; }
+    .js .nav-links {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+      padding: 8px 5% 24px;
+      background: var(--tinta);
+      border-top: 1px solid var(--linea-oscura);
+    }
+    .js .site-header.menu-open { background: var(--tinta); }
+    .js .site-header.menu-open .nav-links { display: flex; }
+    .js .nav-links a { min-height: 52px; font-size: var(--fs-title); border-bottom: 1px solid rgba(242,239,227,0.1); padding: 0 4px; }
+    .js .nav-links .nav-cta { margin: 16px 0 0; justify-content: center; border-bottom: 1px solid rgba(242,239,227,0.45); }
+    html:not(.js) .nav-links { flex-wrap: wrap; justify-content: flex-end; }
   }
 
   /* Hero */
   .hero {
     position: relative;
     width: 100%;
-    min-height: max(640px, 100vh);
+    min-height: max(640px, 100svh);
     overflow: hidden;
-    background: #13141F;
+    background: var(--tinta) url("uploads/hero-poster.webp") center / cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   .hero video {
     position: absolute;
@@ -138,111 +300,107 @@
   }
   .hero .overlay-1 {
     position: absolute; inset: 0;
-    background: linear-gradient(180deg, rgba(19,20,31,0.35) 0%, rgba(19,20,31,0.05) 40%, rgba(19,20,31,0.25) 100%);
+    background: linear-gradient(180deg, rgba(19,20,31,0.55) 0%, rgba(19,20,31,0.1) 40%, rgba(19,20,31,0.35) 100%);
   }
   .hero .overlay-2 {
     position: absolute; inset: 0;
-    background: radial-gradient(ellipse 70% 60% at 50% 55%, rgba(19,20,31,0.7) 0%, rgba(19,20,31,0.4) 55%, rgba(19,20,31,0.1) 100%);
+    background: radial-gradient(ellipse 70% 60% at 50% 55%, rgba(19,20,31,0.78) 0%, rgba(19,20,31,0.45) 55%, rgba(19,20,31,0.1) 100%);
   }
-  .hero .divider-h {
-    position: absolute; left: 0; right: 0; top: 50%; height: 1px;
-    background: rgba(242,239,227,0.18);
-    pointer-events: none;
-    z-index: 1;
-  }
-  .hero .divider-v {
-    position: absolute; top: 0; bottom: 0; left: 50%; width: 1px;
-    background: rgba(242,239,227,0.18);
-    pointer-events: none;
-    z-index: 1;
-  }
-  .hero .content {
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
+  .divider-h, .divider-v { position: absolute; pointer-events: none; z-index: 1; }
+  .divider-h { left: 0; right: 0; top: 50%; height: 1px; }
+  .divider-v { top: 0; bottom: 0; left: 50%; width: 1px; }
+  .hero .divider-h, .hero .divider-v { background: var(--linea-oscura); }
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 760px;
+    width: 100%;
+    padding: 120px var(--gutter) 96px;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    padding: 0 6%;
     text-align: center;
   }
-  .hero .content > div { max-width: 760px; width: 100%; min-width: 0; display: flex; flex-direction: column; align-items: center; }
   .hero h1 {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: var(--font-display);
     font-weight: 700;
-    font-size: clamp(28px, 5vw, 64px);
+    font-size: var(--fs-display);
     line-height: 1.15;
     letter-spacing: -0.02em;
-    color: #F2EFE3;
-    margin: 0 0 18px 0;
+    text-wrap: balance;
+    color: var(--arena);
+    margin: 0 0 var(--s-md);
     max-width: 720px;
-    width: 100%;
   }
-  .hero p {
-    font-size: clamp(16px, 1.6vw, 20px);
+  .hero-lead {
+    font-size: var(--fs-lead);
     line-height: 1.5;
-    color: #E4DFCC;
-    margin: 0 0 30px 0;
-    max-width: 460px;
+    color: var(--arena-sombra);
+    margin: 0 0 var(--s-lg);
+    max-width: 500px;
+    text-wrap: pretty;
   }
-  .btn-light {
-    display: inline-block;
-    background: #F2EFE3;
-    color: #13141F;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 16px;
-    padding: 16px 32px;
-    border-radius: 100px;
-  }
-
-  /* Logos strip */
-  .logos-strip {
-    background: #F2EFE3;
-    padding: 30px 0;
-    overflow: hidden;
-  }
-  .logos-heading {
-    text-align: center;
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 600;
-    font-size: 13px;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    color: #5C5E6B;
-    margin: 0 0 20px 0;
-  }
-  .marquee { width: 100%; overflow: hidden; }
-  .marquee-track {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 64px;
-    flex-wrap: wrap;
-  }
-  .marquee-item {
-    height: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-  }
-  .marquee-logo {
-    max-height: 100%;
-    max-width: 220px;
-    width: auto;
-    height: auto;
-    object-fit: contain;
+  .hero-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+  .hero-note {
+    margin: var(--s-md) 0 0;
+    font-size: var(--fs-label);
+    color: var(--arena-sombra);
     opacity: 0.85;
   }
-  .marquee-logo.is-large { transform: scale(1.6); }
+  .video-toggle {
+    position: absolute;
+    right: 5%;
+    bottom: 24px;
+    z-index: 3;
+    width: 44px;
+    height: 44px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid rgba(242,239,227,0.45);
+    background: rgba(19,20,31,0.55);
+    color: var(--arena);
+    cursor: pointer;
+    transition: background 0.25s ease, color 0.25s ease;
+  }
+  .video-toggle.is-ready { display: inline-flex; }
+  .video-toggle:hover { background: var(--arena); color: var(--tinta); }
+  .video-toggle:focus-visible { outline-color: var(--arena); }
+  .video-toggle .icon-play { display: none; }
+  .video-toggle[aria-pressed="true"] .icon-play { display: block; }
+  .video-toggle[aria-pressed="true"] .icon-pause { display: none; }
+
+  /* Clientes */
+  .logos-strip { background: var(--arena); padding: 40px var(--gutter) 32px; }
+  .logos-heading {
+    text-align: center;
+    font-size: var(--fs-body);
+    color: var(--gris-pizarra);
+    margin: 0 0 var(--s-sm);
+  }
+  .logos-list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 24px 64px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .logos-list li { height: 96px; display: flex; align-items: center; }
+  .logos-list img { max-height: 100%; max-width: 200px; width: auto; height: auto; object-fit: contain; opacity: 0.85; }
+  .logos-list img.is-wide { max-height: 40px; max-width: 220px; }
+  @media (max-width: 640px) {
+    .logos-list { gap: 8px 32px; }
+    .logos-list li { height: 76px; }
+    .logos-list img { max-width: 140px; }
+    .logos-list img.is-wide { max-width: 180px; max-height: 32px; }
+  }
 
   /* Problema */
-  .problema {
-    position: relative;
-    background: #F2EFE3;
-    min-height: max(640px, 100vh);
-    overflow: hidden;
-  }
+  .problema { position: relative; background: var(--arena); overflow: hidden; }
   .problema .bg {
     position: absolute; inset: 0;
     background: radial-gradient(ellipse 70% 60% at 30% 20%, rgba(228,223,204,0.9) 0%, rgba(242,239,227,1) 70%);
@@ -253,242 +411,129 @@
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr;
-    min-height: max(640px, 100vh);
   }
-  .problema .divider-h {
-    display: none;
-    position: absolute; left: 0; right: 0; top: 50%; height: 1px;
-    background: rgba(19,20,31,0.12);
+  .problema .divider-h, .problema .divider-v { display: none; background: var(--linea-clara); }
+  @media (min-width: 1000px) {
+    .problema-grid { grid-template-columns: 1fr 1fr; min-height: max(640px, 100svh); }
+    .problema .divider-h, .problema .divider-v { display: block; }
   }
-  .problema .divider-v {
-    display: none;
-    position: absolute; top: 0; bottom: 0; left: 50%; width: 1px;
-    background: rgba(19,20,31,0.12);
+  .problema-cell { padding: var(--s-xl) var(--gutter) var(--s-md); display: flex; flex-direction: column; }
+  .problema-cell.bottom { padding-bottom: var(--s-xl); justify-content: flex-end; gap: var(--s-md); }
+  @media (max-width: 999px) {
+    .problema-cell { padding-top: var(--s-lg); padding-bottom: var(--s-lg); }
+    .problema-cell:first-of-type { padding-top: 70px; }
+    .problema-cell.bottom { padding-bottom: 70px; }
   }
-  @media (min-width: 760px) {
-    .problema-grid { grid-template-columns: 1fr 1fr; }
-    .problema .divider-h { display: block; }
-    .problema .divider-v { display: block; }
-  }
-  .problema-cell {
-    padding: 60px 6% 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-  }
-  .problema-cell.bottom {
-    padding: 20px 6% 60px;
-    justify-content: flex-end;
-    gap: 20px;
-  }
-  .problema h2 {
-    font-family: 'Space Grotesk', sans-serif;
+  .problema h2, .caso h2 {
+    font-family: var(--font-display);
     font-weight: 700;
-    font-size: clamp(30px, 3.6vw, 48px);
+    font-size: var(--fs-headline);
     line-height: 1.15;
     letter-spacing: -0.02em;
-    color: #13141F;
+    text-wrap: balance;
+    color: var(--tinta);
     margin: 0;
     max-width: 520px;
   }
-  .reveal { opacity: 0; }
-  .reveal.in { animation: fadeUp 0.9s ease forwards; }
+  .js .reveal { opacity: 0; }
+  .js .reveal.in { animation: fadeUp 0.9s var(--ease-out) forwards; }
   .problema-cell.bottom p {
-    font-size: 15px;
-    line-height: 1.5;
-    color: #13141F;
-    opacity: 0.75;
+    font-size: var(--fs-body);
+    line-height: 1.55;
+    color: var(--tinta);
+    opacity: 0.78;
     margin: 0;
-    max-width: 420px;
-  }
-  .btn-outline {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    color: #13141F;
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: 600;
-    border: 1px solid rgba(19,20,31,0.3);
-    border-radius: 100px;
-    padding: 12px 22px;
-    width: fit-content;
-  }
-  .kicker {
-    font-size: 13px;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    color: #5C5E6B;
+    max-width: 440px;
   }
   .advantages-grid {
     flex: 1;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    gap: 16px;
+    gap: var(--s-sm);
     width: 100%;
-    margin-bottom: 40px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
   }
   .advantage {
-    background: #FAF8F1;
+    background: var(--papel-tarjeta);
     border: 1px solid rgba(19,20,31,0.06);
-    border-radius: 16px;
-    padding: 20px;
+    border-radius: var(--r-card);
+    padding: var(--s-md);
     box-shadow: 0 2px 10px rgba(19,20,31,0.05);
     display: flex;
     flex-direction: column;
     justify-content: center;
   }
-  .advantage-num {
-    display: block;
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 700;
-    font-size: 13px;
-    color: #5C5E6B;
-    margin-bottom: 8px;
-  }
   .advantage h3 {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: var(--font-display);
     font-weight: 700;
-    font-size: 17px;
-    color: #13141F;
-    margin: 0 0 6px 0;
+    font-size: var(--fs-title);
+    line-height: 1.3;
+    color: var(--tinta);
+    margin: 0 0 6px;
   }
-  .advantage p {
-    font-size: 13px;
-    line-height: 1.45;
-    color: #13141F;
-    opacity: 0.7;
-    margin: 0;
+  .advantage p { font-size: var(--fs-body); line-height: 1.5; color: var(--tinta); opacity: 0.75; margin: 0; }
+  @media (max-width: 640px) { .advantages-grid { grid-template-columns: 1fr; } }
+
+  .sin-cuotas h3 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--fs-title);
+    line-height: 1.3;
+    margin: 0 0 var(--s-xs);
   }
-  @media (max-width: 640px) {
-    .advantages-grid { grid-template-columns: 1fr; }
-  }
-  .stack-list { display: flex; flex-direction: column; gap: 26px; margin-top: 8px; }
-  .stack-list .tool { display: flex; align-items: center; gap: 18px; }
-  .stack-list .tool .chip {
+  .sin-cuotas p { margin: 0 0 var(--s-md); max-width: 440px; line-height: 1.55; opacity: 0.78; }
+  .stack-list { display: flex; flex-wrap: wrap; gap: 12px 24px; margin: 0; padding: 0; list-style: none; }
+  .stack-list li { display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 600; font-size: var(--fs-body); }
+  .stack-list .chip {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 60px;
-    height: 60px;
-    flex-shrink: 0;
-    background: #FFFFFF;
-    border-radius: 14px;
+    width: 44px;
+    height: 44px;
+    background: var(--blanco-chip);
+    border-radius: 12px;
     box-shadow: 0 2px 6px rgba(19,20,31,0.1);
   }
-  .stack-list .tool .chip img { width: 34px; height: 34px; object-fit: contain; }
-  .stack-list .tool span {
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 600;
-    font-size: 30px;
-    color: #13141F;
-  }
+  .stack-list .chip img { width: 26px; height: 26px; object-fit: contain; }
 
-  /* Footer */
-  footer {
-    background: #0A0A16;
-    padding: 100px 8% 48px;
-  }
-  .footer-top {
+  /* Caso real */
+  .caso {
     position: relative;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 60px;
-    max-width: 1100px;
-    margin: 0 auto 80px;
+    padding: var(--s-section) var(--gutter);
+    border-top: 1px solid var(--linea-clara);
   }
-  @media (min-width: 760px) {
-    .footer-top { grid-template-columns: 1fr 1fr; }
-  }
-  .footer-brand { max-width: 420px; }
-  .footer-logo { display: flex; align-items: center; margin-bottom: 32px; }
-  .footer-logo img { height: 80px; width: auto; }
-  .footer-logo img.wordmark { margin-left: -100px; }
-  .footer-brand h3 {
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 700;
-    font-size: clamp(26px, 3vw, 38px);
-    letter-spacing: -0.01em;
-    color: #F2EFE3;
-    margin: 0 0 14px 0;
-  }
-  .footer-brand p {
-    font-size: 16px;
-    line-height: 1.6;
-    color: #E4DFCC;
-    opacity: 0.85;
-    margin: 0 0 28px 0;
-  }
-  .footer-divider {
-    display: none;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 50%;
-    width: 1px;
-    background: rgba(242,239,227,0.15);
-  }
-  @media (min-width: 760px) {
-    .footer-divider { display: block; }
-  }
-  .footer-contact {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    min-width: 220px;
-    padding-top: 4px;
-  }
-  .footer-contact .label {
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 600;
-    font-size: 14px;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: #8A8C9E;
-    margin-bottom: 8px;
-  }
-  .footer-contact a {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    text-decoration: none;
-    font-size: 16px;
-    color: #F2EFE3;
-  }
-  .footer-contact a svg { flex-shrink: 0; opacity: 0.6; }
-  .footer-bottom {
+  .caso-grid {
     max-width: 1100px;
     margin: 0 auto;
-    padding-top: 32px;
-    border-top: 1px solid rgba(242,239,227,0.15);
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-    justify-content: space-between;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--s-lg) var(--s-xl);
   }
-  .footer-bottom p {
-    font-size: 14px;
-    color: #E4DFCC;
-    margin: 0;
+  @media (min-width: 900px) { .caso-grid { grid-template-columns: 5fr 6fr; align-items: start; } }
+  .caso-intro img { width: 220px; height: auto; margin: 0 0 var(--s-lg); }
+  .caso-intro p { margin: var(--s-md) 0 0; max-width: 440px; line-height: 1.55; opacity: 0.78; }
+  .caso-list { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--linea-clara); }
+  .caso-list li {
+    display: grid;
+    gap: 4px;
+    padding: var(--s-md) 0;
+    border-bottom: 1px solid var(--linea-clara);
   }
-  .footer-bottom p.copy { opacity: 0.62; }
-  .footer-bottom p.tag { opacity: 0.7; }
+  .caso-list strong { font-family: var(--font-display); font-weight: 700; font-size: var(--fs-title); line-height: 1.3; }
+  .caso-list span { line-height: 1.55; opacity: 0.78; }
+  .caso-list + .btn-outline { margin-top: var(--s-lg); }
+  @media (max-width: 640px) { .caso { padding: 70px var(--gutter); } }
 
-  /* Automatizaciones: banner que invita a visitar la biblioteca, sin duplicar su contenido */
-  .automations {
-    position: relative;
-    background: #F2EFE3;
-    padding: 100px 6%;
-    overflow: hidden;
-  }
+  /* Biblioteca */
+  .automations { position: relative; padding: 0 var(--gutter) var(--s-section); }
   .automations-banner {
     position: relative;
     max-width: 1100px;
     margin: 0 auto;
-    background: #13141F;
-    border-radius: 28px;
+    background: var(--tinta);
+    border-radius: var(--r-panel);
     padding: 64px 48px;
     overflow: hidden;
     text-align: center;
@@ -500,213 +545,344 @@
     background: radial-gradient(ellipse 60% 80% at 50% 0%, rgba(242,239,227,0.14) 0%, rgba(242,239,227,0) 70%);
   }
   .automations-banner > * { position: relative; }
-  .automations-banner .kicker { color: #9A9CA8; }
   .automations-banner h2 {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: var(--font-display);
     font-weight: 700;
     font-size: clamp(28px, 3.4vw, 42px);
     line-height: 1.18;
     letter-spacing: -0.02em;
-    color: #F2EFE3;
-    margin: 10px auto 14px;
+    text-wrap: balance;
+    color: var(--arena);
+    margin: 0 auto 14px;
     max-width: 620px;
   }
   .automations-banner p {
-    font-size: 15px;
+    font-size: var(--fs-body);
     line-height: 1.6;
-    color: #D8D3C2;
+    color: var(--arena-apagada);
     max-width: 560px;
-    margin: 0 auto 36px;
+    margin: 0 auto var(--s-lg);
   }
   .automations-stats {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 32px;
-    margin-bottom: 36px;
-    flex-wrap: wrap;
+    gap: var(--s-lg);
+    margin: 0 0 36px;
   }
-  .automations-stats div { display: flex; flex-direction: column; gap: 4px; align-items: center; }
-  .automations-stats .divider { width: 1px; height: 36px; background: rgba(242,239,227,0.15); }
-  .automations-stats strong {
-    font-family: 'Space Grotesk', sans-serif;
+  .automations-stats div { display: flex; flex-direction: column; gap: 6px; align-items: center; }
+  .automations-stats div + div { border-left: 1px solid rgba(242,239,227,0.15); padding-left: var(--s-lg); }
+  .automations-stats dd {
+    order: -1;
+    margin: 0;
+    font-family: var(--font-display);
     font-weight: 700;
-    font-size: 30px;
+    font-size: var(--fs-stat);
     line-height: 1;
-    color: #F2EFE3;
+    color: var(--arena);
+    font-variant-numeric: tabular-nums;
   }
-  .automations-stats span {
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    color: #9A9CA8;
-  }
+  .automations-stats dt { font-size: var(--fs-label); color: var(--gris-niebla); }
   @media (max-width: 640px) {
-    .automations-banner { padding: 48px 28px; }
-    .automations-stats { gap: 20px; }
-    .automations-stats .divider { display: none; }
+    .automations { padding-bottom: 70px; }
+    .automations-banner { padding: 48px 24px; border-radius: var(--r-card); }
   }
 
-  @media (max-width: 640px) {
-    .navbar .brand img { height: 52px; }
-    .navbar .brand img.wordmark { margin-left: -65px; }
-    .nav-links { gap: 16px; }
-    .nav-links a { font-size: 12px; }
-    #preloader img { height: 260px; }
-    .automations { padding: 70px 6%; }
+  /* Footer */
+  footer { background: var(--noche); padding: var(--s-section) 8% 48px; color: var(--arena); }
+  .footer-top {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--s-xl);
+    max-width: 1100px;
+    margin: 0 auto 80px;
   }
-  @media (max-width: 440px) {
-    .navbar { padding: 16px 5%; }
-    .navbar .brand img { height: 34px; }
-    .navbar .brand img.wordmark { margin-left: -42px; }
-    .nav-links { gap: 10px; }
-    .nav-links a { font-size: 11px; }
+  @media (min-width: 760px) { .footer-top { grid-template-columns: 1fr 1fr; } }
+  .footer-brand { max-width: 440px; }
+  .footer-logo { --logo-h: 64px; display: flex; align-items: center; margin-bottom: var(--s-lg); }
+  .footer-logo img { height: var(--logo-h); width: auto; }
+  .footer-brand h2 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(30px, 3vw, 38px);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--arena);
+    margin: 0 0 14px;
+  }
+  .footer-brand p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--arena-sombra);
+    margin: 0 0 28px;
+  }
+  .footer-alt { display: inline-block; margin-top: var(--s-sm); color: var(--arena-sombra); font-size: var(--fs-body); text-underline-offset: 4px; }
+  .footer-alt:hover { color: var(--arena); }
+  .footer-alt:focus-visible { outline-color: var(--arena); }
+  .footer-divider {
+    display: none;
+    position: absolute;
+    top: 0; bottom: 0; left: 50%;
+    width: 1px;
+    background: rgba(242,239,227,0.15);
+  }
+  @media (min-width: 760px) { .footer-divider { display: block; } }
+  .footer-contact { display: flex; flex-direction: column; gap: 4px; min-width: 220px; }
+  .footer-contact h3 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: var(--fs-label);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--gris-humo);
+    margin: 0 0 var(--s-xs);
+  }
+  .footer-contact a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 44px;
+    text-decoration: none;
+    font-size: 16px;
+    color: var(--arena);
+    transition: opacity 0.25s ease;
+    overflow-wrap: anywhere;
+  }
+  .footer-contact a:hover { color: var(--arena); opacity: 0.7; }
+  .footer-contact a:focus-visible { outline-color: var(--arena); outline-offset: 2px; }
+  .footer-contact a svg { flex-shrink: 0; opacity: 0.6; }
+  .footer-bottom {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding-top: var(--s-lg);
+    border-top: 1px solid rgba(242,239,227,0.15);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s-sm);
+    justify-content: space-between;
+  }
+  .footer-bottom p { font-size: var(--fs-label); color: var(--arena-sombra); margin: 0; opacity: 0.75; }
+
+  /* WhatsApp flotante en móvil, solo entre el hero y el pie */
+  .wa-float { display: none; }
+  @media (max-width: 760px) {
+    .js .wa-float {
+      display: inline-flex;
+      position: fixed;
+      left: 50%;
+      bottom: max(16px, env(safe-area-inset-bottom));
+      z-index: 40;
+      background: var(--tinta);
+      color: var(--arena);
+      box-shadow: 0 8px 20px rgba(10,10,22,0.3);
+      transform: translate(-50%, 140%);
+      visibility: hidden;
+      transition: transform 0.35s var(--ease-out), visibility 0s linear 0.35s;
+      white-space: nowrap;
+    }
+    .js .wa-float:hover { color: var(--arena); }
+    .js .wa-float.is-visible { transform: translate(-50%, 0); visibility: visible; transition: transform 0.35s var(--ease-out); }
+    .js .wa-float:focus-visible { outline-color: var(--tinta); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .btn-light:hover { transform: none; }
+    .js .reveal { opacity: 1; }
+    .js .reveal.in { animation: none; }
+    .site-header, .js .wa-float { transition: none; }
+    #preloader img { animation: none; }
   }
 </style>
 </head>
 <body>
 
-<div id="preloader">
-  <picture><source srcset="uploads/avatar-round-6b2aa1c8.webp" type="image/webp"><img src="uploads/avatar-round-6b2aa1c8.png" alt="malia" width="800" height="800" fetchpriority="high"></picture>
+<a class="skip-link" href="#main">Saltar al contenido</a>
+
+<div id="preloader" aria-hidden="true">
+  <picture><source srcset="uploads/avatar-round-6b2aa1c8.webp" type="image/webp"><img src="uploads/avatar-round-6b2aa1c8.png" alt="" width="400" height="400"></picture>
 </div>
 
-<nav class="navbar" id="navbar">
-  <div class="brand">
-    <picture><source srcset="uploads/logo-inverted.webp" type="image/webp"><img src="uploads/logo-inverted.png" alt="malia" width="200" height="200"></picture>
-    <picture><source srcset="uploads/malia-wordmark-blanco.webp" type="image/webp"><img class="wordmark" src="uploads/malia-wordmark-blanco.png" alt="malia" width="1584" height="396"></picture>
-  </div>
-  <div class="nav-links">
-    <a href="#servicios">Servicios</a>
-    <a href="#casos">Casos</a>
-    <a href="/automatizaciones">Automatizaciones</a>
-    <a href="/blog">Blog</a>
-    <a href="#contacto">Contacto</a>
-  </div>
-</nav>
+<header class="site-header" id="siteHeader">
+  <nav class="navbar" aria-label="Principal">
+    <a class="brand" href="/" aria-label="malia, inicio">
+      <picture><source srcset="uploads/logo-inverted.webp" type="image/webp"><img src="uploads/logo-inverted.png" alt="" width="400" height="400"></picture>
+      <picture><source srcset="uploads/malia-wordmark-blanco.webp" type="image/webp"><img class="wordmark" src="uploads/malia-wordmark-blanco.png" alt="" width="1584" height="396"></picture>
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navLinks">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      Menú
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#casos">Casos</a></li>
+      <li><a href="/automatizaciones">Automatizaciones</a></li>
+      <li><a href="/blog">Blog</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+      <li><a class="nav-cta" href="https://wa.me/34611459336?text=Hola%20Manuel%2C%20tengo%20un%20negocio%20y%20quiero%20saber%20qu%C3%A9%20podr%C3%ADa%20automatizar." target="_blank" rel="noopener">WhatsApp</a></li>
+    </ul>
+  </nav>
+</header>
 
-<section class="hero">
-  <video src="uploads/2.mp4" poster="uploads/avatar-round-6b2aa1c8.webp" muted loop playsinline webkit-playsinline="true" autoplay preload="auto"></video>
+<main id="main">
+
+<section class="hero" id="hero" aria-labelledby="heroTitle">
+  <video muted loop playsinline webkit-playsinline="true" preload="none" poster="uploads/hero-poster.webp" aria-hidden="true" tabindex="-1"></video>
   <div class="overlay-1"></div>
   <div class="overlay-2"></div>
   <div class="divider-h"></div>
   <div class="divider-v"></div>
-  <div class="content">
-    <div>
-      <h1>Automatiza lo repetitivo, y dedica tu tiempo a hacer crecer tu negocio.</h1>
-      <p>Diseñamos flujos de IA a medida para comercios, hostelería y servicios.</p>
+  <div class="hero-content">
+    <h1 id="heroTitle">Automatiza lo repetitivo, y dedica tu tiempo a hacer crecer tu negocio.</h1>
+    <p class="hero-lead">Monto automatizaciones con IA a medida para comercios, hostelería y negocios de servicios. Te atiendo yo, Manuel, desde Barbate.</p>
+    <div class="hero-actions">
+      <a class="btn btn-light" href="https://wa.me/34611459336?text=Hola%20Manuel%2C%20tengo%20un%20negocio%20y%20quiero%20saber%20qu%C3%A9%20podr%C3%ADa%20automatizar." target="_blank" rel="noopener">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5l1.3-3.9A8 8 0 1 1 8.4 18.7L4 19.5Z"/></svg>
+        Escríbeme por WhatsApp
+      </a>
+      <a class="btn btn-ghost" href="#casos">Ver un caso real</a>
     </div>
+    <p class="hero-note">Primera consulta gratis y sin compromiso.</p>
   </div>
+  <button class="video-toggle" type="button" aria-pressed="false" aria-label="Pausar el fondo animado">
+    <svg class="icon-pause" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
+    <svg class="icon-play" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.9l10.4-6.5a1 1 0 0 0 0-1.8L9.5 4.6A1 1 0 0 0 8 5.5Z"/></svg>
+  </button>
 </section>
 
-<section class="logos-strip" id="casos">
-  <p class="logos-heading">Nuestros clientes:</p>
-  <div class="marquee">
-    <div class="marquee-track">
-      <div class="marquee-item"><picture><source srcset="uploads/motodest.webp" type="image/webp"><img class="marquee-logo is-large" src="uploads/motodest.png" alt="Motodest" loading="lazy" width="500" height="353"></picture></div>
-      <div class="marquee-item"><picture><source srcset="uploads/mavimar.webp" type="image/webp"><img class="marquee-logo" src="uploads/mavimar.png" alt="Mavimar Consultores" loading="lazy" width="500" height="282"></picture></div>
-      <div class="marquee-item"><picture><source srcset="uploads/vidal-malia.webp" type="image/webp"><img class="marquee-logo" src="uploads/vidal-malia.png" alt="Vidal Malia" loading="lazy" width="500" height="373"></picture></div>
-    </div>
-  </div>
+<section class="logos-strip" aria-label="Clientes">
+  <p class="logos-heading">Negocios que ya trabajan con malia</p>
+  <ul class="logos-list">
+    <li><img class="is-wide" src="uploads/motodest-horizontal.webp" alt="MOTODEST" loading="lazy" width="640" height="112"></li>
+    <li><picture><source srcset="uploads/mavimar.webp" type="image/webp"><img src="uploads/mavimar.png" alt="Mavimar Consultores" loading="lazy" width="500" height="282"></picture></li>
+    <li><picture><source srcset="uploads/vidal-malia.webp" type="image/webp"><img src="uploads/vidal-malia.png" alt="Vidal Malia" loading="lazy" width="500" height="373"></picture></li>
+  </ul>
 </section>
 
-<section class="problema" id="servicios">
+<section class="problema" id="servicios" aria-labelledby="problemaTitle">
   <div class="bg"></div>
   <div class="problema-grid">
     <div class="divider-h"></div>
     <div class="divider-v"></div>
 
-    <div class="problema-cell reveal" id="problemaHeadline">
-      <h2>Lo mismo, a mano, todos los días — ¿cuánto tiempo más vas a perder así?</h2>
+    <div class="problema-cell reveal">
+      <h2 id="problemaTitle">Lo mismo, a mano, todos los días — ¿cuánto tiempo más vas a perder así?</h2>
     </div>
 
     <div class="problema-cell">
-      <div class="advantages-grid">
-        <div class="advantage">
-          <span class="advantage-num">01</span>
+      <ul class="advantages-grid">
+        <li class="advantage">
           <h3>Ahorra tiempo</h3>
           <p>Menos tareas repetitivas, más horas libres cada semana.</p>
-        </div>
-        <div class="advantage">
-          <span class="advantage-num">02</span>
+        </li>
+        <li class="advantage">
           <h3>Menos errores</h3>
-          <p>Corregir errores también cuesta tiempo. La IA no se olvida ni se despista.</p>
-        </div>
-        <div class="advantage">
-          <span class="advantage-num">03</span>
-          <h3>Disponible 24/7</h3>
-          <p>Atiende a tus clientes sin que tengas que estar tú pendiente a todas horas.</p>
-        </div>
-        <div class="advantage">
-          <span class="advantage-num">04</span>
+          <p>Corregir errores también cuesta tiempo. Una automatización no se olvida ni se despista.</p>
+        </li>
+        <li class="advantage">
+          <h3>Trabaja cuando tú no estás</h3>
+          <p>Avisa, rellena y archiva de noche y en festivos, sin que tengas que estar pendiente.</p>
+        </li>
+        <li class="advantage">
           <h3>Crece sin contratar</h3>
           <p>Haces más en el mismo tiempo, sin ampliar plantilla.</p>
-        </div>
-      </div>
+        </li>
+      </ul>
     </div>
 
-    <div class="problema-cell">
-      <span class="kicker">Con qué trabajamos</span>
-      <div class="stack-list">
-        <div class="tool">
-          <span class="chip"><picture><source srcset="uploads/tool-n8n.webp" type="image/webp"><img src="uploads/tool-n8n.png" alt="" loading="lazy" width="120" height="83"></picture></span>
-          <span>n8n</span>
-        </div>
-        <div class="tool">
-          <span class="chip"><picture><source srcset="uploads/tool-easypanel.webp" type="image/webp"><img src="uploads/tool-easypanel.png" alt="" loading="lazy" width="120" height="120"></picture></span>
-          <span>Easypanel</span>
-        </div>
-        <div class="tool">
-          <span class="chip"><img src="uploads/tool-hostinger.png" alt="" loading="lazy" width="173" height="95"></span>
-          <span>Hostinger</span>
-        </div>
-      </div>
+    <div class="problema-cell sin-cuotas">
+      <h3>Sin cuotas por cada tarea</h3>
+      <p>Tus automatizaciones funcionan en un servidor propio, no en una plataforma que te cobra más cuanto más la usas. Pagas el trabajo hecho a medida.</p>
+      <ul class="stack-list" aria-label="Herramientas">
+        <li><span class="chip"><picture><source srcset="uploads/tool-n8n.webp" type="image/webp"><img src="uploads/tool-n8n.png" alt="" loading="lazy" width="120" height="83"></picture></span>n8n</li>
+        <li><span class="chip"><picture><source srcset="uploads/tool-easypanel.webp" type="image/webp"><img src="uploads/tool-easypanel.png" alt="" loading="lazy" width="120" height="120"></picture></span>Easypanel</li>
+        <li><span class="chip"><img src="uploads/tool-hostinger.png" alt="" loading="lazy" width="173" height="95"></span>Hostinger</li>
+      </ul>
     </div>
 
     <div class="problema-cell bottom">
-      <p>La mayoría de pymes no tienen un problema de falta de clientes — tienen un problema de falta de tiempo. Diseñamos automatizaciones de IA a medida que se encargan de lo repetitivo.</p>
-      <a class="btn-outline" href="#contacto">Cuéntanos tu caso →</a>
+      <p>La mayoría de pymes no tienen un problema de falta de clientes — tienen un problema de falta de tiempo. Escucho cómo trabajas hoy y monto la automatización que se encarga de lo repetitivo.</p>
+      <a class="btn btn-outline" href="#contacto">Cuéntame tu caso →</a>
     </div>
   </div>
 </section>
 
-<section class="automations" id="automatizaciones-destacadas">
-  <div class="automations-banner">
-    <span class="kicker">Automatizaciones reales</span>
-    <h2>Esto no es una demo — esto ya está funcionando.</h2>
-    <p>Documentos que se rellenan solos, un blog que se escribe casi sin nosotros, un vigilante que no duerme. Entra en la biblioteca y mira el flujo completo de cada una.</p>
-    <div class="automations-stats">
-      <div><strong>11</strong><span>Automatizaciones</span></div>
-      <div class="divider"></div>
-      <div><strong>3</strong><span>Proyectos</span></div>
-      <div class="divider"></div>
-      <div><strong>n8n + IA</strong><span>Stack</span></div>
+<section class="caso" id="casos" aria-labelledby="casoTitle">
+  <div class="caso-grid">
+    <div class="caso-intro">
+      <img src="uploads/motodest-horizontal.webp" alt="MOTODEST" loading="lazy" width="640" height="112">
+      <h2 id="casoTitle" class="reveal">Un concesionario de motos que ya no rellena papeles a mano.</h2>
+      <p>MOTODEST vende y repara motos. Estas automatizaciones funcionan cada día en su negocio, sin que nadie tenga que acordarse de ellas.</p>
     </div>
-    <a class="btn-light" href="/automatizaciones">Ver la biblioteca completa →</a>
+    <div>
+      <ul class="caso-list">
+        <li>
+          <strong>La carta de entrega se hace sola</strong>
+          <span>En cuanto se cierra la venta de una moto, el documento se genera y se archiva.</span>
+        </li>
+        <li>
+          <strong>El mandato de representación, listo a tiempo</strong>
+          <span>Cuando la venta llega a matriculación, el mandato aparece adjunto en su ficha.</span>
+        </li>
+        <li>
+          <strong>Cada cliente entra en el CRM sin duplicados</strong>
+          <span>Al comprar una moto o pedir cita en el taller, se da de alta solo y se comprueba por NIF.</span>
+        </li>
+        <li>
+          <strong>Enlaces de descarga que no caducan</strong>
+          <span>Cada documento tiene un enlace fijo, también los del sistema que usaban antes.</span>
+        </li>
+      </ul>
+      <a class="btn btn-outline" href="/automatizaciones/motodest/">Ver el caso MOTODEST completo →</a>
+    </div>
   </div>
 </section>
+
+<section class="automations" aria-labelledby="bibliotecaTitle">
+  <div class="automations-banner">
+    <h2 id="bibliotecaTitle">Esto no es una demo — esto ya está funcionando.</h2>
+    <p>Documentos que se rellenan solos, un blog que se escribe casi sin mí, un vigilante que no duerme. Entra en la biblioteca y mira el flujo completo de cada una.</p>
+    <dl class="automations-stats">
+      <div><dt>automatizaciones</dt><dd>11</dd></div>
+      <div><dt>proyectos</dt><dd>3</dd></div>
+    </dl>
+    <a class="btn btn-light" href="/automatizaciones">Ver la biblioteca completa →</a>
+  </div>
+</section>
+
+</main>
 
 <footer id="contacto">
   <div class="footer-top">
     <div class="footer-brand">
       <div class="footer-logo">
-        <picture><source srcset="uploads/logo-inverted.webp" type="image/webp"><img src="uploads/logo-inverted.png" alt="malia" loading="lazy" width="200" height="200"></picture>
+        <picture><source srcset="uploads/logo-inverted.webp" type="image/webp"><img src="uploads/logo-inverted.png" alt="" loading="lazy" width="400" height="400"></picture>
         <picture><source srcset="uploads/malia-wordmark-blanco.webp" type="image/webp"><img class="wordmark" src="uploads/malia-wordmark-blanco.png" alt="malia" loading="lazy" width="1584" height="396"></picture>
       </div>
-      <h3>¿Hablamos?</h3>
-      <p>Empieza a recuperar tu tiempo. Primera consulta sin coste, sin compromiso.</p>
-      <a class="btn-light" href="mailto:manuelmaliaempr@gmail.com">Agenda una llamada</a>
+      <h2>¿Hablamos?</h2>
+      <p>Empieza a recuperar tu tiempo. Primera consulta gratis y sin compromiso: cuéntame qué repites cada día y te digo si se puede automatizar.</p>
+      <a class="btn btn-light" href="https://wa.me/34611459336?text=Hola%20Manuel%2C%20tengo%20un%20negocio%20y%20quiero%20saber%20qu%C3%A9%20podr%C3%ADa%20automatizar." target="_blank" rel="noopener">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5l1.3-3.9A8 8 0 1 1 8.4 18.7L4 19.5Z"/></svg>
+        Escríbeme por WhatsApp
+      </a>
+      <br>
+      <a class="footer-alt" href="mailto:manuelmaliaempr@gmail.com?subject=Consulta%20sobre%20automatizaci%C3%B3n">¿Prefieres el email? Escríbeme aquí</a>
     </div>
     <div class="footer-divider"></div>
     <div class="footer-contact">
-      <span class="label">Contacto</span>
-      <a href="mailto:manuelmaliaempr@gmail.com">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
-        manuelmaliaempr@gmail.com
+      <h3>Contacto</h3>
+      <a href="https://wa.me/34611459336" target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5l1.3-3.9A8 8 0 1 1 8.4 18.7L4 19.5Z"/></svg>
+        WhatsApp
       </a>
       <a href="tel:+34611459336">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2a1.5 1.5 0 0 1 1.6-.3c1 .4 2.1.6 3.2.6a1.5 1.5 0 0 1 1.5 1.5V21a1.5 1.5 0 0 1-1.5 1.5C10.4 22.5 1.5 13.6 1.5 3.5A1.5 1.5 0 0 1 3 2h3.6a1.5 1.5 0 0 1 1.5 1.5c0 1.1.2 2.2.6 3.2.2.5 0 1.1-.3 1.6L6.6 10.8Z"/></svg>
         611 459 336
+      </a>
+      <a href="mailto:manuelmaliaempr@gmail.com">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+        manuelmaliaempr@gmail.com
       </a>
       <a href="https://instagram.com/malialabs_" target="_blank" rel="noopener">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
@@ -715,32 +891,66 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <p class="tag">Malia — Automatización con IA para pymes · Barbate, Cádiz</p>
-    <p class="copy">© 2026 Malia</p>
+    <p>Malia — Automatización con IA para pymes · Barbate, Cádiz</p>
+    <p>© 2026 Malia</p>
   </div>
 </footer>
 
-<script>
-  // Preloader: fade out shortly after the logo animation plays.
-  window.setTimeout(function () {
-    document.getElementById('preloader').classList.add('done');
-  }, 1600);
+<a class="btn wa-float" id="waFloat" href="https://wa.me/34611459336?text=Hola%20Manuel%2C%20tengo%20un%20negocio%20y%20quiero%20saber%20qu%C3%A9%20podr%C3%ADa%20automatizar." target="_blank" rel="noopener">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5l1.3-3.9A8 8 0 1 1 8.4 18.7L4 19.5Z"/></svg>
+  Escríbeme por WhatsApp
+</a>
 
-  // Navbar: only visible at the very top of the page.
+<script>
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Preloader: solo en la primera visita de la sesión y sin movimiento reducido.
   (function () {
-    var navbar = document.getElementById('navbar');
-    if (!navbar) return;
+    var pre = document.getElementById('preloader');
+    var seen = false;
+    try { seen = sessionStorage.getItem('maliaIntro') === '1'; sessionStorage.setItem('maliaIntro', '1'); } catch (e) {}
+    if (reduceMotion || seen) { pre.classList.add('done'); return; }
+    window.setTimeout(function () { pre.classList.add('done'); }, 900);
+  })();
+
+  // Navbar: transparente sobre el hero; fuera de él, sólida. Se esconde al bajar y vuelve al subir.
+  (function () {
+    var header = document.getElementById('siteHeader');
+    var toggle = header.querySelector('.nav-toggle');
+    var lastY = window.scrollY;
 
     function update() {
-      navbar.classList.toggle('nav-hidden', window.scrollY > 4);
+      var y = window.scrollY;
+      var menuOpen = header.classList.contains('menu-open');
+      header.classList.toggle('is-solid', y > 40);
+      header.classList.toggle('nav-hidden', !menuOpen && y > 200 && y > lastY);
+      lastY = y;
     }
     window.addEventListener('scroll', update, { passive: true });
     update();
+
+    function closeMenu() {
+      header.classList.remove('menu-open');
+      toggle.setAttribute('aria-expanded', 'false');
+    }
+    toggle.addEventListener('click', function () {
+      var open = !header.classList.contains('menu-open');
+      header.classList.toggle('menu-open', open);
+      toggle.setAttribute('aria-expanded', String(open));
+    });
+    header.querySelectorAll('.nav-links a').forEach(function (a) { a.addEventListener('click', closeMenu); });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && header.classList.contains('menu-open')) { closeMenu(); toggle.focus(); }
+    });
   })();
 
-  // Reveal-on-scroll for section headlines.
+  // Revelado de titulares al entrar en pantalla.
   (function () {
     var targets = document.querySelectorAll('.reveal');
+    if (reduceMotion || !('IntersectionObserver' in window)) {
+      targets.forEach(function (t) { t.classList.add('in'); });
+      return;
+    }
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
@@ -749,31 +959,54 @@
         }
       });
     }, { threshold: 0.2 });
-    targets.forEach(function (target) { io.observe(target); });
+    targets.forEach(function (t) { io.observe(t); });
   })();
 
-  // Ensure the hero video autoplays even where the autoplay attribute alone is unreliable,
-  // and slow it down for a calmer background feel.
+  // Vídeo del hero: versión ligera en móvil, nada con movimiento reducido o ahorro de datos, y botón de pausa.
   (function () {
     var v = document.querySelector('.hero video');
-    if (v) {
-      v.muted = true;
-      v.playbackRate = 0.75;
-      v.play().catch(function () {});
+    var btn = document.querySelector('.video-toggle');
+    var conn = navigator.connection || {};
+    if (!v || reduceMotion || conn.saveData) return;
 
-      // Some mobile browsers (Data Saver / Low Power Mode) block the initial
-      // autoplay attempt. Retry on the first real user interaction, which is
-      // always allowed to trigger playback.
-      var retryPlay = function () {
-        if (v.paused) { v.play().catch(function () {}); }
-        window.removeEventListener('touchstart', retryPlay);
-        window.removeEventListener('scroll', retryPlay);
-        window.removeEventListener('click', retryPlay);
-      };
-      window.addEventListener('touchstart', retryPlay, { passive: true, once: true });
-      window.addEventListener('scroll', retryPlay, { passive: true, once: true });
-      window.addEventListener('click', retryPlay, { once: true });
+    v.src = window.matchMedia('(max-width: 760px)').matches ? 'uploads/hero-480.mp4' : 'uploads/hero-1280.mp4';
+    v.muted = true;
+    v.addEventListener('loadedmetadata', function () { v.playbackRate = 0.75; });
+    v.play().catch(function () {});
+    btn.classList.add('is-ready');
+
+    var userPaused = false;
+    btn.addEventListener('click', function () {
+      userPaused = !v.paused;
+      if (userPaused) { v.pause(); } else { v.play().catch(function () {}); }
+      btn.setAttribute('aria-pressed', String(userPaused));
+      btn.setAttribute('aria-label', userPaused ? 'Reanudar el fondo animado' : 'Pausar el fondo animado');
+    });
+
+    // Algunos móviles bloquean el primer intento de reproducción; se reintenta con el primer gesto.
+    var retryPlay = function () {
+      if (v.paused && !userPaused) { v.play().catch(function () {}); }
+    };
+    window.addEventListener('touchstart', retryPlay, { passive: true, once: true });
+    window.addEventListener('scroll', retryPlay, { passive: true, once: true });
+
+    // Pausa el vídeo cuando el hero no se ve, para ahorrar batería.
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries) {
+        if (userPaused) return;
+        if (entries[0].isIntersecting) { v.play().catch(function () {}); } else { v.pause(); }
+      }).observe(document.getElementById('hero'));
     }
+  })();
+
+  // WhatsApp flotante en móvil: aparece tras el hero y se esconde al llegar al pie.
+  (function () {
+    var wa = document.getElementById('waFloat');
+    if (!wa || !('IntersectionObserver' in window)) return;
+    var heroVisible = true, footerVisible = false;
+    function update() { wa.classList.toggle('is-visible', !heroVisible && !footerVisible); }
+    new IntersectionObserver(function (e) { heroVisible = e[0].isIntersecting; update(); }).observe(document.getElementById('hero'));
+    new IntersectionObserver(function (e) { footerVisible = e[0].isIntersecting; update(); }).observe(document.getElementById('contacto'));
   })();
 </script>
 
